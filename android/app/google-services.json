@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "866440291504",
+    "project_id": "newsnet-8a184",
+    "storage_bucket": "newsnet-8a184.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:866440291504:android:4cc32ac24dd84b91328775",
+        "android_client_info": {
+          "package_name": "com.example.newsnet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "866440291504-d3bqt3n2pgjfb6nrme2hdhuutur1ok49.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgF5aiNrcUWPN_shKvlVQmGBNjlOdQF9Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "866440291504-d3bqt3n2pgjfb6nrme2hdhuutur1ok49.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "866440291504-l21mbcikiibrfknkhepfb8ngu31u9il6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.waleed.raza"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
