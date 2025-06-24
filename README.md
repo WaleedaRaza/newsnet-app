@@ -65,6 +65,27 @@ Required environment variables:
 - `OPENAI_API_KEY`: Your OpenAI API key (optional)
 - `DATABASE_URL`: Database connection string
 
+### Firebase Configuration
+1. **Create a Firebase project** at https://console.firebase.google.com/
+2. **Add Android app** and download `google-services.json`
+3. **Add iOS app** and download `GoogleService-Info.plist`
+4. **Copy the files** to their respective locations:
+   ```bash
+   cp google-services.json android/app/
+   cp GoogleService-Info.plist ios/Runner/
+   ```
+
+### Security Notes
+⚠️ **Important**: Never commit API keys or sensitive configuration files to the repository. The `.gitignore` file is configured to exclude:
+- `backend/.env` (contains API keys)
+- `android/app/google-services.json` (Firebase config)
+- `ios/Runner/GoogleService-Info.plist` (Firebase config)
+
+Use the example files provided as templates:
+- `backend/env.example`
+- `android/app/google-services.example.json`
+- `ios/Runner/GoogleService-Info.example.plist`
+
 ### Frontend Setup
 ```bash
 flutter pub get
