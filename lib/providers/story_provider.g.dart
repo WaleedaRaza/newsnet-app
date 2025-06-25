@@ -6,7 +6,7 @@ part of 'story_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$storyHash() => r'b2e08921c7826ecddeed7e50012d50279703616e';
+String _$storyHash() => r'1bfade301098f71c2fbeebe7968098d85f0620db';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -156,7 +156,7 @@ class _StoryProviderElement extends AutoDisposeFutureProviderElement<Story>
   String get storyId => (origin as StoryProvider).storyId;
 }
 
-String _$fusionResultHash() => r'cff0e8176526c28ac8afdb40285563f9eee866ed';
+String _$fusionResultHash() => r'e8cd1653e733b8b372ce6c44230bb17609769cba';
 
 /// See also [fusionResult].
 @ProviderFor(fusionResult)
@@ -304,7 +304,7 @@ class _FusionResultProviderElement
   double get bias => (origin as FusionResultProvider).bias;
 }
 
-String _$timelineHash() => r'f6ff96b732b18331241e7129ecf3b89c0dcf6cc3';
+String _$timelineHash() => r'85c5c1760141f2f3f687ce875c39ccb6e4ee3d93';
 
 /// See also [timeline].
 @ProviderFor(timeline)
@@ -434,7 +434,7 @@ class _TimelineProviderElement
   String get storyId => (origin as TimelineProvider).storyId;
 }
 
-String _$storiesNotifierHash() => r'4e72887e04ebc2f8bc094b07d894f0396058c7ba';
+String _$storiesNotifierHash() => r'93d82ada90fb525c5ebe99d3cd1cfcb0e82ad69e';
 
 /// See also [StoriesNotifier].
 @ProviderFor(StoriesNotifier)
@@ -450,7 +450,7 @@ final storiesNotifierProvider =
 );
 
 typedef _$StoriesNotifier = AutoDisposeAsyncNotifier<List<Story>>;
-String _$searchNotifierHash() => r'4ef853ece02a591f2e32498e8f6390f8407a56f6';
+String _$searchNotifierHash() => r'66d3f55b668278648407fb52b3e71ea6ea2e6a4b';
 
 /// See also [SearchNotifier].
 @ProviderFor(SearchNotifier)
@@ -466,7 +466,7 @@ final searchNotifierProvider =
 );
 
 typedef _$SearchNotifier = AutoDisposeAsyncNotifier<List<Story>?>;
-String _$chatNotifierHash() => r'd257354a4d6ec500be6f096432df3f66af5d1364';
+String _$chatNotifierHash() => r'f24ed217bfa67e8742a0a529dde63483d240828b';
 
 abstract class _$ChatNotifier
     extends BuildlessAutoDisposeAsyncNotifier<List<ChatMessage>> {
