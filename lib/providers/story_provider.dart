@@ -59,8 +59,12 @@ class StoriesNotifier extends _$StoriesNotifier {
     state = const AsyncValue.loading();
     try {
       final apiService = ApiService();
-      final stories = await apiService.getStories(topics: topics);
-      state = AsyncValue.data(stories);
+      // For now, just get all stories and filter them client-side
+      final stories = await apiService.getStories();
+      final filteredStories = stories.where((story) => 
+        story.topics.any((topic) => topics.contains(topic))
+      ).toList();
+      state = AsyncValue.data(filteredStories);
     } catch (e) {
       state = AsyncValue.error(e, StackTrace.current);
     }

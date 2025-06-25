@@ -434,7 +434,7 @@ class _TimelineProviderElement
   String get storyId => (origin as TimelineProvider).storyId;
 }
 
-String _$storiesNotifierHash() => r'93d82ada90fb525c5ebe99d3cd1cfcb0e82ad69e';
+String _$storiesNotifierHash() => r'b85cbfa6cfe6bc6c6fd726c31588a403dbeca206';
 
 /// See also [StoriesNotifier].
 @ProviderFor(StoriesNotifier)

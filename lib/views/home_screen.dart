@@ -61,6 +61,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           // Bias indicator
           _buildBiasIndicator(context, userProfile.value),
           IconButton(
+            icon: const Icon(Icons.bug_report),
+            onPressed: () {
+              context.push('/test-stories');
+            },
+          ),
+          IconButton(
             icon: const Icon(Icons.person),
             onPressed: () {
               // Navigate to profile or show user menu

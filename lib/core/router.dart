@@ -8,6 +8,7 @@ import '../views/home_screen.dart';
 import '../views/auth_screen.dart';
 import '../views/story_screen.dart';
 import '../views/chat_screen.dart';
+import '../views/test_stories_screen.dart';
 import '../views/onboarding/belief_form.dart';
 import '../screens/onboarding_views_screen.dart';
 import '../screens/category_selection_screen.dart';
@@ -88,6 +89,10 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/articles',
         builder: (context, state) => const ArticlesScreen(),
+      ),
+      GoRoute(
+        path: '/test-stories',
+        builder: (context, state) => const TestStoriesScreen(),
       ),
     ],
   );
