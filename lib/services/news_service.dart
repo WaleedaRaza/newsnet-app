@@ -7,7 +7,8 @@ import '../services/firebase_service.dart';
 
 class NewsService {
   static const String _baseUrl = 'https://newsapi.org/v2';
-  static const String _apiKey = 'YOUR_NEWS_API_KEY'; // Replace with your actual API key
+  // Use a real NewsAPI key - you'll need to replace this with your actual key
+  static const String _apiKey = 'd0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0'; // Replace with your actual API key
   
   // News categories - matching view management system
   static const List<String> categories = [
@@ -19,60 +20,104 @@ class NewsService {
     'sports',
   ];
 
-  // Map our categories to News API categories
-  static String _mapToNewsApiCategory(String category) {
+  // Map our categories to News API categories and search terms
+  static Map<String, dynamic> _mapToNewsApiCategory(String category) {
     final categoryMap = {
-      'geopolitics': 'general', // Use general for geopolitics
-      'economics': 'business',
-      'social_issues': 'general', // Use general for social issues
-      'tech_science': 'technology',
-      'health': 'health',
-      'sports': 'sports',
+      'geopolitics': {
+        'category': 'general',
+        'keywords': ['politics', 'government', 'election', 'diplomacy', 'foreign policy', 'international'],
+        'searchTerms': ['politics', 'government', 'election', 'diplomacy']
+      },
+      'economics': {
+        'category': 'business',
+        'keywords': ['economy', 'market', 'stock', 'trade', 'business', 'finance', 'economic'],
+        'searchTerms': ['economy', 'business', 'finance', 'market']
+      },
+      'social_issues': {
+        'category': 'general',
+        'keywords': ['social', 'society', 'community', 'rights', 'justice', 'equality'],
+        'searchTerms': ['social issues', 'society', 'rights']
+      },
+      'tech_science': {
+        'category': 'technology',
+        'keywords': ['technology', 'science', 'ai', 'artificial intelligence', 'software', 'research'],
+        'searchTerms': ['technology', 'science', 'AI']
+      },
+      'health': {
+        'category': 'health',
+        'keywords': ['health', 'medical', 'covid', 'vaccine', 'hospital', 'doctor'],
+        'searchTerms': ['health', 'medical', 'covid']
+      },
+      'sports': {
+        'category': 'sports',
+        'keywords': ['sports', 'football', 'basketball', 'baseball', 'soccer', 'olympics'],
+        'searchTerms': ['sports', 'football', 'basketball']
+      },
     };
-    return categoryMap[category] ?? 'general';
+    return categoryMap[category] ?? categoryMap['geopolitics']!;
   }
 
-  // Fetch top headlines
+  // Fetch top headlines by category
   static Future<List<Story>> getTopHeadlines({
     String? category,
     String? country = 'us',
     int pageSize = 20,
   }) async {
     try {
+      print('🔍 NEWSAPI: Fetching headlines for category: $category');
+      
       final queryParams = {
         'apiKey': _apiKey,
         'pageSize': pageSize.toString(),
         'country': country ?? 'us',
       };
 
-      if (category != null && category != 'geopolitics') {
-        queryParams['category'] = _mapToNewsApiCategory(category);
+      if (category != null) {
+        final categoryInfo = _mapToNewsApiCategory(category);
+        queryParams['category'] = categoryInfo['category'];
       }
 
       final uri = Uri.parse('$_baseUrl/top-headlines').replace(queryParameters: queryParams);
+      print('🔍 NEWSAPI: Requesting URL: $uri');
+      
       final response = await http.get(uri);
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
         final articles = data['articles'] as List;
         
-        return articles.map((article) => _convertArticleToStory(article)).toList();
+        print('🔍 NEWSAPI: Got ${articles.length} articles from NewsAPI');
+        
+        final stories = articles.map((article) => _convertArticleToStory(article, category)).toList();
+        print('🔍 NEWSAPI: Converted ${stories.length} articles to stories');
+        
+        return stories;
       } else {
+        print('🔍 NEWSAPI: HTTP Error ${response.statusCode}: ${response.body}');
         throw Exception('Failed to fetch news: ${response.statusCode}');
       }
     } catch (e) {
+      print('🔍 NEWSAPI: Error fetching headlines: $e');
       throw Exception('Failed to fetch news: $e');
     }
   }
 
-  // Search news
-  static Future<List<Story>> searchNews({
-    required String query,
+  // Search news with category-specific terms
+  static Future<List<Story>> searchNewsByCategory({
+    required String category,
     String? language = 'en',
     String? sortBy = 'publishedAt',
     int pageSize = 20,
   }) async {
     try {
+      print('🔍 NEWSAPI: Searching news for category: $category');
+      
+      final categoryInfo = _mapToNewsApiCategory(category);
+      final searchTerms = categoryInfo['searchTerms'] as List<String>;
+      
+      // Use the first search term for now
+      final query = searchTerms.first;
+      
       final queryParams = {
         'apiKey': _apiKey,
         'q': query,
@@ -82,23 +127,32 @@ class NewsService {
       };
 
       final uri = Uri.parse('$_baseUrl/everything').replace(queryParameters: queryParams);
+      print('🔍 NEWSAPI: Searching URL: $uri');
+      
       final response = await http.get(uri);
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
         final articles = data['articles'] as List;
         
-        return articles.map((article) => _convertArticleToStory(article)).toList();
+        print('🔍 NEWSAPI: Got ${articles.length} articles from search');
+        
+        final stories = articles.map((article) => _convertArticleToStory(article, category)).toList();
+        print('🔍 NEWSAPI: Converted ${stories.length} articles to stories');
+        
+        return stories;
       } else {
+        print('🔍 NEWSAPI: HTTP Error ${response.statusCode}: ${response.body}');
         throw Exception('Failed to search news: ${response.statusCode}');
       }
     } catch (e) {
+      print('🔍 NEWSAPI: Error searching news: $e');
       throw Exception('Failed to search news: $e');
     }
   }
 
   // Convert News API article to Story model
-  static Story _convertArticleToStory(Map<String, dynamic> article) {
+  static Story _convertArticleToStory(Map<String, dynamic> article, String? category) {
     final title = article['title'] ?? '';
     final description = article['description'] ?? '';
     final content = article['content'] ?? '';
@@ -261,5 +315,5 @@ final categoryStoriesProvider = FutureProvider.family<List<Story>, String>((ref,
 
 final searchStoriesProvider = FutureProvider.family<List<Story>, String>((ref, query) async {
   if (query.trim().isEmpty) return [];
-  return await NewsService.searchNews(query: query);
+  return await NewsService.searchNewsByCategory(category: query);
 }); 

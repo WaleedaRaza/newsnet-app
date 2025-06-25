@@ -15,16 +15,27 @@ class StoriesNotifier extends _$StoriesNotifier {
   @override
   Future<List<Story>> build() async {
     print('🔍 STORY PROVIDER: build() called');
-    // Use our API service with mock fallback
+    // Try to get real stories from NewsAPI first, then fallback to mock
     try {
-      final apiService = ApiService();
-      print('🔍 STORY PROVIDER: Calling apiService.getStories()');
-      final stories = await apiService.getStories();
-      print('🔍 STORY PROVIDER: Got ${stories.length} stories');
-      return stories;
+      print('🔍 STORY PROVIDER: Trying NewsAPI for general stories...');
+      final newsStories = await NewsService.getTopHeadlines(category: 'geopolitics');
+      if (newsStories.isNotEmpty) {
+        print('🔍 STORY PROVIDER: Got ${newsStories.length} real stories from NewsAPI');
+        return newsStories;
+      }
     } catch (e) {
-      print('🔍 STORY PROVIDER: Error in build(): $e');
-      // If API service fails, return empty list
+      print('🔍 STORY PROVIDER: NewsAPI failed: $e');
+    }
+
+    // Fallback to mock stories
+    try {
+      print('🔍 STORY PROVIDER: Falling back to mock stories...');
+      final apiService = ApiService();
+      final mockStories = await apiService.getStories();
+      print('🔍 STORY PROVIDER: Got ${mockStories.length} mock stories');
+      return mockStories;
+    } catch (e) {
+      print('🔍 STORY PROVIDER: Mock stories also failed: $e');
       return [];
     }
   }
@@ -33,11 +44,24 @@ class StoriesNotifier extends _$StoriesNotifier {
     print('🔍 STORY PROVIDER: refresh() called');
     state = const AsyncValue.loading();
     try {
+      print('🔍 STORY PROVIDER: Trying NewsAPI for fresh stories...');
+      final newsStories = await NewsService.getTopHeadlines(category: 'geopolitics');
+      if (newsStories.isNotEmpty) {
+        print('🔍 STORY PROVIDER: Got ${newsStories.length} fresh stories from NewsAPI');
+        state = AsyncValue.data(newsStories);
+        return;
+      }
+    } catch (e) {
+      print('🔍 STORY PROVIDER: NewsAPI refresh failed: $e');
+    }
+
+    // Fallback to mock stories
+    try {
+      print('🔍 STORY PROVIDER: Falling back to mock stories for refresh...');
       final apiService = ApiService();
-      print('🔍 STORY PROVIDER: Calling apiService.getStories() in refresh');
-      final stories = await apiService.getStories();
-      print('🔍 STORY PROVIDER: Got ${stories.length} stories in refresh');
-      state = AsyncValue.data(stories);
+      final mockStories = await apiService.getStories();
+      print('🔍 STORY PROVIDER: Got ${mockStories.length} mock stories for refresh');
+      state = AsyncValue.data(mockStories);
     } catch (e) {
       print('🔍 STORY PROVIDER: Error in refresh(): $e');
       state = AsyncValue.error(e, StackTrace.current);
@@ -49,6 +73,7 @@ class StoriesNotifier extends _$StoriesNotifier {
     if (currentState == null) return;
 
     try {
+      print('🔍 STORY PROVIDER: loadMore() called');
       final apiService = ApiService();
       final newStories = await apiService.getStories();
       
@@ -57,23 +82,48 @@ class StoriesNotifier extends _$StoriesNotifier {
       final uniqueNewStories = newStories.where((s) => !existingIds.contains(s.id)).toList();
       
       final combinedStories = [...currentState, ...uniqueNewStories];
+      print('🔍 STORY PROVIDER: Loaded ${uniqueNewStories.length} more stories');
       state = AsyncValue.data(combinedStories);
     } catch (e) {
+      print('🔍 STORY PROVIDER: Error in loadMore(): $e');
       // Don't update state on error for pagination
     }
   }
 
   Future<void> filterByTopics(List<String> topics) async {
+    print('🔍 STORY PROVIDER: filterByTopics() called with topics: $topics');
     state = const AsyncValue.loading();
+    
     try {
+      // Try to get real stories for the first topic
+      if (topics.isNotEmpty) {
+        final category = topics.first;
+        print('🔍 STORY PROVIDER: Trying NewsAPI for category: $category');
+        
+        try {
+          final newsStories = await NewsService.getTopHeadlines(category: category);
+          if (newsStories.isNotEmpty) {
+            print('🔍 STORY PROVIDER: Got ${newsStories.length} real stories for $category');
+            state = AsyncValue.data(newsStories);
+            return;
+          }
+        } catch (e) {
+          print('🔍 STORY PROVIDER: NewsAPI failed for $category: $e');
+        }
+      }
+
+      // Fallback to mock stories and filter
+      print('🔍 STORY PROVIDER: Falling back to mock stories for filtering...');
       final apiService = ApiService();
-      // For now, just get all stories and filter them client-side
       final stories = await apiService.getStories();
       final filteredStories = stories.where((story) => 
         story.topics.any((topic) => topics.contains(topic))
       ).toList();
+      
+      print('🔍 STORY PROVIDER: Filtered to ${filteredStories.length} stories');
       state = AsyncValue.data(filteredStories);
     } catch (e) {
+      print('🔍 STORY PROVIDER: Error in filterByTopics(): $e');
       state = AsyncValue.error(e, StackTrace.current);
     }
   }
