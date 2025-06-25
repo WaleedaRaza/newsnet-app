@@ -67,6 +67,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             },
           ),
           IconButton(
+            icon: const Icon(Icons.science),
+            onPressed: () {
+              context.push('/debug');
+            },
+          ),
+          IconButton(
             icon: const Icon(Icons.person),
             onPressed: () {
               // Navigate to profile or show user menu

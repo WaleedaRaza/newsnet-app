@@ -14,24 +14,32 @@ part 'story_provider.g.dart';
 class StoriesNotifier extends _$StoriesNotifier {
   @override
   Future<List<Story>> build() async {
+    print('🔍 STORY PROVIDER: build() called');
     // Use our API service with mock fallback
     try {
       final apiService = ApiService();
+      print('🔍 STORY PROVIDER: Calling apiService.getStories()');
       final stories = await apiService.getStories();
+      print('🔍 STORY PROVIDER: Got ${stories.length} stories');
       return stories;
     } catch (e) {
+      print('🔍 STORY PROVIDER: Error in build(): $e');
       // If API service fails, return empty list
       return [];
     }
   }
 
   Future<void> refresh() async {
+    print('🔍 STORY PROVIDER: refresh() called');
     state = const AsyncValue.loading();
     try {
       final apiService = ApiService();
+      print('🔍 STORY PROVIDER: Calling apiService.getStories() in refresh');
       final stories = await apiService.getStories();
+      print('🔍 STORY PROVIDER: Got ${stories.length} stories in refresh');
       state = AsyncValue.data(stories);
     } catch (e) {
+      print('🔍 STORY PROVIDER: Error in refresh(): $e');
       state = AsyncValue.error(e, StackTrace.current);
     }
   }

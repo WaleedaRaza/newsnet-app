@@ -28,14 +28,23 @@ class _TestStoriesScreenState extends ConsumerState<TestStoriesScreen> {
         error = null;
       });
 
+      print('🔍 Starting API test...');
       final apiService = ApiService();
+      
+      print('🔍 Calling getStories()...');
       final storiesList = await apiService.getStories();
+      print('🔍 API returned ${storiesList.length} stories');
+      
+      if (storiesList.isNotEmpty) {
+        print('🔍 First story: ${storiesList.first.title}');
+      }
       
       setState(() {
         stories = storiesList;
         isLoading = false;
       });
     } catch (e) {
+      print('🔍 Error: $e');
       setState(() {
         error = e.toString();
         isLoading = false;

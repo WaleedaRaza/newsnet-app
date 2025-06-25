@@ -109,6 +109,7 @@ class ApiService {
     String? search,
   }) async {
     try {
+      print('🔍 API: Trying authenticated stories endpoint...');
       await _setAuthHeaders(); // Ensure auth headers are set
       
       final queryParams = <String, dynamic>{
@@ -122,31 +123,41 @@ class ApiService {
       final response = await _dio.get('/stories', queryParameters: queryParams);
       
       if (response.data['stories'] != null) {
+        print('🔍 API: Got ${(response.data['stories'] as List).length} stories from authenticated endpoint');
         return (response.data['stories'] as List)
             .map((json) => Story.fromJson(json))
             .toList();
       }
+      print('🔍 API: No stories in response data');
       return [];
     } on DioException catch (e) {
       // If auth fails or other error, try mock stories
       if (e.response?.statusCode == 401 || e.response?.statusCode == 403 || e.response?.statusCode == 500) {
-        print('Stories endpoint failed, trying mock stories...');
+        print('🔍 API: Stories endpoint failed with ${e.response?.statusCode}, trying mock stories...');
         return await _getMockStories();
       }
+      print('🔍 API: Unexpected error: ${e.message}');
       throw _handleDioError(e);
     }
   }
 
   Future<List<Story>> _getMockStories() async {
     try {
+      print('🔍 API: Calling mock stories endpoint...');
       final response = await _dio.get('/stories/test-mock');
+      print('🔍 API: Mock endpoint response: ${response.data}');
+      
       if (response.data['stories'] != null) {
-        return (response.data['stories'] as List)
+        final storiesList = (response.data['stories'] as List);
+        print('🔍 API: Got ${storiesList.length} mock stories');
+        return storiesList
             .map((json) => Story.fromJson(json))
             .toList();
       }
+      print('🔍 API: No stories in mock response');
       return [];
     } on DioException catch (e) {
+      print('🔍 API: Mock stories error: ${e.message}');
       throw _handleDioError(e);
     }
   }
