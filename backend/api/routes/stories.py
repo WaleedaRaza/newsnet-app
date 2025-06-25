@@ -12,6 +12,61 @@ from services.fusion_engine import FusionEngine
 
 router = APIRouter()
 
+@router.get("/test-mock")
+def get_mock_stories():
+    """Test endpoint that returns mock stories without authentication"""
+    mock_stories = [
+        {
+            "id": "1",
+            "event_key": "ukraine_conflict_2024",
+            "title": "Ukraine Conflict: Latest Developments",
+            "summary_neutral": "Recent developments in the ongoing conflict between Ukraine and Russia, including diplomatic efforts and military updates.",
+            "summary_modulated": "The situation in Ukraine continues to evolve with new diplomatic initiatives and military developments.",
+            "sources": ["Reuters", "BBC", "CNN"],
+            "topics": ["Ukraine", "Russia", "War", "Politics"],
+            "confidence": 0.85,
+            "embedding_id": None,
+            "published_at": "2024-01-15T10:00:00Z",
+            "updated_at": "2024-01-15T10:00:00Z",
+            "user_id": None
+        },
+        {
+            "id": "2",
+            "event_key": "ai_breakthrough_2024",
+            "title": "AI Breakthrough: New Language Model Released",
+            "summary_neutral": "A major technology company has released a new advanced language model with improved capabilities.",
+            "summary_modulated": "The latest AI breakthrough shows significant progress in natural language processing technology.",
+            "sources": ["TechCrunch", "Wired", "MIT Technology Review"],
+            "topics": ["AI", "Technology", "Machine Learning"],
+            "confidence": 0.92,
+            "embedding_id": None,
+            "published_at": "2024-01-15T11:00:00Z",
+            "updated_at": "2024-01-15T11:00:00Z",
+            "user_id": None
+        },
+        {
+            "id": "3",
+            "event_key": "climate_summit_2024",
+            "title": "Global Climate Summit: New Commitments Made",
+            "summary_neutral": "World leaders gathered for the annual climate summit, announcing new commitments to reduce carbon emissions.",
+            "summary_modulated": "The climate summit has resulted in promising new commitments from global leaders to address environmental challenges.",
+            "sources": ["The Guardian", "Reuters", "AP"],
+            "topics": ["Climate Change", "Environment", "Politics"],
+            "confidence": 0.88,
+            "embedding_id": None,
+            "published_at": "2024-01-15T12:00:00Z",
+            "updated_at": "2024-01-15T12:00:00Z",
+            "user_id": None
+        }
+    ]
+    
+    return {
+        "stories": mock_stories,
+        "total": len(mock_stories),
+        "page": 1,
+        "limit": 20
+    }
+
 @router.get("/", response_model=StoryList)
 def get_stories(
     page: int = Query(1, ge=1),
@@ -178,59 +233,4 @@ def search_stories(
     return SearchResult(
         stories=story_schemas,
         total=len(story_schemas)
-    )
-
-@router.get("/test-mock")
-def get_mock_stories():
-    """Test endpoint that returns mock stories without authentication"""
-    mock_stories = [
-        {
-            "id": "1",
-            "event_key": "ukraine_conflict_2024",
-            "title": "Ukraine Conflict: Latest Developments",
-            "summary_neutral": "Recent developments in the ongoing conflict between Ukraine and Russia, including diplomatic efforts and military updates.",
-            "summary_modulated": "The situation in Ukraine continues to evolve with new diplomatic initiatives and military developments.",
-            "sources": ["Reuters", "BBC", "CNN"],
-            "topics": ["Ukraine", "Russia", "War", "Politics"],
-            "confidence": 0.85,
-            "embedding_id": None,
-            "published_at": "2024-01-15T10:00:00Z",
-            "updated_at": "2024-01-15T10:00:00Z",
-            "user_id": None
-        },
-        {
-            "id": "2",
-            "event_key": "ai_breakthrough_2024",
-            "title": "AI Breakthrough: New Language Model Released",
-            "summary_neutral": "A major technology company has released a new advanced language model with improved capabilities.",
-            "summary_modulated": "The latest AI breakthrough shows significant progress in natural language processing technology.",
-            "sources": ["TechCrunch", "Wired", "MIT Technology Review"],
-            "topics": ["AI", "Technology", "Machine Learning"],
-            "confidence": 0.92,
-            "embedding_id": None,
-            "published_at": "2024-01-15T11:00:00Z",
-            "updated_at": "2024-01-15T11:00:00Z",
-            "user_id": None
-        },
-        {
-            "id": "3",
-            "event_key": "climate_summit_2024",
-            "title": "Global Climate Summit: New Commitments Made",
-            "summary_neutral": "World leaders gathered for the annual climate summit, announcing new commitments to reduce carbon emissions.",
-            "summary_modulated": "The climate summit has resulted in promising new commitments from global leaders to address environmental challenges.",
-            "sources": ["The Guardian", "Reuters", "AP"],
-            "topics": ["Climate Change", "Environment", "Politics"],
-            "confidence": 0.88,
-            "embedding_id": None,
-            "published_at": "2024-01-15T12:00:00Z",
-            "updated_at": "2024-01-15T12:00:00Z",
-            "user_id": None
-        }
-    ]
-    
-    return {
-        "stories": mock_stories,
-        "total": len(mock_stories),
-        "page": 1,
-        "limit": 20
-    } 
+    ) 
