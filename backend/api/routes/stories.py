@@ -23,6 +23,17 @@ def get_mock_stories():
             "summary_neutral": "Recent developments in the ongoing conflict between Ukraine and Russia, including diplomatic efforts and military updates.",
             "summary_modulated": "The situation in Ukraine continues to evolve with new diplomatic initiatives and military developments.",
             "sources": ["Reuters", "BBC", "CNN"],
+            "timeline_chunks": [
+                {
+                    "id": "chunk_1",
+                    "timestamp": "2024-01-15T10:00:00Z",
+                    "content": "Recent developments in the ongoing conflict between Ukraine and Russia, including diplomatic efforts and military updates.",
+                    "sources": ["Reuters", "BBC", "CNN"],
+                    "confidence": 0.85,
+                    "has_contradictions": False,
+                    "contradictions": []
+                }
+            ],
             "topics": ["Ukraine", "Russia", "War", "Politics"],
             "confidence": 0.85,
             "embedding_id": None,
@@ -37,6 +48,17 @@ def get_mock_stories():
             "summary_neutral": "A major technology company has released a new advanced language model with improved capabilities.",
             "summary_modulated": "The latest AI breakthrough shows significant progress in natural language processing technology.",
             "sources": ["TechCrunch", "Wired", "MIT Technology Review"],
+            "timeline_chunks": [
+                {
+                    "id": "chunk_2",
+                    "timestamp": "2024-01-15T11:00:00Z",
+                    "content": "A major technology company has released a new advanced language model with improved capabilities.",
+                    "sources": ["TechCrunch", "Wired", "MIT Technology Review"],
+                    "confidence": 0.92,
+                    "has_contradictions": False,
+                    "contradictions": []
+                }
+            ],
             "topics": ["AI", "Technology", "Machine Learning"],
             "confidence": 0.92,
             "embedding_id": None,
@@ -51,6 +73,17 @@ def get_mock_stories():
             "summary_neutral": "World leaders gathered for the annual climate summit, announcing new commitments to reduce carbon emissions.",
             "summary_modulated": "The climate summit has resulted in promising new commitments from global leaders to address environmental challenges.",
             "sources": ["The Guardian", "Reuters", "AP"],
+            "timeline_chunks": [
+                {
+                    "id": "chunk_3",
+                    "timestamp": "2024-01-15T12:00:00Z",
+                    "content": "World leaders gathered for the annual climate summit, announcing new commitments to reduce carbon emissions.",
+                    "sources": ["The Guardian", "Reuters", "AP"],
+                    "confidence": 0.88,
+                    "has_contradictions": False,
+                    "contradictions": []
+                }
+            ],
             "topics": ["Climate Change", "Environment", "Politics"],
             "confidence": 0.88,
             "embedding_id": None,
