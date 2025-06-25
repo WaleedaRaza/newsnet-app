@@ -8,18 +8,18 @@ part of 'story.dart';
 
 Story _$StoryFromJson(Map<String, dynamic> json) => Story(
       id: json['id'] as String,
-      eventKey: json['eventKey'] as String,
+      eventKey: json['event_key'] as String,
       title: json['title'] as String,
-      summaryNeutral: json['summaryNeutral'] as String,
-      summaryModulated: json['summaryModulated'] as String,
+      summaryNeutral: json['summary_neutral'] as String,
+      summaryModulated: json['summary_modulated'] as String,
       sources:
           (json['sources'] as List<dynamic>).map((e) => e as String).toList(),
-      timelineChunks: (json['timelineChunks'] as List<dynamic>)
+      timelineChunks: (json['timeline_chunks'] as List<dynamic>)
           .map((e) => TimelineChunk.fromJson(e as Map<String, dynamic>))
           .toList(),
-      embeddingId: json['embeddingId'] as String?,
-      publishedAt: DateTime.parse(json['publishedAt'] as String),
-      updatedAt: DateTime.parse(json['updatedAt'] as String),
+      embeddingId: json['embedding_id'] as String?,
+      publishedAt: DateTime.parse(json['published_at'] as String),
+      updatedAt: DateTime.parse(json['updated_at'] as String),
       topics:
           (json['topics'] as List<dynamic>).map((e) => e as String).toList(),
       confidence: (json['confidence'] as num).toDouble(),
@@ -27,15 +27,15 @@ Story _$StoryFromJson(Map<String, dynamic> json) => Story(
 
 Map<String, dynamic> _$StoryToJson(Story instance) => <String, dynamic>{
       'id': instance.id,
-      'eventKey': instance.eventKey,
+      'event_key': instance.eventKey,
       'title': instance.title,
-      'summaryNeutral': instance.summaryNeutral,
-      'summaryModulated': instance.summaryModulated,
+      'summary_neutral': instance.summaryNeutral,
+      'summary_modulated': instance.summaryModulated,
       'sources': instance.sources,
-      'timelineChunks': instance.timelineChunks,
-      'embeddingId': instance.embeddingId,
-      'publishedAt': instance.publishedAt.toIso8601String(),
-      'updatedAt': instance.updatedAt.toIso8601String(),
+      'timeline_chunks': instance.timelineChunks,
+      'embedding_id': instance.embeddingId,
+      'published_at': instance.publishedAt.toIso8601String(),
+      'updated_at': instance.updatedAt.toIso8601String(),
       'topics': instance.topics,
       'confidence': instance.confidence,
     };
@@ -48,7 +48,7 @@ TimelineChunk _$TimelineChunkFromJson(Map<String, dynamic> json) =>
       sources:
           (json['sources'] as List<dynamic>).map((e) => e as String).toList(),
       confidence: (json['confidence'] as num).toDouble(),
-      hasContradictions: json['hasContradictions'] as bool,
+      hasContradictions: json['has_contradictions'] as bool,
       contradictions: (json['contradictions'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
@@ -61,7 +61,7 @@ Map<String, dynamic> _$TimelineChunkToJson(TimelineChunk instance) =>
       'content': instance.content,
       'sources': instance.sources,
       'confidence': instance.confidence,
-      'hasContradictions': instance.hasContradictions,
+      'has_contradictions': instance.hasContradictions,
       'contradictions': instance.contradictions,
     };
 

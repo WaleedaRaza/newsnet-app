@@ -150,15 +150,32 @@ class ApiService {
       if (response.data['stories'] != null) {
         final storiesList = (response.data['stories'] as List);
         print('🔍 API: Got ${storiesList.length} mock stories');
-        return storiesList
-            .map((json) => Story.fromJson(json))
-            .toList();
+        
+        // Try to parse each story individually to catch errors
+        final parsedStories = <Story>[];
+        for (int i = 0; i < storiesList.length; i++) {
+          try {
+            print('🔍 API: Parsing story $i: ${storiesList[i]}');
+            final story = Story.fromJson(storiesList[i]);
+            parsedStories.add(story);
+            print('🔍 API: Successfully parsed story $i: ${story.title}');
+          } catch (e) {
+            print('🔍 API: Error parsing story $i: $e');
+            print('🔍 API: Story data: ${storiesList[i]}');
+          }
+        }
+        
+        print('🔍 API: Successfully parsed ${parsedStories.length} stories');
+        return parsedStories;
       }
       print('🔍 API: No stories in mock response');
       return [];
     } on DioException catch (e) {
       print('🔍 API: Mock stories error: ${e.message}');
       throw _handleDioError(e);
+    } catch (e) {
+      print('🔍 API: Unexpected error in _getMockStories: $e');
+      rethrow;
     }
   }
 

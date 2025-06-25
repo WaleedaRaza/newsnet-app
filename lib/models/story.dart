@@ -4,17 +4,40 @@ part 'story.g.dart';
 
 @JsonSerializable()
 class Story {
+  @JsonKey(name: 'id')
   final String id;
+  
+  @JsonKey(name: 'event_key')
   final String eventKey;
+  
+  @JsonKey(name: 'title')
   final String title;
+  
+  @JsonKey(name: 'summary_neutral')
   final String summaryNeutral;
+  
+  @JsonKey(name: 'summary_modulated')
   final String summaryModulated;
+  
+  @JsonKey(name: 'sources')
   final List<String> sources;
+  
+  @JsonKey(name: 'timeline_chunks')
   final List<TimelineChunk> timelineChunks;
+  
+  @JsonKey(name: 'embedding_id')
   final String? embeddingId;
+  
+  @JsonKey(name: 'published_at')
   final DateTime publishedAt;
+  
+  @JsonKey(name: 'updated_at')
   final DateTime updatedAt;
+  
+  @JsonKey(name: 'topics')
   final List<String> topics;
+  
+  @JsonKey(name: 'confidence')
   final double confidence;
 
   const Story({
@@ -69,12 +92,25 @@ class Story {
 
 @JsonSerializable()
 class TimelineChunk {
+  @JsonKey(name: 'id')
   final String id;
+  
+  @JsonKey(name: 'timestamp')
   final DateTime timestamp;
+  
+  @JsonKey(name: 'content')
   final String content;
+  
+  @JsonKey(name: 'sources')
   final List<String> sources;
+  
+  @JsonKey(name: 'confidence')
   final double confidence;
+  
+  @JsonKey(name: 'has_contradictions')
   final bool hasContradictions;
+  
+  @JsonKey(name: 'contradictions')
   final List<String> contradictions;
 
   const TimelineChunk({
