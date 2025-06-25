@@ -7,9 +7,17 @@ import '../services/firebase_service.dart';
 
 class NewsService {
   static const String _baseUrl = 'https://newsapi.org/v2';
-  // Use a real NewsAPI key - you'll need to replace this with your actual key
-  static const String _apiKey = 'd0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0'; // Replace with your actual API key
+  // Insert your NewsAPI key here (no placeholder logic)
+  static const String _apiKey = '144a4a90f1c04f5dbfcd3bbc7b8d2434';
   
+  // News categories - matching view management system
+  static const Map<String, String> _categoryMap = {
+    'geopolitics': 'general',
+    'economics': 'business',
+    'tech_science': 'technology',
+    // Add more mappings as needed
+  };
+
   // News categories - matching view management system
   static const List<String> categories = [
     'geopolitics',
@@ -88,6 +96,14 @@ class NewsService {
         
         print('🔍 NEWSAPI: Got ${articles.length} articles from NewsAPI');
         
+        // Debug: Check the first article
+        if (articles.isNotEmpty) {
+          final firstArticle = articles.first;
+          print('🔍 NEWSAPI: First article title: ${firstArticle['title']}');
+          print('🔍 NEWSAPI: First article source: ${firstArticle['source']?['name']}');
+          print('🔍 NEWSAPI: First article URL: ${firstArticle['url']}');
+        }
+        
         final stories = articles.map((article) => _convertArticleToStory(article, category)).toList();
         print('🔍 NEWSAPI: Converted ${stories.length} articles to stories');
         
@@ -163,6 +179,9 @@ class NewsService {
         : DateTime.now();
     final urlToImage = article['urlToImage'];
 
+    print('🔗 DEBUG: Article URL from NewsAPI: $url');
+    print('🔗 DEBUG: Article source: $source');
+
     // Generate event key from title
     final eventKey = _generateEventKey(title);
     
@@ -175,7 +194,7 @@ class NewsService {
     // Create modulated summary (will be updated based on user bias)
     final modulatedSummary = neutralSummary;
 
-    return Story(
+    final story = Story(
       id: _generateStoryId(eventKey, source),
       eventKey: eventKey,
       title: title,
@@ -197,7 +216,11 @@ class NewsService {
       updatedAt: DateTime.now(),
       topics: topics,
       confidence: 0.9,
+      url: url.isNotEmpty ? url : null,
     );
+    
+    print('🔗 DEBUG: Story created with URL: ${story.url}');
+    return story;
   }
 
   // Generate event key from title

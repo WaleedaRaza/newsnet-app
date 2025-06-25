@@ -40,6 +40,9 @@ class Story {
   @JsonKey(name: 'confidence')
   final double confidence;
 
+  @JsonKey(name: 'url')
+  final String? url;
+
   const Story({
     required this.id,
     required this.eventKey,
@@ -53,6 +56,7 @@ class Story {
     required this.updatedAt,
     required this.topics,
     required this.confidence,
+    this.url,
   });
 
   factory Story.fromJson(Map<String, dynamic> json) => _$StoryFromJson(json);
@@ -72,6 +76,7 @@ class Story {
     DateTime? updatedAt,
     List<String>? topics,
     double? confidence,
+    String? url,
   }) {
     return Story(
       id: id ?? this.id,
@@ -86,6 +91,7 @@ class Story {
       updatedAt: updatedAt ?? this.updatedAt,
       topics: topics ?? this.topics,
       confidence: confidence ?? this.confidence,
+      url: url ?? this.url,
     );
   }
 }

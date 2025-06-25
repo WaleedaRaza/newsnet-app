@@ -28,7 +28,7 @@ class StoryCard extends ConsumerWidget {
         vertical: 4,
       ),
       child: InkWell(
-        onTap: onTap ?? () => context.push('/story/${story.id}'),
+        onTap: onTap ?? () => context.push('/article/${story.id}'),
         borderRadius: BorderRadius.circular(AppConstants.borderRadius),
         child: Padding(
           padding: const EdgeInsets.all(AppConstants.defaultPadding),
@@ -262,7 +262,7 @@ class StoryCardCompact extends StatelessWidget {
           ),
         ],
       ),
-      onTap: onTap,
+      onTap: onTap ?? () => context.push('/article/${story.id}'),
     );
   }
 } 

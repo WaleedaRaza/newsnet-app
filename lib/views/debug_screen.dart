@@ -27,23 +27,23 @@ class _DebugScreenState extends State<DebugScreen> {
     });
 
     try {
-      // Test 1: Direct HTTP call
-      setState(() => _status = 'Making direct HTTP call...');
+      // Test 1: Direct HTTP call to mock API
+      setState(() => _status = 'Making direct HTTP call to mock API...');
       
       final dio = Dio();
       final response = await dio.get('http://127.0.0.1:8000/v1/stories/test-mock');
       
-      setState(() => _status = 'Got response: ${response.statusCode}');
+      setState(() => _status = 'Got mock response: ${response.statusCode}');
       
       if (response.statusCode == 200) {
         final data = response.data;
-        setState(() => _status = 'Response data: ${json.encode(data).substring(0, 200)}...');
+        setState(() => _status = 'Mock response data: ${json.encode(data).substring(0, 200)}...');
         
         if (data['stories'] != null) {
           final storiesList = data['stories'] as List;
           setState(() {
             _stories = storiesList.cast<Map<String, dynamic>>();
-            _status = 'Found ${_stories.length} stories';
+            _status = 'Found ${_stories.length} mock stories';
           });
           
           // Test 2: Try to parse first story
@@ -66,6 +66,46 @@ class _DebugScreenState extends State<DebugScreen> {
     }
   }
 
+  Future<void> _testNewsAPI() async {
+    setState(() {
+      _status = 'Testing NewsAPI...';
+      _error = null;
+    });
+
+    try {
+      setState(() => _status = 'Testing NewsAPI geopolitics...');
+      
+      final dio = Dio();
+      final response = await dio.get(
+        'https://newsapi.org/v2/top-headlines',
+        queryParameters: {
+          'country': 'us',
+          'category': 'general',
+          'apiKey': 'YOUR_NEWS_API_KEY_HERE', // Replace with your actual key
+        },
+      );
+      
+      setState(() => _status = 'NewsAPI response: ${response.statusCode}');
+      
+      if (response.statusCode == 200) {
+        final data = response.data;
+        final articles = data['articles'] as List;
+        
+        setState(() {
+          _stories = articles.cast<Map<String, dynamic>>();
+          _status = 'Found ${_stories.length} real stories from NewsAPI';
+        });
+      } else {
+        setState(() => _error = 'NewsAPI HTTP ${response.statusCode}: ${response.data}');
+      }
+    } catch (e) {
+      setState(() {
+        _error = 'NewsAPI Error: $e';
+        _status = 'NewsAPI test failed';
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,6 +115,10 @@ class _DebugScreenState extends State<DebugScreen> {
           IconButton(
             icon: const Icon(Icons.refresh),
             onPressed: _testApi,
+          ),
+          IconButton(
+            icon: const Icon(Icons.newspaper),
+            onPressed: _testNewsAPI,
           ),
         ],
       ),

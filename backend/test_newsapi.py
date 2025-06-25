@@ -8,7 +8,7 @@ from newsapi import NewsApiClient
 load_dotenv()
 
 # Get API key
-api_key = os.getenv('NEWS_API_KEY')
+api_key = os.getenv('144a4a90f1c04f5dbfcd3bbc7b8d2434')
 print(f"API Key: {api_key}")
 
 if api_key:

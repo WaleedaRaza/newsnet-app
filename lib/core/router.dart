@@ -10,6 +10,7 @@ import '../views/story_screen.dart';
 import '../views/chat_screen.dart';
 import '../views/test_stories_screen.dart';
 import '../views/debug_screen.dart';
+import '../views/article_detail_screen.dart';
 import '../views/onboarding/belief_form.dart';
 import '../screens/onboarding_views_screen.dart';
 import '../screens/category_selection_screen.dart';
@@ -66,6 +67,13 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (context, state) {
           final storyId = state.pathParameters['id']!;
           return StoryScreen(storyId: storyId);
+        },
+      ),
+      GoRoute(
+        path: '/article/:id',
+        builder: (context, state) {
+          final storyId = state.pathParameters['id']!;
+          return ArticleDetailScreen(storyId: storyId);
         },
       ),
       GoRoute(

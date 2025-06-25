@@ -23,6 +23,7 @@ Story _$StoryFromJson(Map<String, dynamic> json) => Story(
       topics:
           (json['topics'] as List<dynamic>).map((e) => e as String).toList(),
       confidence: (json['confidence'] as num).toDouble(),
+      url: json['url'] as String?,
     );
 
 Map<String, dynamic> _$StoryToJson(Story instance) => <String, dynamic>{
@@ -38,6 +39,7 @@ Map<String, dynamic> _$StoryToJson(Story instance) => <String, dynamic>{
       'updated_at': instance.updatedAt.toIso8601String(),
       'topics': instance.topics,
       'confidence': instance.confidence,
+      'url': instance.url,
     };
 
 TimelineChunk _$TimelineChunkFromJson(Map<String, dynamic> json) =>

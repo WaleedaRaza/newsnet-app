@@ -19,9 +19,24 @@ class StoriesNotifier extends _$StoriesNotifier {
     try {
       print('🔍 STORY PROVIDER: Trying NewsAPI for general stories...');
       final newsStories = await NewsService.getTopHeadlines(category: 'geopolitics');
+      print('🔍 STORY PROVIDER: NewsAPI returned ${newsStories.length} stories');
+      
       if (newsStories.isNotEmpty) {
-        print('🔍 STORY PROVIDER: Got ${newsStories.length} real stories from NewsAPI');
+        // Debug: Check the first story to see if it's real
+        final firstStory = newsStories.first;
+        print('🔍 STORY PROVIDER: First story title: ${firstStory.title}');
+        print('🔍 STORY PROVIDER: First story source: ${firstStory.sources}');
+        print('🔍 STORY PROVIDER: First story URL: ${firstStory.url}');
+        
+        if (firstStory.sources.contains('Sample News')) {
+          print('🔍 STORY PROVIDER: WARNING - Still getting mock stories from NewsAPI!');
+        } else {
+          print('🔍 STORY PROVIDER: SUCCESS - Got real stories from NewsAPI');
+        }
+        
         return newsStories;
+      } else {
+        print('🔍 STORY PROVIDER: NewsAPI returned empty list');
       }
     } catch (e) {
       print('🔍 STORY PROVIDER: NewsAPI failed: $e');
@@ -136,19 +151,71 @@ class StoriesNotifier extends _$StoriesNotifier {
 
 @riverpod
 Future<Story> story(StoryRef ref, String storyId) async {
-  // For now, return a mock story since we're using API service
-  return Story(
-    id: storyId,
-    eventKey: 'mock-event',
-    title: 'Sample Story',
-    summaryNeutral: 'This is a sample story for testing purposes.',
-    summaryModulated: 'This is a sample story with bias modulation.',
-    sources: ['Sample News'],
-    timelineChunks: [],
-    publishedAt: DateTime.now(),
-    updatedAt: DateTime.now(),
-    topics: ['general'],
-    confidence: 0.9,
+  print('🔍 STORY PROVIDER: story() called for ID: $storyId');
+  
+  // Try to get the story from the current stories list
+  final storiesState = ref.watch(storiesNotifierProvider);
+  
+  return storiesState.when(
+    data: (stories) {
+      // Find the story with the matching ID
+      final story = stories.firstWhere(
+        (s) => s.id == storyId,
+        orElse: () {
+          print('🔍 STORY PROVIDER: Story not found in list, creating fallback');
+          // If not found, create a fallback story
+          return Story(
+            id: storyId,
+            eventKey: 'fallback-event',
+            title: 'Story Not Found',
+            summaryNeutral: 'This story could not be loaded.',
+            summaryModulated: 'This story could not be loaded.',
+            sources: ['Unknown Source'],
+            timelineChunks: [],
+            publishedAt: DateTime.now(),
+            updatedAt: DateTime.now(),
+            topics: ['general'],
+            confidence: 0.0,
+          );
+        },
+      );
+      
+      print('🔍 STORY PROVIDER: Found story: ${story.title}');
+      print('🔍 STORY PROVIDER: Story URL: ${story.url}');
+      return story;
+    },
+    loading: () {
+      print('🔍 STORY PROVIDER: Stories still loading, returning fallback');
+      return Story(
+        id: storyId,
+        eventKey: 'loading-event',
+        title: 'Loading...',
+        summaryNeutral: 'Story is loading...',
+        summaryModulated: 'Story is loading...',
+        sources: ['Loading'],
+        timelineChunks: [],
+        publishedAt: DateTime.now(),
+        updatedAt: DateTime.now(),
+        topics: ['general'],
+        confidence: 0.0,
+      );
+    },
+    error: (error, stack) {
+      print('🔍 STORY PROVIDER: Error loading stories: $error');
+      return Story(
+        id: storyId,
+        eventKey: 'error-event',
+        title: 'Error Loading Story',
+        summaryNeutral: 'Failed to load story: $error',
+        summaryModulated: 'Failed to load story: $error',
+        sources: ['Error'],
+        timelineChunks: [],
+        publishedAt: DateTime.now(),
+        updatedAt: DateTime.now(),
+        topics: ['general'],
+        confidence: 0.0,
+      );
+    },
   );
 }
 
