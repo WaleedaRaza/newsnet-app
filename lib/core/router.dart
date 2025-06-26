@@ -11,6 +11,7 @@ import '../views/chat_screen.dart';
 import '../views/test_stories_screen.dart';
 import '../views/debug_screen.dart';
 import '../views/article_detail_screen.dart';
+import '../views/topic_analysis_screen.dart';
 import '../views/onboarding/belief_form.dart';
 import '../screens/onboarding_views_screen.dart';
 import '../screens/category_selection_screen.dart';
@@ -106,6 +107,10 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/debug',
         builder: (context, state) => const DebugScreen(),
+      ),
+      GoRoute(
+        path: '/topic-analysis',
+        builder: (context, state) => const TopicAnalysisScreen(),
       ),
     ],
   );

@@ -7,40 +7,25 @@ part of 'article.dart';
 // **************************************************************************
 
 Article _$ArticleFromJson(Map<String, dynamic> json) => Article(
-      id: json['id'] as String,
       title: json['title'] as String,
-      content: json['content'] as String,
+      description: json['description'] as String,
       url: json['url'] as String,
-      sourceName: json['sourceName'] as String,
-      sourceDomain: json['sourceDomain'] as String,
-      sourceBias: json['sourceBias'] as String?,
-      sourceReliability: (json['sourceReliability'] as num).toDouble(),
-      topics:
-          (json['topics'] as List<dynamic>).map((e) => e as String).toList(),
-      publishedAt: DateTime.parse(json['publishedAt'] as String),
-      topicalScore: (json['topicalScore'] as num).toDouble(),
-      beliefAlignmentScore: (json['beliefAlignmentScore'] as num).toDouble(),
-      ideologicalScore: (json['ideologicalScore'] as num).toDouble(),
-      finalScore: (json['finalScore'] as num).toDouble(),
-      createdAt: DateTime.parse(json['createdAt'] as String),
+      urlToImage: json['urlToImage'] as String?,
+      publishedAt: json['publishedAt'] as String?,
+      source: Source.fromJson(json['source'] as Map<String, dynamic>),
+      biasAnalysis: json['biasAnalysis'] == null
+          ? null
+          : BiasAnalysis.fromJson(json['biasAnalysis'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$ArticleToJson(Article instance) => <String, dynamic>{
-      'id': instance.id,
       'title': instance.title,
-      'content': instance.content,
+      'description': instance.description,
       'url': instance.url,
-      'sourceName': instance.sourceName,
-      'sourceDomain': instance.sourceDomain,
-      'sourceBias': instance.sourceBias,
-      'sourceReliability': instance.sourceReliability,
-      'topics': instance.topics,
-      'publishedAt': instance.publishedAt.toIso8601String(),
-      'topicalScore': instance.topicalScore,
-      'beliefAlignmentScore': instance.beliefAlignmentScore,
-      'ideologicalScore': instance.ideologicalScore,
-      'finalScore': instance.finalScore,
-      'createdAt': instance.createdAt.toIso8601String(),
+      'urlToImage': instance.urlToImage,
+      'publishedAt': instance.publishedAt,
+      'source': instance.source,
+      'biasAnalysis': instance.biasAnalysis,
     };
 
 ArticleAggregationRequest _$ArticleAggregationRequestFromJson(

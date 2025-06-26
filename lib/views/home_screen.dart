@@ -22,7 +22,6 @@ class HomeScreen extends ConsumerStatefulWidget {
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   String _selectedCategory = 'geopolitics';
   final TextEditingController _searchController = TextEditingController();
-  bool _isSearching = false;
   double _currentBiasValue = 0.5; // Track bias value locally
   bool _biasChanged = false; // Track if bias has been changed
 
@@ -44,7 +43,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final storiesAsync = ref.watch(storiesNotifierProvider);
-    final searchAsync = ref.watch(searchNotifierProvider);
     final trendingTopicsAsync = ref.watch(trendingTopicsProvider);
     final userProfile = ref.watch(authNotifierProvider);
 
@@ -94,13 +92,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               child: NewsSearchBar(
                 controller: _searchController,
                 onSearch: (query) {
-                  setState(() {
-                    _isSearching = query.isNotEmpty;
-                  });
                   if (query.isNotEmpty) {
-                    ref.read(searchNotifierProvider.notifier).search(query);
-                  } else {
-                    ref.read(searchNotifierProvider.notifier).clearSearch();
+                    // Navigate to topic analysis screen
+                    context.push('/topic-analysis');
+                    _searchController.clear();
                   }
                 },
               ),
@@ -111,56 +106,52 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               const SizedBox(height: 16),
 
             // Categories
-            if (!_isSearching) ...[
-              SizedBox(
-                height: 50,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  itemCount: NewsService.categories.length,
-                  itemBuilder: (context, index) {
-                    final category = NewsService.categories[index];
-                    return Padding(
-                      padding: const EdgeInsets.only(right: 8),
-                      child: CategoryChip(
-                        label: _getCategoryDisplayName(category),
-                        isSelected: _selectedCategory == category,
-                        onTap: () {
-                          setState(() {
-                            _selectedCategory = category;
-                          });
-                          ref.read(storiesNotifierProvider.notifier)
-                              .filterByTopics([category]);
-                        },
-                      ),
-                    );
+            SizedBox(
+              height: 50,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                itemCount: NewsService.categories.length,
+                itemBuilder: (context, index) {
+                  final category = NewsService.categories[index];
+                  return Padding(
+                    padding: const EdgeInsets.only(right: 8),
+                    child: CategoryChip(
+                      label: _getCategoryDisplayName(category),
+                      isSelected: _selectedCategory == category,
+                      onTap: () {
+                        setState(() {
+                          _selectedCategory = category;
+                        });
+                        ref.read(storiesNotifierProvider.notifier)
+                            .filterByTopics([category]);
+                      },
+                    ),
+                  );
+                },
+              ),
+            ),
+            const SizedBox(height: 16),
+
+            // Trending Topics
+            if (trendingTopicsAsync.hasValue) ...[
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: TrendingTopics(
+                  topics: trendingTopicsAsync.value!,
+                  onTopicTap: (topic) {
+                    ref.read(storiesNotifierProvider.notifier)
+                        .filterByTopics([topic]);
                   },
                 ),
               ),
               const SizedBox(height: 16),
-
-              // Trending Topics
-              if (trendingTopicsAsync.hasValue) ...[
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: TrendingTopics(
-                    topics: trendingTopicsAsync.value!,
-                    onTopicTap: (topic) {
-                      ref.read(storiesNotifierProvider.notifier)
-                          .filterByTopics([topic]);
-                    },
-                  ),
-                ),
-                const SizedBox(height: 16),
-              ],
             ],
 
             // Stories List
-              _isSearching
-                  ? _buildSearchResults(searchAsync)
-                  : _buildStoriesList(storiesAsync),
-            ],
-            ),
+            _buildStoriesList(storiesAsync),
+          ],
+        ),
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
@@ -519,47 +510,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               child: const Text('Retry'),
             ),
           ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildSearchResults(AsyncValue<List<Story>?> searchAsync) {
-    return searchAsync.when(
-      data: (stories) {
-        if (stories == null || stories.isEmpty) {
-          return Container(
-            height: 200,
-            child: const Center(
-              child: Text('No search results found'),
-            ),
-          );
-        }
-
-        return Column(
-          children: stories.map((story) => Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              child: StoryCard(
-                story: story,
-              ),
-          )).toList(),
-        );
-      },
-      loading: () => Container(
-        height: 200,
-        child: const Center(child: CircularProgressIndicator()),
-      ),
-      error: (error, stack) => Container(
-        height: 200,
-        child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-              const Icon(Icons.error_outline, size: 64, color: Colors.red),
-            const SizedBox(height: 16),
-              Text('Search error: $error'),
-            ],
           ),
         ),
       ),

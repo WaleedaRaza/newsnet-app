@@ -27,16 +27,24 @@ class Article(ArticleBase):
 class ArticleCreate(ArticleBase):
     pass
 
+class ArticleResponse(BaseModel):
+    title: str
+    description: Optional[str] = None
+    url: str
+    urlToImage: Optional[str] = None
+    publishedAt: Optional[str] = None
+    source: dict
+    bias_analysis: Optional[dict] = None
+
 class ArticleAggregationRequest(BaseModel):
-    topics: List[str]
-    beliefs: dict[str, List[str]]  # topic -> list of belief texts
-    bias: float  # 0.0-1.0 slider value
-    limit_per_topic: int = 10
+    categories: List[str]
+    bias: float = 0.5
+    limit_per_category: int = 10
 
 class ArticleAggregationResponse(BaseModel):
     articles: List[Article]
     total_articles: int
-    topics_covered: List[str]
+    categories_covered: List[str]
     aggregation_time: float
 
 class UserBeliefBase(BaseModel):

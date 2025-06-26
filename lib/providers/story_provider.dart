@@ -242,7 +242,7 @@ class SearchNotifier extends _$SearchNotifier {
     return null; // Initial state is no search
   }
 
-  Future<void> search(String query) async {
+  Future<void> search(String query, {double bias = 0.5}) async {
     if (query.trim().isEmpty) {
       state = const AsyncValue.data(null);
       return;
@@ -250,10 +250,32 @@ class SearchNotifier extends _$SearchNotifier {
 
     state = const AsyncValue.loading();
     try {
+      print('🔍 SEARCH: Searching for query: $query with bias: $bias');
       final apiService = ApiService();
-      final stories = await apiService.getStories(search: query);
+      final articles = await apiService.searchArticles(query, bias);
+      
+      // Convert Article objects to Story objects
+      final stories = articles.map((article) => Story(
+        id: 'search-${article.url.hashCode}',
+        eventKey: 'search-${article.url.hashCode}',
+        title: article.title,
+        summaryNeutral: article.description,
+        summaryModulated: article.description, // For now, use same content
+        sources: [article.source.name],
+        timelineChunks: [], // Empty for search results
+        publishedAt: article.publishedAt != null 
+            ? DateTime.tryParse(article.publishedAt!) ?? DateTime.now()
+            : DateTime.now(),
+        updatedAt: DateTime.now(),
+        topics: ['search-result'],
+        confidence: article.biasAnalysis?.stanceConfidence ?? 0.5,
+        url: article.url,
+      )).toList();
+      
+      print('🔍 SEARCH: Found ${stories.length} stories');
       state = AsyncValue.data(stories);
     } catch (e) {
+      print('🔍 SEARCH: Error searching: $e');
       state = AsyncValue.error(e, StackTrace.current);
     }
   }

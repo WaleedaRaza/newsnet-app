@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 
 class NewsSearchBar extends StatefulWidget {
   final TextEditingController controller;
@@ -15,7 +16,36 @@ class NewsSearchBar extends StatefulWidget {
 }
 
 class _NewsSearchBarState extends State<NewsSearchBar> {
-  bool _isSearching = false;
+  Timer? _debounceTimer;
+
+  @override
+  void dispose() {
+    _debounceTimer?.cancel();
+    super.dispose();
+  }
+
+  void _onSearchChanged(String value) {
+    // Cancel previous timer
+    _debounceTimer?.cancel();
+    
+    // Only search if there's actual text
+    if (value.trim().isNotEmpty) {
+      // Set a timer to search after user stops typing for 1 second
+      _debounceTimer = Timer(const Duration(milliseconds: 1000), () {
+        widget.onSearch(value.trim());
+      });
+    }
+  }
+
+  void _onSubmitted(String value) {
+    // Cancel any pending timer
+    _debounceTimer?.cancel();
+    
+    // Search immediately on submit
+    if (value.trim().isNotEmpty) {
+      widget.onSearch(value.trim());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,10 +85,8 @@ class _NewsSearchBarState extends State<NewsSearchBar> {
                   ),
                   onPressed: () {
                     widget.controller.clear();
-                    widget.onSearch('');
-                    setState(() {
-                      _isSearching = false;
-                    });
+                    _debounceTimer?.cancel();
+                    setState(() {});
                   },
                 )
               : null,
@@ -68,17 +96,8 @@ class _NewsSearchBarState extends State<NewsSearchBar> {
             vertical: 12,
           ),
         ),
-        onChanged: (value) {
-          setState(() {
-            _isSearching = value.isNotEmpty;
-          });
-          widget.onSearch(value);
-        },
-        onSubmitted: (value) {
-          if (value.isNotEmpty) {
-            widget.onSearch(value);
-          }
-        },
+        onChanged: _onSearchChanged,
+        onSubmitted: _onSubmitted,
         textInputAction: TextInputAction.search,
       ),
     );

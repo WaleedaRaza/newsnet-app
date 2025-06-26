@@ -4,6 +4,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../providers/article_provider.dart';
 import '../providers/auth_provider.dart';
 import '../models/article.dart';
+import '../services/api_service.dart';
 
 class ArticlesScreen extends ConsumerStatefulWidget {
   const ArticlesScreen({super.key});
@@ -13,48 +14,44 @@ class ArticlesScreen extends ConsumerStatefulWidget {
 }
 
 class _ArticlesScreenState extends ConsumerState<ArticlesScreen> {
-  final List<String> _selectedTopics = [];
-  final Map<String, List<String>> _beliefs = {};
+  final List<String> _selectedCategories = [];
   double _biasLevel = 0.5;
 
   @override
   void initState() {
     super.initState();
-    _loadUserBeliefs();
+    _loadUserPreferences();
   }
 
-  void _loadUserBeliefs() {
+  void _loadUserPreferences() {
     final userProfileAsync = ref.read(authNotifierProvider);
     userProfileAsync.whenData((userProfile) {
       if (userProfile != null) {
         setState(() {
           _biasLevel = userProfile.biasSetting;
-          // Convert user beliefs to the format expected by the API
-          if (userProfile.beliefFingerprint != null) {
-            for (final entry in userProfile.beliefFingerprint!.entries) {
-              if (entry.value is List) {
-                _beliefs[entry.key] = List<String>.from(entry.value);
-              }
-            }
-          }
         });
       }
     });
   }
 
   void _aggregateArticles() {
-    if (_selectedTopics.isEmpty) {
+    if (_selectedCategories.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please select at least one topic')),
+        const SnackBar(content: Text('Please select at least one category')),
       );
       return;
     }
 
-    ref.read(articleAggregationProvider.notifier).aggregateArticles(
-      topics: _selectedTopics,
-      beliefs: _beliefs,
+    // For now, use the public endpoint (no auth required)
+    ref.read(articleAggregationProvider.notifier).aggregateArticlesByCategoryPublic(
+      categories: _selectedCategories,
       bias: _biasLevel,
+      limitPerCategory: 10,
     );
+  }
+
+  void _loadMockArticles() {
+    ref.read(articleAggregationProvider.notifier).getMockArticles();
   }
 
   @override
@@ -66,6 +63,13 @@ class _ArticlesScreenState extends ConsumerState<ArticlesScreen> {
       appBar: AppBar(
         title: const Text('Show Me Articles'),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.refresh),
+            onPressed: _loadMockArticles,
+            tooltip: 'Load Mock Articles',
+          ),
+        ],
       ),
       body: userProfileAsync.when(
         data: (userProfile) => Column(
@@ -92,32 +96,33 @@ class _ArticlesScreenState extends ConsumerState<ArticlesScreen> {
                   ),
                   const SizedBox(height: 16),
                   
-                  // Topics Selection
+                  // Categories Selection
                   Text(
-                    'Select Topics',
+                    'Select Categories',
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
                   const SizedBox(height: 8),
                   Wrap(
                     spacing: 8,
-                    children: [
-                      'Israel-Palestine',
-                      'Climate Change',
-                      'US Politics',
-                      'Technology',
-                      'Healthcare',
-                      'Economy',
-                    ].map((topic) {
-                      final isSelected = _selectedTopics.contains(topic);
+                    runSpacing: 8,
+                    children: ApiService.categories.map((category) {
+                      final isSelected = _selectedCategories.contains(category);
                       return FilterChip(
-                        label: Text(topic),
+                        label: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(ApiService.getCategoryIcon(category)),
+                            const SizedBox(width: 4),
+                            Text(ApiService.getCategoryDisplayName(category)),
+                          ],
+                        ),
                         selected: isSelected,
                         onSelected: (selected) {
                           setState(() {
                             if (selected) {
-                              _selectedTopics.add(topic);
+                              _selectedCategories.add(category);
                             } else {
-                              _selectedTopics.remove(topic);
+                              _selectedCategories.remove(category);
                             }
                           });
                         },
@@ -143,6 +148,30 @@ class _ArticlesScreenState extends ConsumerState<ArticlesScreen> {
                         _biasLevel = value;
                       });
                     },
+                  ),
+                  
+                  // Bias explanation
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: Colors.blue.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Row(
+                      children: [
+                        Icon(Icons.info_outline, size: 16, color: Colors.blue[700]),
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: Text(
+                            _getBiasExplanation(_biasLevel),
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.blue[700],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                   
                   const SizedBox(height: 16),
@@ -209,6 +238,16 @@ class _ArticlesScreenState extends ConsumerState<ArticlesScreen> {
     );
   }
 
+  String _getBiasExplanation(double bias) {
+    if (bias < 0.3) {
+      return 'Challenge your beliefs: Articles that present opposing viewpoints and counter-arguments';
+    } else if (bias < 0.7) {
+      return 'Balanced perspective: Mix of supporting and challenging viewpoints';
+    } else {
+      return 'Affirm your beliefs: Articles that support your existing viewpoints';
+    }
+  }
+
   Widget _buildErrorWidget(String error) {
     return Center(
       child: Column(
@@ -232,8 +271,8 @@ class _ArticlesScreenState extends ConsumerState<ArticlesScreen> {
           ),
           const SizedBox(height: 16),
           ElevatedButton(
-            onPressed: _aggregateArticles,
-            child: const Text('Try Again'),
+            onPressed: _loadMockArticles,
+            child: const Text('Load Mock Articles'),
           ),
         ],
       ),
@@ -248,7 +287,7 @@ class _ArticlesScreenState extends ConsumerState<ArticlesScreen> {
           Icon(
             Icons.article_outlined,
             size: 64,
-            color: Theme.of(context).colorScheme.outline,
+            color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
           ),
           const SizedBox(height: 16),
           Text(
@@ -257,9 +296,14 @@ class _ArticlesScreenState extends ConsumerState<ArticlesScreen> {
           ),
           const SizedBox(height: 8),
           Text(
-            'Select topics and click "Show Me Articles" to get started',
+            'Select categories and click "Show Me Articles" to get started',
             style: Theme.of(context).textTheme.bodyMedium,
             textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 16),
+          ElevatedButton(
+            onPressed: _loadMockArticles,
+            child: const Text('Load Mock Articles'),
           ),
         ],
       ),
@@ -269,10 +313,9 @@ class _ArticlesScreenState extends ConsumerState<ArticlesScreen> {
   Widget _buildArticlesList(ArticleAggregationState state) {
     return Column(
       children: [
-        // Stats Header
+        // Results header
         Container(
           padding: const EdgeInsets.all(16),
-          color: Theme.of(context).colorScheme.surfaceVariant,
           child: Row(
             children: [
               Expanded(
@@ -284,24 +327,24 @@ class _ArticlesScreenState extends ConsumerState<ArticlesScreen> {
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
                     Text(
-                      'Topics: ${state.topicsCovered.join(", ")}',
+                      'Categories: ${state.categoriesCovered.join(', ')}',
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                   ],
                 ),
               ),
               Text(
-                '${state.aggregationTime.toStringAsFixed(2)}s',
+                'Bias: ${(state.currentBias * 100).round()}%',
                 style: Theme.of(context).textTheme.bodySmall,
               ),
             ],
           ),
         ),
         
-        // Articles List
+        // Articles list
         Expanded(
           child: ListView.builder(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             itemCount: state.articles.length,
             itemBuilder: (context, index) {
               final article = state.articles[index];
@@ -321,102 +364,51 @@ class _ArticlesScreenState extends ConsumerState<ArticlesScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Title and Source
             Row(
               children: [
                 Expanded(
                   child: Text(
                     article.title,
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                ),
+                if (article.biasAnalysis != null)
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: article.biasAnalysis!.sentimentColor.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Text(
+                      article.biasAnalysis!.biasLabel,
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: article.biasAnalysis!.sentimentColor,
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(width: 8),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.primaryContainer,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Text(
-                    article.sourceName,
-                    style: Theme.of(context).textTheme.bodySmall,
-                  ),
-                ),
               ],
             ),
-            
             const SizedBox(height: 8),
-            
-            // Content Preview
             Text(
-              article.content.length > 200
-                  ? '${article.content.substring(0, 200)}...'
-                  : article.content,
+              article.description,
               style: Theme.of(context).textTheme.bodyMedium,
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
             ),
-            
             const SizedBox(height: 12),
-            
-            // Metadata Row
             Row(
               children: [
-                // Topics
-                Expanded(
-                  child: Wrap(
-                    spacing: 4,
-                    children: article.topics.take(3).map((topic) {
-                      return Chip(
-                        label: Text(
-                          topic,
-                          style: const TextStyle(fontSize: 10),
-                        ),
-                        padding: EdgeInsets.zero,
-                        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      );
-                    }).toList(),
+                Text(
+                  article.source.name,
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
                   ),
                 ),
-                
-                // Scores
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text(
-                      'Score: ${(article.finalScore * 100).round()}%',
-                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      'Published: ${_formatDate(article.publishedAt)}',
-                      style: Theme.of(context).textTheme.bodySmall,
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            
-            const SizedBox(height: 12),
-            
-            // Action Buttons
-            Row(
-              children: [
-                Expanded(
-                  child: OutlinedButton.icon(
-                    onPressed: () => _launchUrl(article.url),
-                    icon: const Icon(Icons.open_in_new, size: 16),
-                    label: const Text('Read Full Article'),
-                  ),
-                ),
-                const SizedBox(width: 8),
-                IconButton(
-                  onPressed: () => _showArticleDetails(article),
-                  icon: const Icon(Icons.info_outline),
-                  tooltip: 'Article Details',
+                const Spacer(),
+                TextButton(
+                  onPressed: () => _launchUrl(article.url),
+                  child: const Text('Read More'),
                 ),
               ],
             ),
@@ -426,72 +418,15 @@ class _ArticlesScreenState extends ConsumerState<ArticlesScreen> {
     );
   }
 
-  String _formatDate(DateTime date) {
-    final now = DateTime.now();
-    final difference = now.difference(date);
-    
-    if (difference.inDays == 0) {
-      return 'Today';
-    } else if (difference.inDays == 1) {
-      return 'Yesterday';
-    } else if (difference.inDays < 7) {
-      return '${difference.inDays} days ago';
-    } else {
-      return '${date.day}/${date.month}/${date.year}';
-    }
-  }
-
   Future<void> _launchUrl(String url) async {
-    final uri = Uri.parse(url);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(Uri.parse(url));
     } else {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Could not open: $url')),
+          SnackBar(content: Text('Could not launch $url')),
         );
       }
     }
-  }
-
-  void _showArticleDetails(Article article) {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Article Details'),
-        content: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text('Title: ${article.title}'),
-              const SizedBox(height: 8),
-              Text('Source: ${article.sourceName} (${article.sourceDomain})'),
-              if (article.sourceBias != null) ...[
-                const SizedBox(height: 8),
-                Text('Bias: ${article.sourceBias}'),
-              ],
-              const SizedBox(height: 8),
-              Text('Reliability: ${(article.sourceReliability * 100).round()}%'),
-              const SizedBox(height: 8),
-              Text('Topics: ${article.topics.join(", ")}'),
-              const SizedBox(height: 8),
-              Text('Topical Score: ${(article.topicalScore * 100).round()}%'),
-              Text('Belief Alignment: ${(article.beliefAlignmentScore * 100).round()}%'),
-              Text('Ideological Score: ${(article.ideologicalScore * 100).round()}%'),
-              Text('Final Score: ${(article.finalScore * 100).round()}%'),
-              const SizedBox(height: 8),
-              Text('Published: ${article.publishedAt.toString()}'),
-            ],
-          ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(),
-            child: const Text('Close'),
-          ),
-        ],
-      ),
-    );
   }
 } 

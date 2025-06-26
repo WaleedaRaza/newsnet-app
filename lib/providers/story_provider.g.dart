@@ -6,7 +6,7 @@ part of 'story_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$storyHash() => r'1bfade301098f71c2fbeebe7968098d85f0620db';
+String _$storyHash() => r'1ec3e4d2d8e89c248c2ab04d701d0821820b39c2';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -434,7 +434,7 @@ class _TimelineProviderElement
   String get storyId => (origin as TimelineProvider).storyId;
 }
 
-String _$storiesNotifierHash() => r'675a475fbc889174f5a8bb8a5112828d5c181bec';
+String _$storiesNotifierHash() => r'10cdbd6ea3eb149921d041a55b6a5b87c2d671df';
 
 /// See also [StoriesNotifier].
 @ProviderFor(StoriesNotifier)
@@ -450,7 +450,7 @@ final storiesNotifierProvider =
 );
 
 typedef _$StoriesNotifier = AutoDisposeAsyncNotifier<List<Story>>;
-String _$searchNotifierHash() => r'66d3f55b668278648407fb52b3e71ea6ea2e6a4b';
+String _$searchNotifierHash() => r'7d833c517ef5f19fde2744d6f804fb868b372c0c';
 
 /// See also [SearchNotifier].
 @ProviderFor(SearchNotifier)
