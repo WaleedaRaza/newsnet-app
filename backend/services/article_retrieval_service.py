@@ -462,7 +462,7 @@ class ArticleRetrievalService:
         return topic, user_view
     
     async def fetch_articles_for_category(self, category: str, limit: int = 30) -> List[Dict]:
-        """Fetch articles from News API for a given category"""
+        """Fetch articles from News API for a given category with extreme source inclusion"""
         try:
             if category not in self.category_mappings:
                 print(f"Unknown category: {category}")
@@ -474,15 +474,66 @@ class ArticleRetrievalService:
             # Create a comprehensive search query
             query = " OR ".join(search_terms[:10])  # Limit to first 10 terms to avoid query too long
             
-            # Search for articles
-            response = self.news_api.get_everything(
-                q=query,
-                language='en',
-                sort_by='publishedAt',
-                page_size=limit
-            )
+            # Define extreme sources to prioritize
+            extreme_sources = [
+                # Far-right sources
+                "breitbart.com", "infowars.com", "dailywire.com", "theblaze.com", 
+                "townhall.com", "nationalreview.com", "foxnews.com",
+                
+                # Far-left sources  
+                "jacobinmag.com", "commondreams.org", "truthout.org", "alternet.org",
+                "democracynow.org", "theintercept.com", "msnbc.com", "nytimes.com",
+                
+                # Mainstream sources
+                "reuters.com", "ap.org", "bbc.com", "cnn.com", "washingtonpost.com",
+                "wsj.com", "usatoday.com", "nbcnews.com", "abcnews.go.com", "cbsnews.com"
+            ]
             
-            return response['articles']
+            all_articles = []
+            
+            # First, try to get articles from extreme sources
+            for source in extreme_sources[:10]:  # Limit to avoid rate limits
+                try:
+                    response = self.news_api.get_everything(
+                        q=query,
+                        domains=source,
+                        language='en',
+                        sort_by='publishedAt',
+                        page_size=min(limit // 2, 20)
+                    )
+                    articles = response.get('articles', [])
+                    print(f"Got {len(articles)} articles from {source}")
+                    all_articles.extend(articles)
+                except Exception as e:
+                    print(f"Error fetching from {source}: {e}")
+                    continue
+            
+            # If we don't have enough articles, get general articles
+            if len(all_articles) < limit:
+                try:
+                    response = self.news_api.get_everything(
+                        q=query,
+                        language='en',
+                        sort_by='publishedAt',
+                        page_size=limit - len(all_articles)
+                    )
+                    additional_articles = response.get('articles', [])
+                    all_articles.extend(additional_articles)
+                    print(f"Added {len(additional_articles)} general articles")
+                except Exception as e:
+                    print(f"Error fetching general articles: {e}")
+            
+            # Remove duplicates based on URL
+            seen_urls = set()
+            unique_articles = []
+            for article in all_articles:
+                if article.get('url') not in seen_urls:
+                    seen_urls.add(article.get('url'))
+                    unique_articles.append(article)
+            
+            print(f"Total unique articles: {len(unique_articles)}")
+            return unique_articles[:limit]
+            
         except Exception as e:
             print(f"Error fetching articles for category {category}: {e}")
             return []
