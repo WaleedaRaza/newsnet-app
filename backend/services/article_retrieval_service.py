@@ -476,17 +476,38 @@ class ArticleRetrievalService:
             
             # Define extreme sources to prioritize
             extreme_sources = [
-                # Far-right sources
+                # Far-right sources (highest priority for extreme views)
                 "breitbart.com", "infowars.com", "dailywire.com", "theblaze.com", 
-                "townhall.com", "nationalreview.com", "foxnews.com",
+                "townhall.com", "oann.com", "newsmax.com", "dailycaller.com",
+                "thefederalist.com", "thepostmillennial.com", "freebeacon.com",
+                "theamericanspectator.org", "theamericanconservative.com", "cbn.com", "ijr.com",
                 
-                # Far-left sources  
+                # Far-left sources (highest priority for extreme views)
                 "jacobinmag.com", "commondreams.org", "truthout.org", "alternet.org",
-                "democracynow.org", "theintercept.com", "msnbc.com", "nytimes.com",
+                "democracynow.org", "theintercept.com", "thenation.com", "motherjones.com",
                 
-                # Mainstream sources
-                "reuters.com", "ap.org", "bbc.com", "cnn.com", "washingtonpost.com",
-                "wsj.com", "usatoday.com", "nbcnews.com", "abcnews.go.com", "cbsnews.com"
+                # Right sources
+                "foxnews.com", "dailymail.co.uk", "nationalreview.com", "nypost.com",
+                "washingtonexaminer.com", "washingtontimes.com", "zerohedge.com",
+                "epochtimes.com", "justthenews.com", "thefp.com", "upward.news", "thedispatch.com",
+                
+                # Left sources
+                "huffpost.com", "slate.com", "vox.com", "thedailybeast.com",
+                "theatlantic.com", "newyorker.com", "theguardian.com",
+                
+                # Lean-left sources
+                "cnn.com", "msnbc.com", "nytimes.com", "washingtonpost.com", "npr.org",
+                "abcnews.go.com", "cbsnews.com", "nbcnews.com", "politico.com",
+                "propublica.org", "time.com", "usatoday.com", "bloomberg.com",
+                "axios.com", "semafor.com", "yahoo.com", "insider.com",
+                
+                # Lean-right sources
+                "wsj.com", "foxbusiness.com",
+                
+                # Center sources
+                "reuters.com", "ap.org", "bbc.com", "cnbc.com", "forbes.com",
+                "marketwatch.com", "newsweek.com", "realclearpolitics.com", "reason.com",
+                "newsnationnow.com", "csmonitor.com", "mercurynews.com"
             ]
             
             all_articles = []

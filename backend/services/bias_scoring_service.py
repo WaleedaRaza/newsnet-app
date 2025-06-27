@@ -15,42 +15,92 @@ class BiasScoringService:
     def _load_source_bias_map(self) -> Dict[str, Dict]:
         """Load comprehensive source bias mappings with extreme sources"""
         return {
-            # Mainstream sources (moderate bias)
+            # Far-Left Sources (extremity: 0.8-1.0)
+            "jacobinmag.com": {"bias": "Far-Left", "reliability": 0.5, "extremity": 0.9},
+            "alternet.org": {"bias": "Far-Left", "reliability": 0.4, "extremity": 0.8},
+            "commondreams.org": {"bias": "Far-Left", "reliability": 0.4, "extremity": 0.8},
+            "truthout.org": {"bias": "Far-Left", "reliability": 0.4, "extremity": 0.8},
+            "democracynow.org": {"bias": "Far-Left", "reliability": 0.5, "extremity": 0.8},
+            "theintercept.com": {"bias": "Far-Left", "reliability": 0.6, "extremity": 0.7},
+            "thenation.com": {"bias": "Far-Left", "reliability": 0.6, "extremity": 0.7},
+            "motherjones.com": {"bias": "Far-Left", "reliability": 0.5, "extremity": 0.7},
+            
+            # Left Sources (extremity: 0.6-0.7)
+            "huffpost.com": {"bias": "Left", "reliability": 0.6, "extremity": 0.6},
+            "slate.com": {"bias": "Left", "reliability": 0.6, "extremity": 0.6},
+            "vox.com": {"bias": "Left", "reliability": 0.6, "extremity": 0.6},
+            "thedailybeast.com": {"bias": "Left", "reliability": 0.5, "extremity": 0.6},
+            "theatlantic.com": {"bias": "Left", "reliability": 0.7, "extremity": 0.5},
+            "newyorker.com": {"bias": "Left", "reliability": 0.7, "extremity": 0.5},
+            "theguardian.com": {"bias": "Left", "reliability": 0.7, "extremity": 0.5},
+            
+            # Lean Left Sources (extremity: 0.4-0.5)
+            "cnn.com": {"bias": "Lean-Left", "reliability": 0.7, "extremity": 0.5},
+            "msnbc.com": {"bias": "Lean-Left", "reliability": 0.7, "extremity": 0.5},
+            "nytimes.com": {"bias": "Lean-Left", "reliability": 0.8, "extremity": 0.4},
+            "washingtonpost.com": {"bias": "Lean-Left", "reliability": 0.8, "extremity": 0.4},
+            "npr.org": {"bias": "Lean-Left", "reliability": 0.8, "extremity": 0.4},
+            "abcnews.go.com": {"bias": "Lean-Left", "reliability": 0.7, "extremity": 0.4},
+            "cbsnews.com": {"bias": "Lean-Left", "reliability": 0.7, "extremity": 0.4},
+            "nbcnews.com": {"bias": "Lean-Left", "reliability": 0.7, "extremity": 0.4},
+            "politico.com": {"bias": "Lean-Left", "reliability": 0.7, "extremity": 0.4},
+            "propublica.org": {"bias": "Lean-Left", "reliability": 0.8, "extremity": 0.3},
+            "time.com": {"bias": "Lean-Left", "reliability": 0.7, "extremity": 0.4},
+            "usatoday.com": {"bias": "Lean-Left", "reliability": 0.7, "extremity": 0.3},
+            "bloomberg.com": {"bias": "Lean-Left", "reliability": 0.8, "extremity": 0.3},
+            "axios.com": {"bias": "Lean-Left", "reliability": 0.7, "extremity": 0.3},
+            "semafor.com": {"bias": "Lean-Left", "reliability": 0.7, "extremity": 0.3},
+            "yahoo.com": {"bias": "Lean-Left", "reliability": 0.6, "extremity": 0.3},
+            "insider.com": {"bias": "Lean-Left", "reliability": 0.6, "extremity": 0.3},
+            
+            # Center Sources (extremity: 0.2-0.3)
             "reuters.com": {"bias": "Center", "reliability": 0.9, "extremity": 0.2},
             "ap.org": {"bias": "Center", "reliability": 0.9, "extremity": 0.2},
             "bbc.com": {"bias": "Center", "reliability": 0.8, "extremity": 0.3},
-            "cnn.com": {"bias": "Left", "reliability": 0.7, "extremity": 0.4},
-            "foxnews.com": {"bias": "Right", "reliability": 0.7, "extremity": 0.6},
-            "msnbc.com": {"bias": "Left", "reliability": 0.7, "extremity": 0.5},
-            "nytimes.com": {"bias": "Left", "reliability": 0.8, "extremity": 0.4},
-            "wsj.com": {"bias": "Right", "reliability": 0.8, "extremity": 0.4},
-            "washingtonpost.com": {"bias": "Left", "reliability": 0.8, "extremity": 0.4},
+            "cnbc.com": {"bias": "Center", "reliability": 0.8, "extremity": 0.3},
+            "forbes.com": {"bias": "Center", "reliability": 0.7, "extremity": 0.3},
+            "marketwatch.com": {"bias": "Center", "reliability": 0.7, "extremity": 0.3},
+            "newsweek.com": {"bias": "Center", "reliability": 0.7, "extremity": 0.3},
+            "realclearpolitics.com": {"bias": "Center", "reliability": 0.7, "extremity": 0.3},
+            "reason.com": {"bias": "Center", "reliability": 0.7, "extremity": 0.3},
+            "newsnationnow.com": {"bias": "Center", "reliability": 0.7, "extremity": 0.3},
+            "csmonitor.com": {"bias": "Center", "reliability": 0.8, "extremity": 0.2},
+            "mercurynews.com": {"bias": "Center", "reliability": 0.7, "extremity": 0.3},
             
-            # More extreme sources
+            # Lean Right Sources (extremity: 0.4-0.5)
+            "wsj.com": {"bias": "Lean-Right", "reliability": 0.8, "extremity": 0.4},
+            "foxbusiness.com": {"bias": "Lean-Right", "reliability": 0.7, "extremity": 0.4},
+            "nationalreview.com": {"bias": "Lean-Right", "reliability": 0.6, "extremity": 0.5},
+            "nypost.com": {"bias": "Lean-Right", "reliability": 0.6, "extremity": 0.5},
+            "washingtonexaminer.com": {"bias": "Lean-Right", "reliability": 0.6, "extremity": 0.5},
+            "washingtontimes.com": {"bias": "Lean-Right", "reliability": 0.5, "extremity": 0.5},
+            "zerohedge.com": {"bias": "Lean-Right", "reliability": 0.4, "extremity": 0.6},
+            "epochtimes.com": {"bias": "Lean-Right", "reliability": 0.4, "extremity": 0.6},
+            "justthenews.com": {"bias": "Lean-Right", "reliability": 0.5, "extremity": 0.5},
+            "thefp.com": {"bias": "Lean-Right", "reliability": 0.6, "extremity": 0.4},
+            "upward.news": {"bias": "Lean-Right", "reliability": 0.5, "extremity": 0.5},
+            "thedispatch.com": {"bias": "Lean-Right", "reliability": 0.6, "extremity": 0.4},
+            
+            # Right Sources (extremity: 0.6-0.7)
+            "foxnews.com": {"bias": "Right", "reliability": 0.7, "extremity": 0.6},
+            "dailycaller.com": {"bias": "Right", "reliability": 0.5, "extremity": 0.7},
+            "dailymail.co.uk": {"bias": "Right", "reliability": 0.5, "extremity": 0.6},
+            "thefederalist.com": {"bias": "Right", "reliability": 0.5, "extremity": 0.7},
+            "newsmax.com": {"bias": "Right", "reliability": 0.4, "extremity": 0.7},
+            "oann.com": {"bias": "Right", "reliability": 0.3, "extremity": 0.8},
+            "thepostmillennial.com": {"bias": "Right", "reliability": 0.4, "extremity": 0.7},
+            "freebeacon.com": {"bias": "Right", "reliability": 0.5, "extremity": 0.6},
+            "theamericanspectator.org": {"bias": "Right", "reliability": 0.5, "extremity": 0.6},
+            "theamericanconservative.com": {"bias": "Right", "reliability": 0.5, "extremity": 0.6},
+            "cbn.com": {"bias": "Right", "reliability": 0.5, "extremity": 0.6},
+            "ijr.com": {"bias": "Right", "reliability": 0.4, "extremity": 0.6},
+            
+            # Far-Right Sources (extremity: 0.8-1.0)
             "breitbart.com": {"bias": "Far-Right", "reliability": 0.4, "extremity": 0.9},
             "infowars.com": {"bias": "Far-Right", "reliability": 0.2, "extremity": 1.0},
             "dailywire.com": {"bias": "Far-Right", "reliability": 0.5, "extremity": 0.8},
             "theblaze.com": {"bias": "Far-Right", "reliability": 0.4, "extremity": 0.8},
             "townhall.com": {"bias": "Far-Right", "reliability": 0.5, "extremity": 0.7},
-            "nationalreview.com": {"bias": "Right", "reliability": 0.6, "extremity": 0.6},
-            
-            # Far-left sources
-            "jacobinmag.com": {"bias": "Far-Left", "reliability": 0.5, "extremity": 0.8},
-            "commondreams.org": {"bias": "Far-Left", "reliability": 0.4, "extremity": 0.8},
-            "truthout.org": {"bias": "Far-Left", "reliability": 0.4, "extremity": 0.8},
-            "alternet.org": {"bias": "Far-Left", "reliability": 0.4, "extremity": 0.7},
-            "democracynow.org": {"bias": "Far-Left", "reliability": 0.5, "extremity": 0.7},
-            "theintercept.com": {"bias": "Far-Left", "reliability": 0.6, "extremity": 0.6},
-            
-            # Other sources
-            "usatoday.com": {"bias": "Center", "reliability": 0.7, "extremity": 0.3},
-            "nbcnews.com": {"bias": "Left", "reliability": 0.7, "extremity": 0.4},
-            "abcnews.go.com": {"bias": "Center", "reliability": 0.7, "extremity": 0.3},
-            "cbsnews.com": {"bias": "Center", "reliability": 0.7, "extremity": 0.3},
-            "npr.org": {"bias": "Left", "reliability": 0.8, "extremity": 0.4},
-            "pbs.org": {"bias": "Center", "reliability": 0.8, "extremity": 0.3},
-            "bloomberg.com": {"bias": "Center", "reliability": 0.8, "extremity": 0.3},
-            "forbes.com": {"bias": "Right", "reliability": 0.7, "extremity": 0.4},
         }
     
     def _load_extreme_keywords(self) -> Dict[str, List[str]]:
@@ -147,9 +197,11 @@ class BiasScoringService:
         # Map bias labels to numerical values with more extreme ranges
         bias_values = {
             "Far-Left": 0.0, 
-            "Left": 0.2, 
+            "Left": 0.15, 
+            "Lean-Left": 0.3,
             "Center": 0.5, 
-            "Right": 0.8, 
+            "Lean-Right": 0.7,
+            "Right": 0.85, 
             "Far-Right": 1.0
         }
         source_bias_value = bias_values.get(source_bias, 0.5)
@@ -160,7 +212,7 @@ class BiasScoringService:
             if bias_slider <= 0.1:  # Far left - want far right sources
                 target_bias = 1.0
             elif bias_slider <= 0.2:  # Left - want right sources
-                target_bias = 0.8
+                target_bias = 0.85
             else:  # Center-left - want center-right sources
                 target_bias = 0.7
         elif bias_slider >= 0.7:  # "Prove me right" - want aligned extreme views
@@ -168,7 +220,7 @@ class BiasScoringService:
             if bias_slider >= 0.9:  # Far right - want far right sources
                 target_bias = 1.0
             elif bias_slider >= 0.8:  # Right - want right sources
-                target_bias = 0.8
+                target_bias = 0.85
             else:  # Center-right - want center-right sources
                 target_bias = 0.7
         else:  # Center - prefer moderate sources
