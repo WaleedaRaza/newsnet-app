@@ -8,7 +8,7 @@ from db.models import Story, TimelineChunk, ChatMessage
 from schemas.story import Story as StorySchema, StoryList, SearchQuery, SearchResult
 from schemas.fusion import ChatMessage as ChatMessageSchema, ChatRequest
 from api.routes.auth import get_current_user
-from services.fusion_engine import FusionEngine
+# from services.fusion_engine import FusionEngine  # Temporarily disabled due to LangChain dependency issues
 
 router = APIRouter()
 
@@ -220,13 +220,20 @@ async def send_message(
     
     # Generate AI response
     try:
-        fusion_engine = FusionEngine()
-        ai_response = await fusion_engine.generate_chat_response(
-            story_id=story_id,
-            user_message=chat_request.message,
-            bias=chat_request.bias,
-            db=db
-        )
+        # fusion_engine = FusionEngine()  # Temporarily disabled
+        # ai_response = await fusion_engine.generate_chat_response(
+        #     story_id=story_id,
+        #     user_message=chat_request.message,
+        #     bias=chat_request.bias,
+        #     db=db
+        # )
+        
+        # Mock AI response for now
+        ai_response = {
+            "content": f"I understand you're asking about this story. This is a temporary response while the AI features are being updated. Your message was: {chat_request.message}",
+            "source_context": "Mock response",
+            "sources": []
+        }
         
         # Save AI response
         ai_message = ChatMessage(

@@ -4,7 +4,7 @@ from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from contextlib import asynccontextmanager
 import uvicorn
 
-from api.routes import auth, users, stories, fusion, articles
+from api.routes import auth, users, stories, articles, intelligence
 from db.session import engine
 from db.models import Base
 from config import settings
@@ -43,15 +43,17 @@ security = HTTPBearer()
 app.include_router(auth.router, prefix="/v1/auth", tags=["Authentication"])
 app.include_router(users.router, prefix="/v1/users", tags=["Users"])
 app.include_router(stories.router, prefix="/v1/stories", tags=["Stories"])
-app.include_router(fusion.router, prefix="/v1/fusion", tags=["Fusion"])
+# app.include_router(fusion.router, prefix="/v1/fusion", tags=["Fusion"])  # Temporarily disabled
 app.include_router(articles.router, prefix="/v1/articles", tags=["Articles"])
+app.include_router(intelligence.router, tags=["Intelligence"])
 
 @app.get("/")
 async def root():
     return {
         "message": "Welcome to NewsNet API",
         "version": "1.0.0",
-        "docs": "/docs"
+        "docs": "/docs",
+        "intelligence_endpoints": "/v1/intelligence"
     }
 
 @app.get("/health")

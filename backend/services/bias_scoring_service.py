@@ -1,11 +1,11 @@
 from typing import List, Dict, Tuple
 import json
 import numpy as np
-from services.fusion_engine import FusionEngine
+# from services.fusion_engine import FusionEngine  # Temporarily disabled due to LangChain dependency issues
 
 class BiasScoringService:
     def __init__(self):
-        self.fusion_engine = FusionEngine()
+        # self.fusion_engine = FusionEngine()  # Temporarily disabled
         self.source_bias_map = self._load_source_bias_map()
     
     def _load_source_bias_map(self) -> Dict[str, Dict]:
@@ -36,13 +36,12 @@ class BiasScoringService:
     async def calculate_topical_score(self, article_content: str, topic: str) -> float:
         """Calculate topical relevance score using embeddings"""
         try:
-            # Use existing fusion engine embeddings
-            article_embedding = await self.fusion_engine.embeddings.aembed_query(article_content[:1000])  # Limit content length
-            topic_embedding = await self.fusion_engine.embeddings.aembed_query(topic)
-            
-            # Calculate cosine similarity
-            similarity = self._cosine_similarity(article_embedding, topic_embedding)
-            return similarity
+            # Temporarily return a mock score since FusionEngine is disabled
+            # article_embedding = await self.fusion_engine.embeddings.aembed_query(article_content[:1000])
+            # topic_embedding = await self.fusion_engine.embeddings.aembed_query(topic)
+            # similarity = self._cosine_similarity(article_embedding, topic_embedding)
+            # return similarity
+            return 0.7  # Mock score
         except Exception as e:
             print(f"Error calculating topical score: {e}")
             return 0.5
@@ -57,17 +56,15 @@ class BiasScoringService:
             if not beliefs:
                 return 0.5
             
-            # Get embeddings for article and beliefs
-            article_embedding = await self.fusion_engine.embeddings.aembed_query(article_content[:1000])
-            
-            belief_scores = []
-            for belief in beliefs:
-                belief_embedding = await self.fusion_engine.embeddings.aembed_query(belief)
-                similarity = self._cosine_similarity(article_embedding, belief_embedding)
-                belief_scores.append(similarity)
-            
-            # Return average belief alignment score
-            return sum(belief_scores) / len(belief_scores)
+            # Temporarily return a mock score since FusionEngine is disabled
+            # article_embedding = await self.fusion_engine.embeddings.aembed_query(article_content[:1000])
+            # belief_scores = []
+            # for belief in beliefs:
+            #     belief_embedding = await self.fusion_engine.embeddings.aembed_query(belief)
+            #     similarity = self._cosine_similarity(article_embedding, belief_embedding)
+            #     belief_scores.append(similarity)
+            # return sum(belief_scores) / len(belief_scores)
+            return 0.6  # Mock score
         except Exception as e:
             print(f"Error calculating belief alignment: {e}")
             return 0.5
