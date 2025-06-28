@@ -17,8 +17,17 @@ class Settings(BaseSettings):
     # OpenAI
     openai_api_key: Optional[str] = None
     
-    # News API
-    news_api_key: Optional[str] = None
+    # News APIs - Multi-API Architecture
+    news_api_key: Optional[str] = None  # NewsAPI.org
+    gnews_api_key: Optional[str] = None  # GNews API
+    mediastack_api_key: Optional[str] = None  # Mediastack API
+    webz_api_key: Optional[str] = None  # Webz.io API
+    newscatcher_api_key: Optional[str] = None  # Newscatcher API
+    worldnews_api_key: Optional[str] = None  # World News API
+    guardian_api_key: Optional[str] = None  # The Guardian API
+    nyt_api_key: Optional[str] = None  # NYT API
+    aylien_api_key: Optional[str] = None  # Aylien News API
+    contify_api_key: Optional[str] = None  # Contify API
     
     # Qdrant
     qdrant_url: str = "http://localhost:6333"
@@ -46,5 +55,33 @@ if os.getenv("SECRET_KEY"):
 if os.getenv("OPENAI_API_KEY"):
     settings.openai_api_key = os.getenv("OPENAI_API_KEY")
 
+# News API Keys
 if os.getenv("NEWS_API_KEY"):
-    settings.news_api_key = os.getenv("NEWS_API_KEY") 
+    settings.news_api_key = os.getenv("NEWS_API_KEY")
+
+if os.getenv("GNEWS_API_KEY"):
+    settings.gnews_api_key = os.getenv("GNEWS_API_KEY")
+
+if os.getenv("MEDIASTACK_API_KEY"):
+    settings.mediastack_api_key = os.getenv("MEDIASTACK_API_KEY")
+
+if os.getenv("WEBZ_API_KEY"):
+    settings.webz_api_key = os.getenv("WEBZ_API_KEY")
+
+if os.getenv("NEWSCATCHER_API_KEY"):
+    settings.newscatcher_api_key = os.getenv("NEWSCATCHER_API_KEY")
+
+if os.getenv("WORLDNEWS_API_KEY"):
+    settings.worldnews_api_key = os.getenv("WORLDNEWS_API_KEY")
+
+if os.getenv("GUARDIAN_API_KEY"):
+    settings.guardian_api_key = os.getenv("GUARDIAN_API_KEY")
+
+if os.getenv("NYT_API_KEY"):
+    settings.nyt_api_key = os.getenv("NYT_API_KEY")
+
+if os.getenv("AYLIEN_API_KEY"):
+    settings.aylien_api_key = os.getenv("AYLIEN_API_KEY")
+
+if os.getenv("CONTIFY_API_KEY"):
+    settings.contify_api_key = os.getenv("CONTIFY_API_KEY") 

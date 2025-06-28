@@ -98,19 +98,35 @@ class ApiService {
         },
       );
       
+      print('🌐 API SERVICE: Making HTTP request to: $uri');
+      print('🌐 API SERVICE: Query parameters: q="$query", bias=$bias, limit=20');
+      
       final response = await http.get(uri);
+      
+      print('🌐 API SERVICE: Response status code: ${response.statusCode}');
+      print('🌐 API SERVICE: Response headers: ${response.headers}');
+      print('🌐 API SERVICE: Raw response body: ${response.body}');
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
+        print('🌐 API SERVICE: Parsed JSON response: $data');
+        
         if (data['status'] == 'success' && data['articles'] != null) {
-          return (data['articles'] as List)
+          final articles = (data['articles'] as List)
               .map((articleJson) => Article.fromJson(articleJson))
               .toList();
+          
+          print('🌐 API SERVICE: Successfully parsed ${articles.length} articles');
+          return articles;
+        } else {
+          print('🌐 API SERVICE: Response format error - status: ${data['status']}, articles: ${data['articles']}');
         }
+      } else {
+        print('🌐 API SERVICE: HTTP error - status: ${response.statusCode}, body: ${response.body}');
       }
       return [];
     } catch (e) {
-      print('Error searching articles: $e');
+      print('🌐 API SERVICE: Error searching articles: $e');
       return [];
     }
   }

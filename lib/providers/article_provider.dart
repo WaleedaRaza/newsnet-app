@@ -169,31 +169,79 @@ class ArticleSearchNotifier extends _$ArticleSearchNotifier {
 
   Future<void> searchArticles(String query, double bias) async {
     print('🔍 ARTICLE PROVIDER: Searching for "$query" with bias $bias');
+    print('🔍 ARTICLE PROVIDER: Raw query being sent to API: "$query"');
     state = const AsyncValue.loading();
     
     try {
       final apiService = ApiService();
       final articles = await apiService.searchArticles(query, bias);
       
-      print('🔍 ARTICLE PROVIDER: Got ${articles.length} articles');
+      print('🔍 ARTICLE PROVIDER: Got ${articles.length} articles from API');
+      print('🔍 ARTICLE PROVIDER: RAW API RESPONSE ANALYSIS:');
+      print('🔍 ARTICLE PROVIDER: ==========================================');
       
-      // Log bias analysis for debugging
-      for (final article in articles.take(3)) {
+      // Log bias analysis for ALL articles
+      for (int i = 0; i < articles.length; i++) {
+        final article = articles[i];
+        print('🔍 ARTICLE PROVIDER: Article ${i + 1}: "${article.title}"');
+        print('  - Source: ${article.source.name}');
+        print('  - URL: ${article.url}');
+        print('  - Description: ${article.description}');
+        
         if (article.biasAnalysis != null) {
-          print('🔍 ARTICLE PROVIDER: Article "${article.title.substring(0, min(50, article.title.length))}..."');
-          print('  - Sentiment Score: ${article.biasAnalysis!.topicSentimentScore}');
-          print('  - Sentiment: ${article.biasAnalysis!.topicSentiment}');
-          print('  - Match: ${(article.biasAnalysis!.biasMatch * 100).toInt()}%');
-          print('  - Confidence: ${article.biasAnalysis!.confidenceLabel}');
-          print('  - Topic Mentions: ${article.biasAnalysis!.topicMentions}');
+          print('  - Bias Analysis:');
+          print('    - Stance: ${article.biasAnalysis!.stance}');
+          print('    - Confidence: ${article.biasAnalysis!.stanceConfidence}');
+          print('    - Method: ${article.biasAnalysis!.stanceMethod}');
+          print('    - Evidence: ${article.biasAnalysis!.stanceEvidence}');
+          print('    - User Belief: ${article.biasAnalysis!.userBelief}');
+          print('    - Bias Match: ${article.biasAnalysis!.biasMatch}');
+          print('    - User Bias Preference: ${article.biasAnalysis!.userBiasPreference}');
+          print('    - Topic Sentiment Score: ${article.biasAnalysis!.topicSentimentScore}');
+          print('    - Topic Sentiment: ${article.biasAnalysis!.topicSentiment}');
+          print('    - Topic Mentions: ${article.biasAnalysis!.topicMentions}');
+        } else {
+          print('  - No bias analysis available');
+        }
+        
+        // Relevance check
+        final text = '${article.title} ${article.description}'.toLowerCase();
+        print('  - Relevance Check:');
+        print('    - Contains "Palestine": ${text.contains('palestine')}');
+        print('    - Contains "Israel": ${text.contains('israel')}');
+        print('    - Contains "occupation": ${text.contains('occupation')}');
+        print('    - Contains query keywords: ${_containsQueryKeywords(text, query)}');
+        print('  - Bias Match Score: ${(article.biasAnalysis?.biasMatch ?? 0.0) * 100}%');
+        print('  - Stance: ${article.biasAnalysis?.stance ?? 'none'}');
+        print('');
+      }
+      
+      print('🔍 ARTICLE PROVIDER: ==========================================');
+      print('🔍 ARTICLE PROVIDER: SUMMARY:');
+      print('  - Total articles: ${articles.length}');
+      print('  - Articles with bias analysis: ${articles.where((a) => a.biasAnalysis != null).length}');
+      print('  - Average bias match: ${articles.where((a) => a.biasAnalysis != null).map((a) => a.biasAnalysis!.biasMatch).fold(0.0, (sum, match) => sum + match) / articles.where((a) => a.biasAnalysis != null).length}');
+      print('  - Stance distribution:');
+      final stanceCounts = <String, int>{};
+      for (final article in articles) {
+        if (article.biasAnalysis != null) {
+          stanceCounts[article.biasAnalysis!.stance] = (stanceCounts[article.biasAnalysis!.stance] ?? 0) + 1;
         }
       }
+      stanceCounts.forEach((stance, count) {
+        print('    - $stance: $count articles');
+      });
       
       state = AsyncValue.data(articles);
     } catch (e) {
       print('🔍 ARTICLE PROVIDER: Error searching articles: $e');
       state = AsyncValue.error(e, StackTrace.current);
     }
+  }
+
+  bool _containsQueryKeywords(String text, String query) {
+    final keywords = query.toLowerCase().split(' ');
+    return keywords.any((keyword) => text.contains(keyword));
   }
 
   void clearSearch() {

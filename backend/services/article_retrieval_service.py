@@ -5,7 +5,7 @@ from newsapi import NewsApiClient
 from config import settings
 import re
 from collections import Counter
-from services.stance_detector import stance_detector
+from services.advanced_stance_detector import advanced_stance_detector
 
 class ArticleRetrievalService:
     def __init__(self):
@@ -363,11 +363,37 @@ class ArticleRetrievalService:
                 # Combine title, description, and content for analysis
                 content_text = f"{article.get('title', '')} {article.get('description', '')} {article.get('content', '')}"
                 
+                # Create a more nuanced belief statement for stance detection
+                if user_view and self._is_political_view(user_view):
+                    # For political views, create a statement that reflects the user's position
+                    if any(word in user_view.lower() for word in ['hate', 'terrible', 'awful', 'bad', 'wrong']):
+                        # User has negative view - we want articles that support their negative view
+                        stance_belief = f"{topic} is problematic and should be criticized"
+                    elif any(word in user_view.lower() for word in ['love', 'great', 'amazing', 'good', 'right']):
+                        # User has positive view - we want articles that support their positive view
+                        stance_belief = f"{topic} is beneficial and should be supported"
+                    else:
+                        # Neutral or unclear view
+                        stance_belief = user_belief
+                else:
+                    # For non-political views, use the original belief
+                    stance_belief = user_belief
+                
+                print(f"🔍 SEARCH: Using stance belief: '{stance_belief}' for article: {article.get('title', '')[:50]}...")
+                
                 # Get stance analysis using new stance detector
-                stance_analysis = stance_detector.classify_stance(content_text, user_belief)
+                stance_result = await advanced_stance_detector.detect_stance(stance_belief, content_text)
+                
+                # Convert StanceResult to dict format for compatibility
+                stance_analysis = {
+                    "stance": stance_result.stance,
+                    "confidence": stance_result.confidence,
+                    "method": stance_result.method,
+                    "evidence": stance_result.evidence
+                }
                 
                 # Calculate bias match using clean scoring matrix
-                bias_match = self._calculate_bias_match(stance_analysis, bias)
+                bias_match = self._calculate_bias_match(stance_analysis, bias, user_view)
                 
                 # Add analysis to article
                 article['bias_analysis'] = {
@@ -378,6 +404,7 @@ class ArticleRetrievalService:
                     'bias_match': bias_match,
                     'user_bias_preference': bias,
                     'user_belief': user_belief,
+                    'stance_belief_used': stance_belief,
                     'analysis_method': 'stance_detection'
                 }
                 
@@ -397,42 +424,103 @@ class ArticleRetrievalService:
             print(f"🔍 SEARCH: Error searching articles: {e}")
             return []
     
-    def _calculate_bias_match(self, stance_analysis: Dict, bias: float) -> float:
+    def _calculate_bias_match(self, stance_analysis: Dict, bias: float, user_view: str = "") -> float:
         """
         Calculate bias match using clean scoring matrix
         
         bias: 0.0 = challenging views, 1.0 = supporting views
         stance: "support", "oppose", "neutral"
+        user_view: The user's view about the topic
         """
         stance = stance_analysis["stance"]
         confidence = stance_analysis["confidence"]
         
-        # Clean scoring matrix
+        # Determine if user has a negative or positive view
+        user_has_negative_view = any(word in user_view.lower() for word in ['hate', 'terrible', 'awful', 'bad', 'wrong', 'dislike'])
+        user_has_positive_view = any(word in user_view.lower() for word in ['love', 'great', 'amazing', 'good', 'right', 'like'])
+        
+        # Clean scoring matrix with user view consideration
         if bias == 0.0:  # User wants challenging views
-            if stance == "oppose":
-                return 1.0 * confidence  # Perfect match
-            elif stance == "support":
-                return 0.0  # Wrong direction
-            else:  # neutral
-                return 0.5 * confidence
+            if user_has_negative_view:
+                # User hates the topic, so challenging views = articles that support the topic
+                if stance == "support":
+                    return 1.0 * confidence  # Perfect match - supports what user hates
+                elif stance == "oppose":
+                    return 0.0  # Wrong direction - opposes what user hates
+                else:  # neutral
+                    return 0.5 * confidence
+            elif user_has_positive_view:
+                # User loves the topic, so challenging views = articles that oppose the topic
+                if stance == "oppose":
+                    return 1.0 * confidence  # Perfect match - opposes what user loves
+                elif stance == "support":
+                    return 0.0  # Wrong direction - supports what user loves
+                else:  # neutral
+                    return 0.5 * confidence
+            else:
+                # No clear user view, use original logic
+                if stance == "oppose":
+                    return 1.0 * confidence
+                elif stance == "support":
+                    return 0.0
+                else:  # neutral
+                    return 0.5 * confidence
                 
         elif bias == 1.0:  # User wants supporting views
-            if stance == "support":
-                return 1.0 * confidence  # Perfect match
-            elif stance == "oppose":
-                return 0.0  # Wrong direction
-            else:  # neutral
-                return 0.5 * confidence
+            if user_has_negative_view:
+                # User hates the topic, so supporting views = articles that oppose the topic
+                if stance == "oppose":
+                    return 1.0 * confidence  # Perfect match - opposes what user hates
+                elif stance == "support":
+                    return 0.0  # Wrong direction - supports what user hates
+                else:  # neutral
+                    return 0.5 * confidence
+            elif user_has_positive_view:
+                # User loves the topic, so supporting views = articles that support the topic
+                if stance == "support":
+                    return 1.0 * confidence  # Perfect match - supports what user loves
+                elif stance == "oppose":
+                    return 0.0  # Wrong direction - opposes what user loves
+                else:  # neutral
+                    return 0.5 * confidence
+            else:
+                # No clear user view, use original logic
+                if stance == "support":
+                    return 1.0 * confidence
+                elif stance == "oppose":
+                    return 0.0
+                else:  # neutral
+                    return 0.5 * confidence
                 
         else:  # Intermediate bias values
-            if stance == "support":
-                # Interpolate: more bias = more support
-                return bias * confidence
-            elif stance == "oppose":
-                # Interpolate: more bias = less oppose
-                return (1.0 - bias) * confidence
-            else:  # neutral
-                return 0.5 * confidence
+            if user_has_negative_view:
+                # User hates the topic
+                if stance == "oppose":
+                    # More bias = more oppose (supporting user's negative view)
+                    return bias * confidence
+                elif stance == "support":
+                    # More bias = less support (challenging user's negative view)
+                    return (1.0 - bias) * confidence
+                else:  # neutral
+                    return 0.5 * confidence
+            elif user_has_positive_view:
+                # User loves the topic
+                if stance == "support":
+                    # More bias = more support (supporting user's positive view)
+                    return bias * confidence
+                elif stance == "oppose":
+                    # More bias = less oppose (challenging user's positive view)
+                    return (1.0 - bias) * confidence
+                else:  # neutral
+                    return 0.5 * confidence
+            else:
+                # No clear user view, use original interpolation
+                if stance == "support":
+                    return bias * confidence
+                elif stance == "oppose":
+                    return (1.0 - bias) * confidence
+                else:  # neutral
+                    return 0.5 * confidence
     
     def _is_political_view(self, user_view: str) -> bool:
         """Check if the user view is political in nature"""
