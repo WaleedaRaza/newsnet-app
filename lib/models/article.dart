@@ -48,6 +48,8 @@ class Article {
       'bias_analysis': biasAnalysis?.toJson(),
     };
   }
+
+  String get sourceName => source.name;
 }
 
 @JsonSerializable()
@@ -115,6 +117,8 @@ class BiasAnalysis {
   final String stanceMethod;
   final List<String> stanceEvidence;
   final double biasMatch;
+  final double? relevanceScore;
+  final double? finalScore;
   final double userBiasPreference;
   final String userBelief;
   final String analysisMethod;
@@ -128,6 +132,8 @@ class BiasAnalysis {
     required this.stanceMethod,
     required this.stanceEvidence,
     required this.biasMatch,
+    this.relevanceScore,
+    this.finalScore,
     required this.userBiasPreference,
     required this.userBelief,
     required this.analysisMethod,
@@ -143,6 +149,8 @@ class BiasAnalysis {
       stanceMethod: json['stance_method'] ?? 'rule_based',
       stanceEvidence: List<String>.from(json['stance_evidence'] ?? []),
       biasMatch: (json['bias_match'] ?? 0.5).toDouble(),
+      relevanceScore: json['relevance_score'] != null ? (json['relevance_score'] as num).toDouble() : null,
+      finalScore: json['final_score'] != null ? (json['final_score'] as num).toDouble() : null,
       userBiasPreference: (json['user_bias_preference'] ?? 0.5).toDouble(),
       userBelief: json['user_belief'] ?? '',
       analysisMethod: json['analysis_method'] ?? 'stance_detection',
@@ -159,6 +167,8 @@ class BiasAnalysis {
       'stance_method': stanceMethod,
       'stance_evidence': stanceEvidence,
       'bias_match': biasMatch,
+      'relevance_score': relevanceScore,
+      'final_score': finalScore,
       'user_bias_preference': userBiasPreference,
       'user_belief': userBelief,
       'analysis_method': analysisMethod,

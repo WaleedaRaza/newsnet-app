@@ -43,13 +43,13 @@ class _TopicAnalysisScreenState extends ConsumerState<TopicAnalysisScreen> {
     });
 
     try {
-      await ref.read(articleSearchNotifierProvider.notifier).searchArticles(
+      await ref.read(articleProvider.notifier).searchArticles(
         searchQuery,
         _biasValue,
       );
       
       // Log the results
-      final articles = ref.read(articleSearchNotifierProvider).value;
+      final articles = ref.read(articleProvider).value;
       if (articles != null) {
         print('📰 ARTICLES RETURNED (${articles.length}):');
         print('📰 RAW BACKEND RESPONSE ANALYSIS:');
@@ -144,7 +144,7 @@ class _TopicAnalysisScreenState extends ConsumerState<TopicAnalysisScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final searchAsync = ref.watch(articleSearchNotifierProvider);
+    final searchAsync = ref.watch(articleProvider);
 
     return Scaffold(
       appBar: AppBar(

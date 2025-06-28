@@ -1,5 +1,5 @@
 from pydantic_settings import BaseSettings
-from typing import Optional
+from typing import Optional, List
 import os
 
 class Settings(BaseSettings):
@@ -15,12 +15,12 @@ class Settings(BaseSettings):
     access_token_expire_minutes: int = 30
     
     # OpenAI
-    openai_api_key: Optional[str] = None
+    openai_api_key: str = os.getenv("OPENAI_API_KEY", "your_openai_api_key_here")
     
-    # News APIs - Multi-API Architecture
-    news_api_key: Optional[str] = None  # NewsAPI.org
-    gnews_api_key: Optional[str] = None  # GNews API
-    mediastack_api_key: Optional[str] = None  # Mediastack API
+    # News APIs - Single API with Smart Caching
+    news_api_key: str = os.getenv("NEWS_API_KEY", "your_news_api_key_here")
+    gnews_api_key: Optional[str] = None  # GNews API (backup)
+    mediastack_api_key: Optional[str] = None  # Mediastack API (backup)
     webz_api_key: Optional[str] = None  # Webz.io API
     newscatcher_api_key: Optional[str] = None  # Newscatcher API
     worldnews_api_key: Optional[str] = None  # World News API
@@ -36,6 +36,12 @@ class Settings(BaseSettings):
     # App
     app_name: str = "NewsNet"
     debug: bool = True
+    
+    # GDELT API (free, unlimited)
+    gdelt_api_key: str = os.getenv("GDELT_API_KEY", "")  # Usually not needed for basic usage
+    
+    # CORS
+    cors_origins: list = ["*"]
     
     class Config:
         env_file = ".env"

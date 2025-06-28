@@ -1,0 +1,722 @@
+{
+  "maga maga is ruining america_0.50": {
+    "articles": [
+      {
+        "title": "Runaway bear in runway \u2018stalemate\u2019 with Japanese airport officials",
+        "description": "&lt;p&gt;A dozen flights cancelled at Yamagata airport as attempts to chase furry trespasser away continue&lt;/p&gt;&lt;p&gt;Authorities at a Japanese airport are locked in a \u201cstalemate\u201d with a black bear which has been roaming the runway despite attempts to chase it off, forcing air traffic controllers to cancel a dozen flights.&lt;/p&gt;&lt;p&gt;The bear first appeared at northern Yamagata airport in the early hours of Thursday, and officials immediately shut operations down, causing delays.&lt;/p&gt; &lt;a href=\"https://www.theguardian.com/world/2025/jun/26/bear-on-runway-flights-cancelled-japan-yamagata-airport\"&gt;Continue reading...&lt;/a&gt;",
+        "url": "https://www.theguardian.com/world/2025/jun/26/bear-on-runway-flights-cancelled-japan-yamagata-airport",
+        "urlToImage": "",
+        "publishedAt": "Thu, 26 Jun 2025 13:53:07 GMT",
+        "source": {
+          "name": "The Guardian"
+        },
+        "content": "Runaway bear in runway \u2018stalemate\u2019 with Japanese airport officials. &lt;p&gt;A dozen flights cancelled at Yamagata airport as attempts to chase furry trespasser away continue&lt;/p&gt;&lt;p&gt;Authorities at a Japanese airport are locked in a \u201cstalemate\u201d with a black bear which has been roaming the runway despite attempts to chase it off, forcing air traffic controllers to cancel a dozen flights.&lt;/p&gt;&lt;p&gt;The bear first appeared at northern Yamagata airport in the early hours of Thursday, and officials immediately shut operations down, causing delays.&lt;/p&gt; &lt;a href=\"https://www.theguardian.com/world/2025/jun/26/bear-on-runway-flights-cancelled-japan-yamagata-airport\"&gt;Continue reading...&lt;/a&gt;",
+        "bias_analysis": {
+          "stance": "support",
+          "stance_confidence": 0.8920062780380249,
+          "stance_method": "nli",
+          "stance_evidence": [
+            "NLI confidence: 0.892"
+          ],
+          "bias_match": 0.44600313901901245,
+          "relevance_score": 0.47050666666666663,
+          "final_score": 0.4533541973133086,
+          "user_bias_preference": 0.5,
+          "user_belief": "maga MAGA is ruining America",
+          "analysis_method": "universal_stance_detection"
+        }
+      }
+    ],
+    "timestamp": "2025-06-28T04:13:43.537241"
+  },
+  "maga it\u2019s ruining america_0.50": {
+    "articles": [
+      {
+        "title": "MAGA largely falls in line on Trump\u2019s Iran strikes - Politico",
+        "description": "<a href=\"https://news.google.com/rss/articles/CBMioAFBVV95cUxNS2haSHlVdU84RDZXT01JU2ptREVNRVZYc3p1bWctVUJzc1FYVkxkVXNCd1Z1b18zdTg4SlpFUnpYOGlsdW5CVjJoOHI2VGxtelZxcElUOUlXc2JXUUF6OHl1VkQ0d0tJV0RITzRCNTRNUXVxTktrcG1uWTBqcW44NG42TUtMamlndTZvVzc5WllLSkp3eUlRNDgtazJuSWwy?oc=5\" target=\"_blank\">MAGA largely falls in line on Trump\u2019s Iran strikes</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Politico</font>",
+        "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNS2haSHlVdU84RDZXT01JU2ptREVNRVZYc3p1bWctVUJzc1FYVkxkVXNCd1Z1b18zdTg4SlpFUnpYOGlsdW5CVjJoOHI2VGxtelZxcElUOUlXc2JXUUF6OHl1VkQ0d0tJV0RITzRCNTRNUXVxTktrcG1uWTBqcW44NG42TUtMamlndTZvVzc5WllLSkp3eUlRNDgtazJuSWwy?oc=5",
+        "urlToImage": "",
+        "publishedAt": "Sun, 22 Jun 2025 02:25:43 GMT",
+        "source": {
+          "name": "Politico"
+        },
+        "content": "MAGA largely falls in line on Trump\u2019s Iran strikes - Politico. <a href=\"https://news.google.com/rss/articles/CBMioAFBVV95cUxNS2haSHlVdU84RDZXT01JU2ptREVNRVZYc3p1bWctVUJzc1FYVkxkVXNCd1Z1b18zdTg4SlpFUnpYOGlsdW5CVjJoOHI2VGxtelZxcElUOUlXc2JXUUF6OHl1VkQ0d0tJV0RITzRCNTRNUXVxTktrcG1uWTBqcW44NG42TUtMamlndTZvVzc5WllLSkp3eUlRNDgtazJuSWwy?oc=5\" target=\"_blank\">MAGA largely falls in line on Trump\u2019s Iran strikes</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Politico</font>",
+        "bias_analysis": {
+          "stance": "support",
+          "stance_confidence": 0.9758189916610718,
+          "stance_method": "nli",
+          "stance_evidence": [
+            "NLI confidence: 0.976"
+          ],
+          "bias_match": 0.4879094958305359,
+          "relevance_score": 0.4059028571428571,
+          "final_score": 0.4633075042242322,
+          "user_bias_preference": 0.5,
+          "user_belief": "maga It\u2019s ruining america",
+          "analysis_method": "universal_stance_detection"
+        }
+      },
+      {
+        "title": "The Colorado governor joins team MAGA - Colorado Newsline",
+        "description": "<a href=\"https://news.google.com/rss/articles/CBMie0FVX3lxTE9nSlByM3J3b3pFLTk5bmZBOFJpRlB1OFc3Xzc3bEM0N1J5b25DRUIwMEV6UmY3cXZILXpaaWUzOXZOZHRnTWdLTFM0LUNBd1hvQ1N1eU52WFh3WmJueE44SEU3RUFRTFBrS1NmU1lydWF4MjE4QWFVdkl4dw?oc=5\" target=\"_blank\">The Colorado governor joins team MAGA</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Colorado Newsline</font>",
+        "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9nSlByM3J3b3pFLTk5bmZBOFJpRlB1OFc3Xzc3bEM0N1J5b25DRUIwMEV6UmY3cXZILXpaaWUzOXZOZHRnTWdLTFM0LUNBd1hvQ1N1eU52WFh3WmJueE44SEU3RUFRTFBrS1NmU1lydWF4MjE4QWFVdkl4dw?oc=5",
+        "urlToImage": "",
+        "publishedAt": "Thu, 26 Jun 2025 14:25:08 GMT",
+        "source": {
+          "name": "Colorado Newsline"
+        },
+        "content": "The Colorado governor joins team MAGA - Colorado Newsline. <a href=\"https://news.google.com/rss/articles/CBMie0FVX3lxTE9nSlByM3J3b3pFLTk5bmZBOFJpRlB1OFc3Xzc3bEM0N1J5b25DRUIwMEV6UmY3cXZILXpaaWUzOXZOZHRnTWdLTFM0LUNBd1hvQ1N1eU52WFh3WmJueE44SEU3RUFRTFBrS1NmU1lydWF4MjE4QWFVdkl4dw?oc=5\" target=\"_blank\">The Colorado governor joins team MAGA</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Colorado Newsline</font>",
+        "bias_analysis": {
+          "stance": "support",
+          "stance_confidence": 0.967223584651947,
+          "stance_method": "nli",
+          "stance_evidence": [
+            "NLI confidence: 0.967"
+          ],
+          "bias_match": 0.4836117923259735,
+          "relevance_score": 0.4054228571428571,
+          "final_score": 0.4601551117710385,
+          "user_bias_preference": 0.5,
+          "user_belief": "maga It\u2019s ruining america",
+          "analysis_method": "universal_stance_detection"
+        }
+      },
+      {
+        "title": "Into the MAGA-verse: What the algorithm feeds Gen Z - Axios",
+        "description": "<a href=\"https://news.google.com/rss/articles/CBMicEFVX3lxTE5DMkpsaHdxMHhEQ2pKRVFoSEZibV9vUE9tQjF4aXJLcEEwZldMX19idnNEUVpTb1ZISVlmVW5WT19fMHM2ZHMyMmV3Sm1RakZ6OXQ1X1haTF95dXRieURqY1dOMzJDVHJ6OTk0SFF6TDY?oc=5\" target=\"_blank\">Into the MAGA-verse: What the algorithm feeds Gen Z</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Axios</font>",
+        "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5DMkpsaHdxMHhEQ2pKRVFoSEZibV9vUE9tQjF4aXJLcEEwZldMX19idnNEUVpTb1ZISVlmVW5WT19fMHM2ZHMyMmV3Sm1RakZ6OXQ1X1haTF95dXRieURqY1dOMzJDVHJ6OTk0SFF6TDY?oc=5",
+        "urlToImage": "",
+        "publishedAt": "Sat, 21 Jun 2025 12:49:31 GMT",
+        "source": {
+          "name": "Axios"
+        },
+        "content": "Into the MAGA-verse: What the algorithm feeds Gen Z - Axios. <a href=\"https://news.google.com/rss/articles/CBMicEFVX3lxTE5DMkpsaHdxMHhEQ2pKRVFoSEZibV9vUE9tQjF4aXJLcEEwZldMX19idnNEUVpTb1ZISVlmVW5WT19fMHM2ZHMyMmV3Sm1RakZ6OXQ1X1haTF95dXRieURqY1dOMzJDVHJ6OTk0SFF6TDY?oc=5\" target=\"_blank\">Into the MAGA-verse: What the algorithm feeds Gen Z</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Axios</font>",
+        "bias_analysis": {
+          "stance": "support",
+          "stance_confidence": 0.929883599281311,
+          "stance_method": "nli",
+          "stance_evidence": [
+            "NLI confidence: 0.930"
+          ],
+          "bias_match": 0.4649417996406555,
+          "relevance_score": 0.4059028571428571,
+          "final_score": 0.447230116891316,
+          "user_bias_preference": 0.5,
+          "user_belief": "maga It\u2019s ruining america",
+          "analysis_method": "universal_stance_detection"
+        }
+      },
+      {
+        "title": "Poll: More Americans oppose the U.S. strikes on Iran, as MAGA supporters line up with Trump - NBC News",
+        "description": "<a href=\"https://news.google.com/rss/articles/CBMiyAFBVV95cUxNeE5rc0dKYzJLWXZKUGI2SnNVYmVfazQ3T1dmSFlnbFNUdHo4YU91ZGU2Ym0yMTNubkd6a283V2RwcThoZGppZEIyVFNMblo4c0xIVnNFWG12SktESDlKcmppTjdpX2JWMG43VGxQdVJMVGRLUXJONmEwLUtqckc2VVNfYk4zY1Jabjkxekp1aVhZdWdhTy1VR01SR2NhLTJ6ZzM1dnNObDdXUlFIbW1fQ3N2TWgxTTNxVkF2cUI4LUs3bVhXdWhES9IBVkFVX3lxTE5zYlFMU3Nsc3ItOEd6aFpNTk9XeUhRQk1NZE13VGl2a0dzblRfc3o4d3R2VkdpVEhBbXVBMUdaYVI0c0ZGRlZrLWJ0T3diZVR2UXRpODdR?oc=5\" target=\"_blank\">Poll: More Americans oppose the U.S. strikes on Iran, as MAGA supporters line up with Trump</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">NBC News</font>",
+        "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNeE5rc0dKYzJLWXZKUGI2SnNVYmVfazQ3T1dmSFlnbFNUdHo4YU91ZGU2Ym0yMTNubkd6a283V2RwcThoZGppZEIyVFNMblo4c0xIVnNFWG12SktESDlKcmppTjdpX2JWMG43VGxQdVJMVGRLUXJONmEwLUtqckc2VVNfYk4zY1Jabjkxekp1aVhZdWdhTy1VR01SR2NhLTJ6ZzM1dnNObDdXUlFIbW1fQ3N2TWgxTTNxVkF2cUI4LUs3bVhXdWhES9IBVkFVX3lxTE5zYlFMU3Nsc3ItOEd6aFpNTk9XeUhRQk1NZE13VGl2a0dzblRfc3o4d3R2VkdpVEhBbXVBMUdaYVI0c0ZGRlZrLWJ0T3diZVR2UXRpODdR?oc=5",
+        "urlToImage": "",
+        "publishedAt": "Thu, 26 Jun 2025 09:00:41 GMT",
+        "source": {
+          "name": "NBC News"
+        },
+        "content": "Poll: More Americans oppose the U.S. strikes on Iran, as MAGA supporters line up with Trump - NBC News. <a href=\"https://news.google.com/rss/articles/CBMiyAFBVV95cUxNeE5rc0dKYzJLWXZKUGI2SnNVYmVfazQ3T1dmSFlnbFNUdHo4YU91ZGU2Ym0yMTNubkd6a283V2RwcThoZGppZEIyVFNMblo4c0xIVnNFWG12SktESDlKcmppTjdpX2JWMG43VGxQdVJMVGRLUXJONmEwLUtqckc2VVNfYk4zY1Jabjkxekp1aVhZdWdhTy1VR01SR2NhLTJ6ZzM1dnNObDdXUlFIbW1fQ3N2TWgxTTNxVkF2cUI4LUs3bVhXdWhES9IBVkFVX3lxTE5zYlFMU3Nsc3ItOEd6aFpNTk9XeUhRQk1NZE13VGl2a0dzblRfc3o4d3R2VkdpVEhBbXVBMUdaYVI0c0ZGRlZrLWJ0T3diZVR2UXRpODdR?oc=5\" target=\"_blank\">Poll: More Americans oppose the U.S. strikes on Iran, as MAGA supporters line up with Trump</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">NBC News</font>",
+        "bias_analysis": {
+          "stance": "support",
+          "stance_confidence": 0.8362404108047485,
+          "stance_method": "nli",
+          "stance_evidence": [
+            "NLI confidence: 0.836"
+          ],
+          "bias_match": 0.41812020540237427,
+          "relevance_score": 0.4911561904761904,
+          "final_score": 0.4400310009245191,
+          "user_bias_preference": 0.5,
+          "user_belief": "maga It\u2019s ruining america",
+          "analysis_method": "universal_stance_detection"
+        }
+      },
+      {
+        "title": "Trump\u2019s move against Iran may draw more criticism from MAGA\u2019s anti-interventionists - AP News",
+        "description": "<a href=\"https://news.google.com/rss/articles/CBMiqAFBVV95cUxNaWMyeVBuWWt0cTNFMER5b0s0R1EtSm9XUlRXMmRYU3RYbm9mWUF3cDB5TFpvUHhrWkZKVUhWWTRObEJFVHNQUU9tNzRrLW5reElrbUdBajZZbEVJcHUzWWI3UmlEVlRfVzJRbElCaTBBUzA1U1VJNFNnX19KdnRhYl9zemIwRW1MbWZ3amJiZUR1WTFTTE93YXk0cHJuckg2X1U3ejA3T3M?oc=5\" target=\"_blank\">Trump\u2019s move against Iran may draw more criticism from MAGA\u2019s anti-interventionists</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">AP News</font>",
+        "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNaWMyeVBuWWt0cTNFMER5b0s0R1EtSm9XUlRXMmRYU3RYbm9mWUF3cDB5TFpvUHhrWkZKVUhWWTRObEJFVHNQUU9tNzRrLW5reElrbUdBajZZbEVJcHUzWWI3UmlEVlRfVzJRbElCaTBBUzA1U1VJNFNnX19KdnRhYl9zemIwRW1MbWZ3amJiZUR1WTFTTE93YXk0cHJuckg2X1U3ejA3T3M?oc=5",
+        "urlToImage": "",
+        "publishedAt": "Sun, 22 Jun 2025 02:42:00 GMT",
+        "source": {
+          "name": "AP News"
+        },
+        "content": "Trump\u2019s move against Iran may draw more criticism from MAGA\u2019s anti-interventionists - AP News. <a href=\"https://news.google.com/rss/articles/CBMiqAFBVV95cUxNaWMyeVBuWWt0cTNFMER5b0s0R1EtSm9XUlRXMmRYU3RYbm9mWUF3cDB5TFpvUHhrWkZKVUhWWTRObEJFVHNQUU9tNzRrLW5reElrbUdBajZZbEVJcHUzWWI3UmlEVlRfVzJRbElCaTBBUzA1U1VJNFNnX19KdnRhYl9zemIwRW1MbWZ3amJiZUR1WTFTTE93YXk0cHJuckg2X1U3ejA3T3M?oc=5\" target=\"_blank\">Trump\u2019s move against Iran may draw more criticism from MAGA\u2019s anti-interventionists</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">AP News</font>",
+        "bias_analysis": {
+          "stance": "support",
+          "stance_confidence": 0.9068399667739868,
+          "stance_method": "nli",
+          "stance_evidence": [
+            "NLI confidence: 0.907"
+          ],
+          "bias_match": 0.4534199833869934,
+          "relevance_score": 0.4066228571428571,
+          "final_score": 0.4393808455137525,
+          "user_bias_preference": 0.5,
+          "user_belief": "maga It\u2019s ruining america",
+          "analysis_method": "universal_stance_detection"
+        }
+      },
+      {
+        "title": "MAGA movement divided over Trump\u2019s move to bomb Iran - CNN",
+        "description": "<a href=\"https://news.google.com/rss/articles/CBMifEFVX3lxTE9iWjhGdFdKZ2RvSnlZSGRtbnZVZTd5OXJ3d0pPRTgwU0E5RVU1X0pBR3Jna202dDVYeThQOWVWTlpEMnFZOWZUZlFOQXdRN0M1bGtCRHp6ZW1rRDBLNGpDN0NFbm9TVDJEYV9DakNsU09LckxXaHBTQXg0Y07SAYIBQVVfeXFMUGhhVDFhcUNHNHNteWpLa2VjRy1mamdhLVZrRFRmVHk4WksxN3VlQ1BpU3dod1Z4TmQ1dUdBd3dXakN3SHpZXzNpRUxMTUJNS216bG1iemt6QWpOS18tVDB3NXpsaHZMQlgtbllUaExpd015NFR5X2tsU0JJbGZkZjg3UQ?oc=5\" target=\"_blank\">MAGA movement divided over Trump\u2019s move to bomb Iran</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">CNN</font>",
+        "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9iWjhGdFdKZ2RvSnlZSGRtbnZVZTd5OXJ3d0pPRTgwU0E5RVU1X0pBR3Jna202dDVYeThQOWVWTlpEMnFZOWZUZlFOQXdRN0M1bGtCRHp6ZW1rRDBLNGpDN0NFbm9TVDJEYV9DakNsU09LckxXaHBTQXg0Y07SAYIBQVVfeXFMUGhhVDFhcUNHNHNteWpLa2VjRy1mamdhLVZrRFRmVHk4WksxN3VlQ1BpU3dod1Z4TmQ1dUdBd3dXakN3SHpZXzNpRUxMTUJNS216bG1iemt6QWpOS18tVDB3NXpsaHZMQlgtbllUaExpd015NFR5X2tsU0JJbGZkZjg3UQ?oc=5",
+        "urlToImage": "",
+        "publishedAt": "Sun, 22 Jun 2025 17:05:00 GMT",
+        "source": {
+          "name": "CNN"
+        },
+        "content": "MAGA movement divided over Trump\u2019s move to bomb Iran - CNN. <a href=\"https://news.google.com/rss/articles/CBMifEFVX3lxTE9iWjhGdFdKZ2RvSnlZSGRtbnZVZTd5OXJ3d0pPRTgwU0E5RVU1X0pBR3Jna202dDVYeThQOWVWTlpEMnFZOWZUZlFOQXdRN0M1bGtCRHp6ZW1rRDBLNGpDN0NFbm9TVDJEYV9DakNsU09LckxXaHBTQXg0Y07SAYIBQVVfeXFMUGhhVDFhcUNHNHNteWpLa2VjRy1mamdhLVZrRFRmVHk4WksxN3VlQ1BpU3dod1Z4TmQ1dUdBd3dXakN3SHpZXzNpRUxMTUJNS216bG1iemt6QWpOS18tVDB3NXpsaHZMQlgtbllUaExpd015NFR5X2tsU0JJbGZkZjg3UQ?oc=5\" target=\"_blank\">MAGA movement divided over Trump\u2019s move to bomb Iran</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">CNN</font>",
+        "bias_analysis": {
+          "stance": "support",
+          "stance_confidence": 0.89909827709198,
+          "stance_method": "nli",
+          "stance_evidence": [
+            "NLI confidence: 0.899"
+          ],
+          "bias_match": 0.44954913854599,
+          "relevance_score": 0.4059028571428571,
+          "final_score": 0.4364552541250501,
+          "user_bias_preference": 0.5,
+          "user_belief": "maga It\u2019s ruining america",
+          "analysis_method": "universal_stance_detection"
+        }
+      },
+      {
+        "title": "Runaway bear in runway \u2018stalemate\u2019 with Japanese airport officials",
+        "description": "&lt;p&gt;A dozen flights cancelled at Yamagata airport as attempts to chase furry trespasser away continue&lt;/p&gt;&lt;p&gt;Authorities at a Japanese airport are locked in a \u201cstalemate\u201d with a black bear which has been roaming the runway despite attempts to chase it off, forcing air traffic controllers to cancel a dozen flights.&lt;/p&gt;&lt;p&gt;The bear first appeared at northern Yamagata airport in the early hours of Thursday, and officials immediately shut operations down, causing delays.&lt;/p&gt; &lt;a href=\"https://www.theguardian.com/world/2025/jun/26/bear-on-runway-flights-cancelled-japan-yamagata-airport\"&gt;Continue reading...&lt;/a&gt;",
+        "url": "https://www.theguardian.com/world/2025/jun/26/bear-on-runway-flights-cancelled-japan-yamagata-airport",
+        "urlToImage": "",
+        "publishedAt": "Thu, 26 Jun 2025 13:53:07 GMT",
+        "source": {
+          "name": "The Guardian"
+        },
+        "content": "Runaway bear in runway \u2018stalemate\u2019 with Japanese airport officials. &lt;p&gt;A dozen flights cancelled at Yamagata airport as attempts to chase furry trespasser away continue&lt;/p&gt;&lt;p&gt;Authorities at a Japanese airport are locked in a \u201cstalemate\u201d with a black bear which has been roaming the runway despite attempts to chase it off, forcing air traffic controllers to cancel a dozen flights.&lt;/p&gt;&lt;p&gt;The bear first appeared at northern Yamagata airport in the early hours of Thursday, and officials immediately shut operations down, causing delays.&lt;/p&gt; &lt;a href=\"https://www.theguardian.com/world/2025/jun/26/bear-on-runway-flights-cancelled-japan-yamagata-airport\"&gt;Continue reading...&lt;/a&gt;",
+        "bias_analysis": {
+          "stance": "support",
+          "stance_confidence": 0.8920062780380249,
+          "stance_method": "nli",
+          "stance_evidence": [
+            "NLI confidence: 0.892"
+          ],
+          "bias_match": 0.44600313901901245,
+          "relevance_score": 0.3871733333333333,
+          "final_score": 0.42835419731330865,
+          "user_bias_preference": 0.5,
+          "user_belief": "maga It\u2019s ruining america",
+          "analysis_method": "universal_stance_detection"
+        }
+      },
+      {
+        "title": "MAGA star Steve Bannon plays outsized role in Trump's Iran decision: Sources - ABC News - Breaking News, Latest News and Videos",
+        "description": "<a href=\"https://news.google.com/rss/articles/CBMiogFBVV95cUxQN3RJZlpKUW1FVE1NSzY2bHBFbzR6TkdXbHVnZDh0S1F6Qi05NThwYW12YWR1NFBMN3VzYlNIUnlMWE13Z3RocEo3NFJnUHdjbDZXanNORXp5N0tQSGNSeGNmYXNpUUwzNEZncHl4YWFvRjRENE9CXzY5RGVudDhEOTA0VDFXdVZGZzJpWmZnQnV5NFBlN1RwcXBBVGpXSUl4RFHSAacBQVVfeXFMTmtPZS0zdG1iMGxvNDU1M0wyREtzR1FsTi1aYXFoSExyV19RREVQcjZISndCTnB1d1Vjd2p0VXpwZnlBc1RYdGZaamN4NnB5X1IyQ09DTXI0UlkzTEJwck1Kanh0TFRnaE9LNXJPVGVFQjI0azVWZTZMdExJb0RtMWdsSkZ3TmNJYjA1TF9rT1ZxM2NLcTZ5SFl3aEM4SWNscXA3MlF3dkU?oc=5\" target=\"_blank\">MAGA star Steve Bannon plays outsized role in Trump's Iran decision: Sources</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">ABC News - Breaking News, Latest News and Videos</font>",
+        "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQN3RJZlpKUW1FVE1NSzY2bHBFbzR6TkdXbHVnZDh0S1F6Qi05NThwYW12YWR1NFBMN3VzYlNIUnlMWE13Z3RocEo3NFJnUHdjbDZXanNORXp5N0tQSGNSeGNmYXNpUUwzNEZncHl4YWFvRjRENE9CXzY5RGVudDhEOTA0VDFXdVZGZzJpWmZnQnV5NFBlN1RwcXBBVGpXSUl4RFHSAacBQVVfeXFMTmtPZS0zdG1iMGxvNDU1M0wyREtzR1FsTi1aYXFoSExyV19RREVQcjZISndCTnB1d1Vjd2p0VXpwZnlBc1RYdGZaamN4NnB5X1IyQ09DTXI0UlkzTEJwck1Kanh0TFRnaE9LNXJPVGVFQjI0azVWZTZMdExJb0RtMWdsSkZ3TmNJYjA1TF9rT1ZxM2NLcTZ5SFl3aEM4SWNscXA3MlF3dkU?oc=5",
+        "urlToImage": "",
+        "publishedAt": "Sat, 21 Jun 2025 14:04:57 GMT",
+        "source": {
+          "name": "ABC News - Breaking News, Latest News and Videos"
+        },
+        "content": "MAGA star Steve Bannon plays outsized role in Trump's Iran decision: Sources - ABC News - Breaking News, Latest News and Videos. <a href=\"https://news.google.com/rss/articles/CBMiogFBVV95cUxQN3RJZlpKUW1FVE1NSzY2bHBFbzR6TkdXbHVnZDh0S1F6Qi05NThwYW12YWR1NFBMN3VzYlNIUnlMWE13Z3RocEo3NFJnUHdjbDZXanNORXp5N0tQSGNSeGNmYXNpUUwzNEZncHl4YWFvRjRENE9CXzY5RGVudDhEOTA0VDFXdVZGZzJpWmZnQnV5NFBlN1RwcXBBVGpXSUl4RFHSAacBQVVfeXFMTmtPZS0zdG1iMGxvNDU1M0wyREtzR1FsTi1aYXFoSExyV19RREVQcjZISndCTnB1d1Vjd2p0VXpwZnlBc1RYdGZaamN4NnB5X1IyQ09DTXI0UlkzTEJwck1Kanh0TFRnaE9LNXJPVGVFQjI0azVWZTZMdExJb0RtMWdsSkZ3TmNJYjA1TF9rT1ZxM2NLcTZ5SFl3aEM4SWNscXA3MlF3dkU?oc=5\" target=\"_blank\">MAGA star Steve Bannon plays outsized role in Trump's Iran decision: Sources</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">ABC News - Breaking News, Latest News and Videos</font>",
+        "bias_analysis": {
+          "stance": "neutral",
+          "stance_confidence": 0.3,
+          "stance_method": "fallback",
+          "stance_evidence": [
+            "No clear stance detected"
+          ],
+          "bias_match": 0.15,
+          "relevance_score": 0.4228285714285714,
+          "final_score": 0.2318485714285714,
+          "user_bias_preference": 0.5,
+          "user_belief": "maga It\u2019s ruining america",
+          "analysis_method": "universal_stance_detection"
+        }
+      },
+      {
+        "title": "Trump\u2019s decision to strike Iran may draw more criticism from MAGA anti-interventionists - PBS",
+        "description": "<a href=\"https://news.google.com/rss/articles/CBMiwgFBVV95cUxOdWt1cXY4SldFTzBPRmVhOWowRXplTjNkX1hxd3NGZ3dIeWx2VXd3MGR0ekJuckU2MmkycU9GQml2Z3dQYUMydEg4TE9CZGhtLUhRMGRkRlpVV2JOaE45WVRiSlZwSGdKZ1JkTHAzSUMxWG9DZDNScGg0QzRXcWs4ZEF4SlBFTDg2RENDSXlNQS05U3RoUnNqM0V5S3FEME9ValdWQlF3aWJna2JDVHBQTDYtcE9mUDh6azkzZ0VSc0Nhd9IBxwFBVV95cUxOalF1ODZfMDhVR3NMbG9rMHhEUE5Bb0JLX0tOU05uYmliRU9ZQVJyNkRTcUJOVUpSbzNER2M2TGxhMVBndG1Cc2JIT1VLYThhU1VHS1JlN0h4aEJLMzdYc0dhTmRhbm1iS1V1eTZyOF82dkxua3JJU04wT1h0NlJYUl90YVExZnVyaVJiSGw4NldDYXhxYV94WXE1dlhEcHU1djRvVlYwY1RUSDdvQ1NBeFBmWHo0VENaQ2d2ZHB6ZGh2YTNVX05n?oc=5\" target=\"_blank\">Trump\u2019s decision to strike Iran may draw more criticism from MAGA anti-interventionists</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">PBS</font>",
+        "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOdWt1cXY4SldFTzBPRmVhOWowRXplTjNkX1hxd3NGZ3dIeWx2VXd3MGR0ekJuckU2MmkycU9GQml2Z3dQYUMydEg4TE9CZGhtLUhRMGRkRlpVV2JOaE45WVRiSlZwSGdKZ1JkTHAzSUMxWG9DZDNScGg0QzRXcWs4ZEF4SlBFTDg2RENDSXlNQS05U3RoUnNqM0V5S3FEME9ValdWQlF3aWJna2JDVHBQTDYtcE9mUDh6azkzZ0VSc0Nhd9IBxwFBVV95cUxOalF1ODZfMDhVR3NMbG9rMHhEUE5Bb0JLX0tOU05uYmliRU9ZQVJyNkRTcUJOVUpSbzNER2M2TGxhMVBndG1Cc2JIT1VLYThhU1VHS1JlN0h4aEJLMzdYc0dhTmRhbm1iS1V1eTZyOF82dkxua3JJU04wT1h0NlJYUl90YVExZnVyaVJiSGw4NldDYXhxYV94WXE1dlhEcHU1djRvVlYwY1RUSDdvQ1NBeFBmWHo0VENaQ2d2ZHB6ZGh2YTNVX05n?oc=5",
+        "urlToImage": "",
+        "publishedAt": "Sun, 22 Jun 2025 01:32:22 GMT",
+        "source": {
+          "name": "PBS"
+        },
+        "content": "Trump\u2019s decision to strike Iran may draw more criticism from MAGA anti-interventionists - PBS. <a href=\"https://news.google.com/rss/articles/CBMiwgFBVV95cUxOdWt1cXY4SldFTzBPRmVhOWowRXplTjNkX1hxd3NGZ3dIeWx2VXd3MGR0ekJuckU2MmkycU9GQml2Z3dQYUMydEg4TE9CZGhtLUhRMGRkRlpVV2JOaE45WVRiSlZwSGdKZ1JkTHAzSUMxWG9DZDNScGg0QzRXcWs4ZEF4SlBFTDg2RENDSXlNQS05U3RoUnNqM0V5S3FEME9ValdWQlF3aWJna2JDVHBQTDYtcE9mUDh6azkzZ0VSc0Nhd9IBxwFBVV95cUxOalF1ODZfMDhVR3NMbG9rMHhEUE5Bb0JLX0tOU05uYmliRU9ZQVJyNkRTcUJOVUpSbzNER2M2TGxhMVBndG1Cc2JIT1VLYThhU1VHS1JlN0h4aEJLMzdYc0dhTmRhbm1iS1V1eTZyOF82dkxua3JJU04wT1h0NlJYUl90YVExZnVyaVJiSGw4NldDYXhxYV94WXE1dlhEcHU1djRvVlYwY1RUSDdvQ1NBeFBmWHo0VENaQ2d2ZHB6ZGh2YTNVX05n?oc=5\" target=\"_blank\">Trump\u2019s decision to strike Iran may draw more criticism from MAGA anti-interventionists</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">PBS</font>",
+        "bias_analysis": {
+          "stance": "neutral",
+          "stance_confidence": 0.3,
+          "stance_method": "fallback",
+          "stance_evidence": [
+            "No clear stance detected"
+          ],
+          "bias_match": 0.15,
+          "relevance_score": 0.4066228571428571,
+          "final_score": 0.22698685714285713,
+          "user_bias_preference": 0.5,
+          "user_belief": "maga It\u2019s ruining america",
+          "analysis_method": "universal_stance_detection"
+        }
+      }
+    ],
+    "timestamp": "2025-06-28T04:16:36.601587"
+  },
+  "maga it\u2019s ruining america_1.00": {
+    "articles": [
+      {
+        "title": "MAGA largely falls in line on Trump\u2019s Iran strikes - Politico",
+        "description": "<a href=\"https://news.google.com/rss/articles/CBMioAFBVV95cUxNS2haSHlVdU84RDZXT01JU2ptREVNRVZYc3p1bWctVUJzc1FYVkxkVXNCd1Z1b18zdTg4SlpFUnpYOGlsdW5CVjJoOHI2VGxtelZxcElUOUlXc2JXUUF6OHl1VkQ0d0tJV0RITzRCNTRNUXVxTktrcG1uWTBqcW44NG42TUtMamlndTZvVzc5WllLSkp3eUlRNDgtazJuSWwy?oc=5\" target=\"_blank\">MAGA largely falls in line on Trump\u2019s Iran strikes</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Politico</font>",
+        "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNS2haSHlVdU84RDZXT01JU2ptREVNRVZYc3p1bWctVUJzc1FYVkxkVXNCd1Z1b18zdTg4SlpFUnpYOGlsdW5CVjJoOHI2VGxtelZxcElUOUlXc2JXUUF6OHl1VkQ0d0tJV0RITzRCNTRNUXVxTktrcG1uWTBqcW44NG42TUtMamlndTZvVzc5WllLSkp3eUlRNDgtazJuSWwy?oc=5",
+        "urlToImage": "",
+        "publishedAt": "Sun, 22 Jun 2025 02:25:43 GMT",
+        "source": {
+          "name": "Politico"
+        },
+        "content": "MAGA largely falls in line on Trump\u2019s Iran strikes - Politico. <a href=\"https://news.google.com/rss/articles/CBMioAFBVV95cUxNS2haSHlVdU84RDZXT01JU2ptREVNRVZYc3p1bWctVUJzc1FYVkxkVXNCd1Z1b18zdTg4SlpFUnpYOGlsdW5CVjJoOHI2VGxtelZxcElUOUlXc2JXUUF6OHl1VkQ0d0tJV0RITzRCNTRNUXVxTktrcG1uWTBqcW44NG42TUtMamlndTZvVzc5WllLSkp3eUlRNDgtazJuSWwy?oc=5\" target=\"_blank\">MAGA largely falls in line on Trump\u2019s Iran strikes</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Politico</font>",
+        "bias_analysis": {
+          "stance": "support",
+          "stance_confidence": 0.9758189916610718,
+          "stance_method": "nli",
+          "stance_evidence": [
+            "NLI confidence: 0.976"
+          ],
+          "bias_match": 0.9758189916610718,
+          "relevance_score": 0.4059028571428571,
+          "final_score": 0.8048441513056073,
+          "user_bias_preference": 1.0,
+          "user_belief": "maga It\u2019s ruining america",
+          "analysis_method": "universal_stance_detection"
+        }
+      },
+      {
+        "title": "The Colorado governor joins team MAGA - Colorado Newsline",
+        "description": "<a href=\"https://news.google.com/rss/articles/CBMie0FVX3lxTE9nSlByM3J3b3pFLTk5bmZBOFJpRlB1OFc3Xzc3bEM0N1J5b25DRUIwMEV6UmY3cXZILXpaaWUzOXZOZHRnTWdLTFM0LUNBd1hvQ1N1eU52WFh3WmJueE44SEU3RUFRTFBrS1NmU1lydWF4MjE4QWFVdkl4dw?oc=5\" target=\"_blank\">The Colorado governor joins team MAGA</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Colorado Newsline</font>",
+        "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9nSlByM3J3b3pFLTk5bmZBOFJpRlB1OFc3Xzc3bEM0N1J5b25DRUIwMEV6UmY3cXZILXpaaWUzOXZOZHRnTWdLTFM0LUNBd1hvQ1N1eU52WFh3WmJueE44SEU3RUFRTFBrS1NmU1lydWF4MjE4QWFVdkl4dw?oc=5",
+        "urlToImage": "",
+        "publishedAt": "Thu, 26 Jun 2025 14:25:08 GMT",
+        "source": {
+          "name": "Colorado Newsline"
+        },
+        "content": "The Colorado governor joins team MAGA - Colorado Newsline. <a href=\"https://news.google.com/rss/articles/CBMie0FVX3lxTE9nSlByM3J3b3pFLTk5bmZBOFJpRlB1OFc3Xzc3bEM0N1J5b25DRUIwMEV6UmY3cXZILXpaaWUzOXZOZHRnTWdLTFM0LUNBd1hvQ1N1eU52WFh3WmJueE44SEU3RUFRTFBrS1NmU1lydWF4MjE4QWFVdkl4dw?oc=5\" target=\"_blank\">The Colorado governor joins team MAGA</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Colorado Newsline</font>",
+        "bias_analysis": {
+          "stance": "support",
+          "stance_confidence": 0.967223584651947,
+          "stance_method": "nli",
+          "stance_evidence": [
+            "NLI confidence: 0.967"
+          ],
+          "bias_match": 0.967223584651947,
+          "relevance_score": 0.4054228571428571,
+          "final_score": 0.79868336639922,
+          "user_bias_preference": 1.0,
+          "user_belief": "maga It\u2019s ruining america",
+          "analysis_method": "universal_stance_detection"
+        }
+      },
+      {
+        "title": "Into the MAGA-verse: What the algorithm feeds Gen Z - Axios",
+        "description": "<a href=\"https://news.google.com/rss/articles/CBMicEFVX3lxTE5DMkpsaHdxMHhEQ2pKRVFoSEZibV9vUE9tQjF4aXJLcEEwZldMX19idnNEUVpTb1ZISVlmVW5WT19fMHM2ZHMyMmV3Sm1RakZ6OXQ1X1haTF95dXRieURqY1dOMzJDVHJ6OTk0SFF6TDY?oc=5\" target=\"_blank\">Into the MAGA-verse: What the algorithm feeds Gen Z</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Axios</font>",
+        "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5DMkpsaHdxMHhEQ2pKRVFoSEZibV9vUE9tQjF4aXJLcEEwZldMX19idnNEUVpTb1ZISVlmVW5WT19fMHM2ZHMyMmV3Sm1RakZ6OXQ1X1haTF95dXRieURqY1dOMzJDVHJ6OTk0SFF6TDY?oc=5",
+        "urlToImage": "",
+        "publishedAt": "Sat, 21 Jun 2025 12:49:31 GMT",
+        "source": {
+          "name": "Axios"
+        },
+        "content": "Into the MAGA-verse: What the algorithm feeds Gen Z - Axios. <a href=\"https://news.google.com/rss/articles/CBMicEFVX3lxTE5DMkpsaHdxMHhEQ2pKRVFoSEZibV9vUE9tQjF4aXJLcEEwZldMX19idnNEUVpTb1ZISVlmVW5WT19fMHM2ZHMyMmV3Sm1RakZ6OXQ1X1haTF95dXRieURqY1dOMzJDVHJ6OTk0SFF6TDY?oc=5\" target=\"_blank\">Into the MAGA-verse: What the algorithm feeds Gen Z</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Axios</font>",
+        "bias_analysis": {
+          "stance": "support",
+          "stance_confidence": 0.929883599281311,
+          "stance_method": "nli",
+          "stance_evidence": [
+            "NLI confidence: 0.930"
+          ],
+          "bias_match": 0.929883599281311,
+          "relevance_score": 0.4059028571428571,
+          "final_score": 0.7726893766397749,
+          "user_bias_preference": 1.0,
+          "user_belief": "maga It\u2019s ruining america",
+          "analysis_method": "universal_stance_detection"
+        }
+      },
+      {
+        "title": "Trump\u2019s move against Iran may draw more criticism from MAGA\u2019s anti-interventionists - AP News",
+        "description": "<a href=\"https://news.google.com/rss/articles/CBMiqAFBVV95cUxNaWMyeVBuWWt0cTNFMER5b0s0R1EtSm9XUlRXMmRYU3RYbm9mWUF3cDB5TFpvUHhrWkZKVUhWWTRObEJFVHNQUU9tNzRrLW5reElrbUdBajZZbEVJcHUzWWI3UmlEVlRfVzJRbElCaTBBUzA1U1VJNFNnX19KdnRhYl9zemIwRW1MbWZ3amJiZUR1WTFTTE93YXk0cHJuckg2X1U3ejA3T3M?oc=5\" target=\"_blank\">Trump\u2019s move against Iran may draw more criticism from MAGA\u2019s anti-interventionists</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">AP News</font>",
+        "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNaWMyeVBuWWt0cTNFMER5b0s0R1EtSm9XUlRXMmRYU3RYbm9mWUF3cDB5TFpvUHhrWkZKVUhWWTRObEJFVHNQUU9tNzRrLW5reElrbUdBajZZbEVJcHUzWWI3UmlEVlRfVzJRbElCaTBBUzA1U1VJNFNnX19KdnRhYl9zemIwRW1MbWZ3amJiZUR1WTFTTE93YXk0cHJuckg2X1U3ejA3T3M?oc=5",
+        "urlToImage": "",
+        "publishedAt": "Sun, 22 Jun 2025 02:42:00 GMT",
+        "source": {
+          "name": "AP News"
+        },
+        "content": "Trump\u2019s move against Iran may draw more criticism from MAGA\u2019s anti-interventionists - AP News. <a href=\"https://news.google.com/rss/articles/CBMiqAFBVV95cUxNaWMyeVBuWWt0cTNFMER5b0s0R1EtSm9XUlRXMmRYU3RYbm9mWUF3cDB5TFpvUHhrWkZKVUhWWTRObEJFVHNQUU9tNzRrLW5reElrbUdBajZZbEVJcHUzWWI3UmlEVlRfVzJRbElCaTBBUzA1U1VJNFNnX19KdnRhYl9zemIwRW1MbWZ3amJiZUR1WTFTTE93YXk0cHJuckg2X1U3ejA3T3M?oc=5\" target=\"_blank\">Trump\u2019s move against Iran may draw more criticism from MAGA\u2019s anti-interventionists</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">AP News</font>",
+        "bias_analysis": {
+          "stance": "support",
+          "stance_confidence": 0.9068399667739868,
+          "stance_method": "nli",
+          "stance_evidence": [
+            "NLI confidence: 0.907"
+          ],
+          "bias_match": 0.9068399667739868,
+          "relevance_score": 0.4066228571428571,
+          "final_score": 0.756774833884648,
+          "user_bias_preference": 1.0,
+          "user_belief": "maga It\u2019s ruining america",
+          "analysis_method": "universal_stance_detection"
+        }
+      },
+      {
+        "title": "MAGA movement divided over Trump\u2019s move to bomb Iran - CNN",
+        "description": "<a href=\"https://news.google.com/rss/articles/CBMifEFVX3lxTE9iWjhGdFdKZ2RvSnlZSGRtbnZVZTd5OXJ3d0pPRTgwU0E5RVU1X0pBR3Jna202dDVYeThQOWVWTlpEMnFZOWZUZlFOQXdRN0M1bGtCRHp6ZW1rRDBLNGpDN0NFbm9TVDJEYV9DakNsU09LckxXaHBTQXg0Y07SAYIBQVVfeXFMUGhhVDFhcUNHNHNteWpLa2VjRy1mamdhLVZrRFRmVHk4WksxN3VlQ1BpU3dod1Z4TmQ1dUdBd3dXakN3SHpZXzNpRUxMTUJNS216bG1iemt6QWpOS18tVDB3NXpsaHZMQlgtbllUaExpd015NFR5X2tsU0JJbGZkZjg3UQ?oc=5\" target=\"_blank\">MAGA movement divided over Trump\u2019s move to bomb Iran</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">CNN</font>",
+        "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9iWjhGdFdKZ2RvSnlZSGRtbnZVZTd5OXJ3d0pPRTgwU0E5RVU1X0pBR3Jna202dDVYeThQOWVWTlpEMnFZOWZUZlFOQXdRN0M1bGtCRHp6ZW1rRDBLNGpDN0NFbm9TVDJEYV9DakNsU09LckxXaHBTQXg0Y07SAYIBQVVfeXFMUGhhVDFhcUNHNHNteWpLa2VjRy1mamdhLVZrRFRmVHk4WksxN3VlQ1BpU3dod1Z4TmQ1dUdBd3dXakN3SHpZXzNpRUxMTUJNS216bG1iemt6QWpOS18tVDB3NXpsaHZMQlgtbllUaExpd015NFR5X2tsU0JJbGZkZjg3UQ?oc=5",
+        "urlToImage": "",
+        "publishedAt": "Sun, 22 Jun 2025 17:05:00 GMT",
+        "source": {
+          "name": "CNN"
+        },
+        "content": "MAGA movement divided over Trump\u2019s move to bomb Iran - CNN. <a href=\"https://news.google.com/rss/articles/CBMifEFVX3lxTE9iWjhGdFdKZ2RvSnlZSGRtbnZVZTd5OXJ3d0pPRTgwU0E5RVU1X0pBR3Jna202dDVYeThQOWVWTlpEMnFZOWZUZlFOQXdRN0M1bGtCRHp6ZW1rRDBLNGpDN0NFbm9TVDJEYV9DakNsU09LckxXaHBTQXg0Y07SAYIBQVVfeXFMUGhhVDFhcUNHNHNteWpLa2VjRy1mamdhLVZrRFRmVHk4WksxN3VlQ1BpU3dod1Z4TmQ1dUdBd3dXakN3SHpZXzNpRUxMTUJNS216bG1iemt6QWpOS18tVDB3NXpsaHZMQlgtbllUaExpd015NFR5X2tsU0JJbGZkZjg3UQ?oc=5\" target=\"_blank\">MAGA movement divided over Trump\u2019s move to bomb Iran</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">CNN</font>",
+        "bias_analysis": {
+          "stance": "support",
+          "stance_confidence": 0.89909827709198,
+          "stance_method": "nli",
+          "stance_evidence": [
+            "NLI confidence: 0.899"
+          ],
+          "bias_match": 0.89909827709198,
+          "relevance_score": 0.4059028571428571,
+          "final_score": 0.751139651107243,
+          "user_bias_preference": 1.0,
+          "user_belief": "maga It\u2019s ruining america",
+          "analysis_method": "universal_stance_detection"
+        }
+      },
+      {
+        "title": "Runaway bear in runway \u2018stalemate\u2019 with Japanese airport officials",
+        "description": "&lt;p&gt;A dozen flights cancelled at Yamagata airport as attempts to chase furry trespasser away continue&lt;/p&gt;&lt;p&gt;Authorities at a Japanese airport are locked in a \u201cstalemate\u201d with a black bear which has been roaming the runway despite attempts to chase it off, forcing air traffic controllers to cancel a dozen flights.&lt;/p&gt;&lt;p&gt;The bear first appeared at northern Yamagata airport in the early hours of Thursday, and officials immediately shut operations down, causing delays.&lt;/p&gt; &lt;a href=\"https://www.theguardian.com/world/2025/jun/26/bear-on-runway-flights-cancelled-japan-yamagata-airport\"&gt;Continue reading...&lt;/a&gt;",
+        "url": "https://www.theguardian.com/world/2025/jun/26/bear-on-runway-flights-cancelled-japan-yamagata-airport",
+        "urlToImage": "",
+        "publishedAt": "Thu, 26 Jun 2025 13:53:07 GMT",
+        "source": {
+          "name": "The Guardian"
+        },
+        "content": "Runaway bear in runway \u2018stalemate\u2019 with Japanese airport officials. &lt;p&gt;A dozen flights cancelled at Yamagata airport as attempts to chase furry trespasser away continue&lt;/p&gt;&lt;p&gt;Authorities at a Japanese airport are locked in a \u201cstalemate\u201d with a black bear which has been roaming the runway despite attempts to chase it off, forcing air traffic controllers to cancel a dozen flights.&lt;/p&gt;&lt;p&gt;The bear first appeared at northern Yamagata airport in the early hours of Thursday, and officials immediately shut operations down, causing delays.&lt;/p&gt; &lt;a href=\"https://www.theguardian.com/world/2025/jun/26/bear-on-runway-flights-cancelled-japan-yamagata-airport\"&gt;Continue reading...&lt;/a&gt;",
+        "bias_analysis": {
+          "stance": "support",
+          "stance_confidence": 0.8920062780380249,
+          "stance_method": "nli",
+          "stance_evidence": [
+            "NLI confidence: 0.892"
+          ],
+          "bias_match": 0.8920062780380249,
+          "relevance_score": 0.3871733333333333,
+          "final_score": 0.7405563946266174,
+          "user_bias_preference": 1.0,
+          "user_belief": "maga It\u2019s ruining america",
+          "analysis_method": "universal_stance_detection"
+        }
+      },
+      {
+        "title": "Poll: More Americans oppose the U.S. strikes on Iran, as MAGA supporters line up with Trump - NBC News",
+        "description": "<a href=\"https://news.google.com/rss/articles/CBMiyAFBVV95cUxNeE5rc0dKYzJLWXZKUGI2SnNVYmVfazQ3T1dmSFlnbFNUdHo4YU91ZGU2Ym0yMTNubkd6a283V2RwcThoZGppZEIyVFNMblo4c0xIVnNFWG12SktESDlKcmppTjdpX2JWMG43VGxQdVJMVGRLUXJONmEwLUtqckc2VVNfYk4zY1Jabjkxekp1aVhZdWdhTy1VR01SR2NhLTJ6ZzM1dnNObDdXUlFIbW1fQ3N2TWgxTTNxVkF2cUI4LUs3bVhXdWhES9IBVkFVX3lxTE5zYlFMU3Nsc3ItOEd6aFpNTk9XeUhRQk1NZE13VGl2a0dzblRfc3o4d3R2VkdpVEhBbXVBMUdaYVI0c0ZGRlZrLWJ0T3diZVR2UXRpODdR?oc=5\" target=\"_blank\">Poll: More Americans oppose the U.S. strikes on Iran, as MAGA supporters line up with Trump</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">NBC News</font>",
+        "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNeE5rc0dKYzJLWXZKUGI2SnNVYmVfazQ3T1dmSFlnbFNUdHo4YU91ZGU2Ym0yMTNubkd6a283V2RwcThoZGppZEIyVFNMblo4c0xIVnNFWG12SktESDlKcmppTjdpX2JWMG43VGxQdVJMVGRLUXJONmEwLUtqckc2VVNfYk4zY1Jabjkxekp1aVhZdWdhTy1VR01SR2NhLTJ6ZzM1dnNObDdXUlFIbW1fQ3N2TWgxTTNxVkF2cUI4LUs3bVhXdWhES9IBVkFVX3lxTE5zYlFMU3Nsc3ItOEd6aFpNTk9XeUhRQk1NZE13VGl2a0dzblRfc3o4d3R2VkdpVEhBbXVBMUdaYVI0c0ZGRlZrLWJ0T3diZVR2UXRpODdR?oc=5",
+        "urlToImage": "",
+        "publishedAt": "Thu, 26 Jun 2025 09:00:41 GMT",
+        "source": {
+          "name": "NBC News"
+        },
+        "content": "Poll: More Americans oppose the U.S. strikes on Iran, as MAGA supporters line up with Trump - NBC News. <a href=\"https://news.google.com/rss/articles/CBMiyAFBVV95cUxNeE5rc0dKYzJLWXZKUGI2SnNVYmVfazQ3T1dmSFlnbFNUdHo4YU91ZGU2Ym0yMTNubkd6a283V2RwcThoZGppZEIyVFNMblo4c0xIVnNFWG12SktESDlKcmppTjdpX2JWMG43VGxQdVJMVGRLUXJONmEwLUtqckc2VVNfYk4zY1Jabjkxekp1aVhZdWdhTy1VR01SR2NhLTJ6ZzM1dnNObDdXUlFIbW1fQ3N2TWgxTTNxVkF2cUI4LUs3bVhXdWhES9IBVkFVX3lxTE5zYlFMU3Nsc3ItOEd6aFpNTk9XeUhRQk1NZE13VGl2a0dzblRfc3o4d3R2VkdpVEhBbXVBMUdaYVI0c0ZGRlZrLWJ0T3diZVR2UXRpODdR?oc=5\" target=\"_blank\">Poll: More Americans oppose the U.S. strikes on Iran, as MAGA supporters line up with Trump</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">NBC News</font>",
+        "bias_analysis": {
+          "stance": "support",
+          "stance_confidence": 0.8362404108047485,
+          "stance_method": "nli",
+          "stance_evidence": [
+            "NLI confidence: 0.836"
+          ],
+          "bias_match": 0.8362404108047485,
+          "relevance_score": 0.4911561904761904,
+          "final_score": 0.732715144706181,
+          "user_bias_preference": 1.0,
+          "user_belief": "maga It\u2019s ruining america",
+          "analysis_method": "universal_stance_detection"
+        }
+      },
+      {
+        "title": "MAGA star Steve Bannon plays outsized role in Trump's Iran decision: Sources - ABC News - Breaking News, Latest News and Videos",
+        "description": "<a href=\"https://news.google.com/rss/articles/CBMiogFBVV95cUxQN3RJZlpKUW1FVE1NSzY2bHBFbzR6TkdXbHVnZDh0S1F6Qi05NThwYW12YWR1NFBMN3VzYlNIUnlMWE13Z3RocEo3NFJnUHdjbDZXanNORXp5N0tQSGNSeGNmYXNpUUwzNEZncHl4YWFvRjRENE9CXzY5RGVudDhEOTA0VDFXdVZGZzJpWmZnQnV5NFBlN1RwcXBBVGpXSUl4RFHSAacBQVVfeXFMTmtPZS0zdG1iMGxvNDU1M0wyREtzR1FsTi1aYXFoSExyV19RREVQcjZISndCTnB1d1Vjd2p0VXpwZnlBc1RYdGZaamN4NnB5X1IyQ09DTXI0UlkzTEJwck1Kanh0TFRnaE9LNXJPVGVFQjI0azVWZTZMdExJb0RtMWdsSkZ3TmNJYjA1TF9rT1ZxM2NLcTZ5SFl3aEM4SWNscXA3MlF3dkU?oc=5\" target=\"_blank\">MAGA star Steve Bannon plays outsized role in Trump's Iran decision: Sources</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">ABC News - Breaking News, Latest News and Videos</font>",
+        "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQN3RJZlpKUW1FVE1NSzY2bHBFbzR6TkdXbHVnZDh0S1F6Qi05NThwYW12YWR1NFBMN3VzYlNIUnlMWE13Z3RocEo3NFJnUHdjbDZXanNORXp5N0tQSGNSeGNmYXNpUUwzNEZncHl4YWFvRjRENE9CXzY5RGVudDhEOTA0VDFXdVZGZzJpWmZnQnV5NFBlN1RwcXBBVGpXSUl4RFHSAacBQVVfeXFMTmtPZS0zdG1iMGxvNDU1M0wyREtzR1FsTi1aYXFoSExyV19RREVQcjZISndCTnB1d1Vjd2p0VXpwZnlBc1RYdGZaamN4NnB5X1IyQ09DTXI0UlkzTEJwck1Kanh0TFRnaE9LNXJPVGVFQjI0azVWZTZMdExJb0RtMWdsSkZ3TmNJYjA1TF9rT1ZxM2NLcTZ5SFl3aEM4SWNscXA3MlF3dkU?oc=5",
+        "urlToImage": "",
+        "publishedAt": "Sat, 21 Jun 2025 14:04:57 GMT",
+        "source": {
+          "name": "ABC News - Breaking News, Latest News and Videos"
+        },
+        "content": "MAGA star Steve Bannon plays outsized role in Trump's Iran decision: Sources - ABC News - Breaking News, Latest News and Videos. <a href=\"https://news.google.com/rss/articles/CBMiogFBVV95cUxQN3RJZlpKUW1FVE1NSzY2bHBFbzR6TkdXbHVnZDh0S1F6Qi05NThwYW12YWR1NFBMN3VzYlNIUnlMWE13Z3RocEo3NFJnUHdjbDZXanNORXp5N0tQSGNSeGNmYXNpUUwzNEZncHl4YWFvRjRENE9CXzY5RGVudDhEOTA0VDFXdVZGZzJpWmZnQnV5NFBlN1RwcXBBVGpXSUl4RFHSAacBQVVfeXFMTmtPZS0zdG1iMGxvNDU1M0wyREtzR1FsTi1aYXFoSExyV19RREVQcjZISndCTnB1d1Vjd2p0VXpwZnlBc1RYdGZaamN4NnB5X1IyQ09DTXI0UlkzTEJwck1Kanh0TFRnaE9LNXJPVGVFQjI0azVWZTZMdExJb0RtMWdsSkZ3TmNJYjA1TF9rT1ZxM2NLcTZ5SFl3aEM4SWNscXA3MlF3dkU?oc=5\" target=\"_blank\">MAGA star Steve Bannon plays outsized role in Trump's Iran decision: Sources</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">ABC News - Breaking News, Latest News and Videos</font>",
+        "bias_analysis": {
+          "stance": "neutral",
+          "stance_confidence": 0.3,
+          "stance_method": "fallback",
+          "stance_evidence": [
+            "No clear stance detected"
+          ],
+          "bias_match": 0.15,
+          "relevance_score": 0.4228285714285714,
+          "final_score": 0.2318485714285714,
+          "user_bias_preference": 1.0,
+          "user_belief": "maga It\u2019s ruining america",
+          "analysis_method": "universal_stance_detection"
+        }
+      },
+      {
+        "title": "Trump\u2019s decision to strike Iran may draw more criticism from MAGA anti-interventionists - PBS",
+        "description": "<a href=\"https://news.google.com/rss/articles/CBMiwgFBVV95cUxOdWt1cXY4SldFTzBPRmVhOWowRXplTjNkX1hxd3NGZ3dIeWx2VXd3MGR0ekJuckU2MmkycU9GQml2Z3dQYUMydEg4TE9CZGhtLUhRMGRkRlpVV2JOaE45WVRiSlZwSGdKZ1JkTHAzSUMxWG9DZDNScGg0QzRXcWs4ZEF4SlBFTDg2RENDSXlNQS05U3RoUnNqM0V5S3FEME9ValdWQlF3aWJna2JDVHBQTDYtcE9mUDh6azkzZ0VSc0Nhd9IBxwFBVV95cUxOalF1ODZfMDhVR3NMbG9rMHhEUE5Bb0JLX0tOU05uYmliRU9ZQVJyNkRTcUJOVUpSbzNER2M2TGxhMVBndG1Cc2JIT1VLYThhU1VHS1JlN0h4aEJLMzdYc0dhTmRhbm1iS1V1eTZyOF82dkxua3JJU04wT1h0NlJYUl90YVExZnVyaVJiSGw4NldDYXhxYV94WXE1dlhEcHU1djRvVlYwY1RUSDdvQ1NBeFBmWHo0VENaQ2d2ZHB6ZGh2YTNVX05n?oc=5\" target=\"_blank\">Trump\u2019s decision to strike Iran may draw more criticism from MAGA anti-interventionists</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">PBS</font>",
+        "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOdWt1cXY4SldFTzBPRmVhOWowRXplTjNkX1hxd3NGZ3dIeWx2VXd3MGR0ekJuckU2MmkycU9GQml2Z3dQYUMydEg4TE9CZGhtLUhRMGRkRlpVV2JOaE45WVRiSlZwSGdKZ1JkTHAzSUMxWG9DZDNScGg0QzRXcWs4ZEF4SlBFTDg2RENDSXlNQS05U3RoUnNqM0V5S3FEME9ValdWQlF3aWJna2JDVHBQTDYtcE9mUDh6azkzZ0VSc0Nhd9IBxwFBVV95cUxOalF1ODZfMDhVR3NMbG9rMHhEUE5Bb0JLX0tOU05uYmliRU9ZQVJyNkRTcUJOVUpSbzNER2M2TGxhMVBndG1Cc2JIT1VLYThhU1VHS1JlN0h4aEJLMzdYc0dhTmRhbm1iS1V1eTZyOF82dkxua3JJU04wT1h0NlJYUl90YVExZnVyaVJiSGw4NldDYXhxYV94WXE1dlhEcHU1djRvVlYwY1RUSDdvQ1NBeFBmWHo0VENaQ2d2ZHB6ZGh2YTNVX05n?oc=5",
+        "urlToImage": "",
+        "publishedAt": "Sun, 22 Jun 2025 01:32:22 GMT",
+        "source": {
+          "name": "PBS"
+        },
+        "content": "Trump\u2019s decision to strike Iran may draw more criticism from MAGA anti-interventionists - PBS. <a href=\"https://news.google.com/rss/articles/CBMiwgFBVV95cUxOdWt1cXY4SldFTzBPRmVhOWowRXplTjNkX1hxd3NGZ3dIeWx2VXd3MGR0ekJuckU2MmkycU9GQml2Z3dQYUMydEg4TE9CZGhtLUhRMGRkRlpVV2JOaE45WVRiSlZwSGdKZ1JkTHAzSUMxWG9DZDNScGg0QzRXcWs4ZEF4SlBFTDg2RENDSXlNQS05U3RoUnNqM0V5S3FEME9ValdWQlF3aWJna2JDVHBQTDYtcE9mUDh6azkzZ0VSc0Nhd9IBxwFBVV95cUxOalF1ODZfMDhVR3NMbG9rMHhEUE5Bb0JLX0tOU05uYmliRU9ZQVJyNkRTcUJOVUpSbzNER2M2TGxhMVBndG1Cc2JIT1VLYThhU1VHS1JlN0h4aEJLMzdYc0dhTmRhbm1iS1V1eTZyOF82dkxua3JJU04wT1h0NlJYUl90YVExZnVyaVJiSGw4NldDYXhxYV94WXE1dlhEcHU1djRvVlYwY1RUSDdvQ1NBeFBmWHo0VENaQ2d2ZHB6ZGh2YTNVX05n?oc=5\" target=\"_blank\">Trump\u2019s decision to strike Iran may draw more criticism from MAGA anti-interventionists</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">PBS</font>",
+        "bias_analysis": {
+          "stance": "neutral",
+          "stance_confidence": 0.3,
+          "stance_method": "fallback",
+          "stance_evidence": [
+            "No clear stance detected"
+          ],
+          "bias_match": 0.15,
+          "relevance_score": 0.4066228571428571,
+          "final_score": 0.22698685714285713,
+          "user_bias_preference": 1.0,
+          "user_belief": "maga It\u2019s ruining america",
+          "analysis_method": "universal_stance_detection"
+        }
+      }
+    ],
+    "timestamp": "2025-06-28T04:17:34.895107"
+  },
+  "maga it\u2019s ruining america_0.00": {
+    "articles": [
+      {
+        "title": "MAGA star Steve Bannon plays outsized role in Trump's Iran decision: Sources - ABC News - Breaking News, Latest News and Videos",
+        "description": "<a href=\"https://news.google.com/rss/articles/CBMiogFBVV95cUxQN3RJZlpKUW1FVE1NSzY2bHBFbzR6TkdXbHVnZDh0S1F6Qi05NThwYW12YWR1NFBMN3VzYlNIUnlMWE13Z3RocEo3NFJnUHdjbDZXanNORXp5N0tQSGNSeGNmYXNpUUwzNEZncHl4YWFvRjRENE9CXzY5RGVudDhEOTA0VDFXdVZGZzJpWmZnQnV5NFBlN1RwcXBBVGpXSUl4RFHSAacBQVVfeXFMTmtPZS0zdG1iMGxvNDU1M0wyREtzR1FsTi1aYXFoSExyV19RREVQcjZISndCTnB1d1Vjd2p0VXpwZnlBc1RYdGZaamN4NnB5X1IyQ09DTXI0UlkzTEJwck1Kanh0TFRnaE9LNXJPVGVFQjI0azVWZTZMdExJb0RtMWdsSkZ3TmNJYjA1TF9rT1ZxM2NLcTZ5SFl3aEM4SWNscXA3MlF3dkU?oc=5\" target=\"_blank\">MAGA star Steve Bannon plays outsized role in Trump's Iran decision: Sources</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">ABC News - Breaking News, Latest News and Videos</font>",
+        "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQN3RJZlpKUW1FVE1NSzY2bHBFbzR6TkdXbHVnZDh0S1F6Qi05NThwYW12YWR1NFBMN3VzYlNIUnlMWE13Z3RocEo3NFJnUHdjbDZXanNORXp5N0tQSGNSeGNmYXNpUUwzNEZncHl4YWFvRjRENE9CXzY5RGVudDhEOTA0VDFXdVZGZzJpWmZnQnV5NFBlN1RwcXBBVGpXSUl4RFHSAacBQVVfeXFMTmtPZS0zdG1iMGxvNDU1M0wyREtzR1FsTi1aYXFoSExyV19RREVQcjZISndCTnB1d1Vjd2p0VXpwZnlBc1RYdGZaamN4NnB5X1IyQ09DTXI0UlkzTEJwck1Kanh0TFRnaE9LNXJPVGVFQjI0azVWZTZMdExJb0RtMWdsSkZ3TmNJYjA1TF9rT1ZxM2NLcTZ5SFl3aEM4SWNscXA3MlF3dkU?oc=5",
+        "urlToImage": "",
+        "publishedAt": "Sat, 21 Jun 2025 14:04:57 GMT",
+        "source": {
+          "name": "ABC News - Breaking News, Latest News and Videos"
+        },
+        "content": "MAGA star Steve Bannon plays outsized role in Trump's Iran decision: Sources - ABC News - Breaking News, Latest News and Videos. <a href=\"https://news.google.com/rss/articles/CBMiogFBVV95cUxQN3RJZlpKUW1FVE1NSzY2bHBFbzR6TkdXbHVnZDh0S1F6Qi05NThwYW12YWR1NFBMN3VzYlNIUnlMWE13Z3RocEo3NFJnUHdjbDZXanNORXp5N0tQSGNSeGNmYXNpUUwzNEZncHl4YWFvRjRENE9CXzY5RGVudDhEOTA0VDFXdVZGZzJpWmZnQnV5NFBlN1RwcXBBVGpXSUl4RFHSAacBQVVfeXFMTmtPZS0zdG1iMGxvNDU1M0wyREtzR1FsTi1aYXFoSExyV19RREVQcjZISndCTnB1d1Vjd2p0VXpwZnlBc1RYdGZaamN4NnB5X1IyQ09DTXI0UlkzTEJwck1Kanh0TFRnaE9LNXJPVGVFQjI0azVWZTZMdExJb0RtMWdsSkZ3TmNJYjA1TF9rT1ZxM2NLcTZ5SFl3aEM4SWNscXA3MlF3dkU?oc=5\" target=\"_blank\">MAGA star Steve Bannon plays outsized role in Trump's Iran decision: Sources</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">ABC News - Breaking News, Latest News and Videos</font>",
+        "bias_analysis": {
+          "stance": "neutral",
+          "stance_confidence": 0.3,
+          "stance_method": "fallback",
+          "stance_evidence": [
+            "No clear stance detected"
+          ],
+          "bias_match": 0.15,
+          "relevance_score": 0.4228285714285714,
+          "final_score": 0.2318485714285714,
+          "user_bias_preference": 0.0,
+          "user_belief": "maga It\u2019s ruining america",
+          "analysis_method": "universal_stance_detection"
+        }
+      },
+      {
+        "title": "Trump\u2019s decision to strike Iran may draw more criticism from MAGA anti-interventionists - PBS",
+        "description": "<a href=\"https://news.google.com/rss/articles/CBMiwgFBVV95cUxOdWt1cXY4SldFTzBPRmVhOWowRXplTjNkX1hxd3NGZ3dIeWx2VXd3MGR0ekJuckU2MmkycU9GQml2Z3dQYUMydEg4TE9CZGhtLUhRMGRkRlpVV2JOaE45WVRiSlZwSGdKZ1JkTHAzSUMxWG9DZDNScGg0QzRXcWs4ZEF4SlBFTDg2RENDSXlNQS05U3RoUnNqM0V5S3FEME9ValdWQlF3aWJna2JDVHBQTDYtcE9mUDh6azkzZ0VSc0Nhd9IBxwFBVV95cUxOalF1ODZfMDhVR3NMbG9rMHhEUE5Bb0JLX0tOU05uYmliRU9ZQVJyNkRTcUJOVUpSbzNER2M2TGxhMVBndG1Cc2JIT1VLYThhU1VHS1JlN0h4aEJLMzdYc0dhTmRhbm1iS1V1eTZyOF82dkxua3JJU04wT1h0NlJYUl90YVExZnVyaVJiSGw4NldDYXhxYV94WXE1dlhEcHU1djRvVlYwY1RUSDdvQ1NBeFBmWHo0VENaQ2d2ZHB6ZGh2YTNVX05n?oc=5\" target=\"_blank\">Trump\u2019s decision to strike Iran may draw more criticism from MAGA anti-interventionists</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">PBS</font>",
+        "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOdWt1cXY4SldFTzBPRmVhOWowRXplTjNkX1hxd3NGZ3dIeWx2VXd3MGR0ekJuckU2MmkycU9GQml2Z3dQYUMydEg4TE9CZGhtLUhRMGRkRlpVV2JOaE45WVRiSlZwSGdKZ1JkTHAzSUMxWG9DZDNScGg0QzRXcWs4ZEF4SlBFTDg2RENDSXlNQS05U3RoUnNqM0V5S3FEME9ValdWQlF3aWJna2JDVHBQTDYtcE9mUDh6azkzZ0VSc0Nhd9IBxwFBVV95cUxOalF1ODZfMDhVR3NMbG9rMHhEUE5Bb0JLX0tOU05uYmliRU9ZQVJyNkRTcUJOVUpSbzNER2M2TGxhMVBndG1Cc2JIT1VLYThhU1VHS1JlN0h4aEJLMzdYc0dhTmRhbm1iS1V1eTZyOF82dkxua3JJU04wT1h0NlJYUl90YVExZnVyaVJiSGw4NldDYXhxYV94WXE1dlhEcHU1djRvVlYwY1RUSDdvQ1NBeFBmWHo0VENaQ2d2ZHB6ZGh2YTNVX05n?oc=5",
+        "urlToImage": "",
+        "publishedAt": "Sun, 22 Jun 2025 01:32:22 GMT",
+        "source": {
+          "name": "PBS"
+        },
+        "content": "Trump\u2019s decision to strike Iran may draw more criticism from MAGA anti-interventionists - PBS. <a href=\"https://news.google.com/rss/articles/CBMiwgFBVV95cUxOdWt1cXY4SldFTzBPRmVhOWowRXplTjNkX1hxd3NGZ3dIeWx2VXd3MGR0ekJuckU2MmkycU9GQml2Z3dQYUMydEg4TE9CZGhtLUhRMGRkRlpVV2JOaE45WVRiSlZwSGdKZ1JkTHAzSUMxWG9DZDNScGg0QzRXcWs4ZEF4SlBFTDg2RENDSXlNQS05U3RoUnNqM0V5S3FEME9ValdWQlF3aWJna2JDVHBQTDYtcE9mUDh6azkzZ0VSc0Nhd9IBxwFBVV95cUxOalF1ODZfMDhVR3NMbG9rMHhEUE5Bb0JLX0tOU05uYmliRU9ZQVJyNkRTcUJOVUpSbzNER2M2TGxhMVBndG1Cc2JIT1VLYThhU1VHS1JlN0h4aEJLMzdYc0dhTmRhbm1iS1V1eTZyOF82dkxua3JJU04wT1h0NlJYUl90YVExZnVyaVJiSGw4NldDYXhxYV94WXE1dlhEcHU1djRvVlYwY1RUSDdvQ1NBeFBmWHo0VENaQ2d2ZHB6ZGh2YTNVX05n?oc=5\" target=\"_blank\">Trump\u2019s decision to strike Iran may draw more criticism from MAGA anti-interventionists</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">PBS</font>",
+        "bias_analysis": {
+          "stance": "neutral",
+          "stance_confidence": 0.3,
+          "stance_method": "fallback",
+          "stance_evidence": [
+            "No clear stance detected"
+          ],
+          "bias_match": 0.15,
+          "relevance_score": 0.4066228571428571,
+          "final_score": 0.22698685714285713,
+          "user_bias_preference": 0.0,
+          "user_belief": "maga It\u2019s ruining america",
+          "analysis_method": "universal_stance_detection"
+        }
+      },
+      {
+        "title": "Poll: More Americans oppose the U.S. strikes on Iran, as MAGA supporters line up with Trump - NBC News",
+        "description": "<a href=\"https://news.google.com/rss/articles/CBMiyAFBVV95cUxNeE5rc0dKYzJLWXZKUGI2SnNVYmVfazQ3T1dmSFlnbFNUdHo4YU91ZGU2Ym0yMTNubkd6a283V2RwcThoZGppZEIyVFNMblo4c0xIVnNFWG12SktESDlKcmppTjdpX2JWMG43VGxQdVJMVGRLUXJONmEwLUtqckc2VVNfYk4zY1Jabjkxekp1aVhZdWdhTy1VR01SR2NhLTJ6ZzM1dnNObDdXUlFIbW1fQ3N2TWgxTTNxVkF2cUI4LUs3bVhXdWhES9IBVkFVX3lxTE5zYlFMU3Nsc3ItOEd6aFpNTk9XeUhRQk1NZE13VGl2a0dzblRfc3o4d3R2VkdpVEhBbXVBMUdaYVI0c0ZGRlZrLWJ0T3diZVR2UXRpODdR?oc=5\" target=\"_blank\">Poll: More Americans oppose the U.S. strikes on Iran, as MAGA supporters line up with Trump</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">NBC News</font>",
+        "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNeE5rc0dKYzJLWXZKUGI2SnNVYmVfazQ3T1dmSFlnbFNUdHo4YU91ZGU2Ym0yMTNubkd6a283V2RwcThoZGppZEIyVFNMblo4c0xIVnNFWG12SktESDlKcmppTjdpX2JWMG43VGxQdVJMVGRLUXJONmEwLUtqckc2VVNfYk4zY1Jabjkxekp1aVhZdWdhTy1VR01SR2NhLTJ6ZzM1dnNObDdXUlFIbW1fQ3N2TWgxTTNxVkF2cUI4LUs3bVhXdWhES9IBVkFVX3lxTE5zYlFMU3Nsc3ItOEd6aFpNTk9XeUhRQk1NZE13VGl2a0dzblRfc3o4d3R2VkdpVEhBbXVBMUdaYVI0c0ZGRlZrLWJ0T3diZVR2UXRpODdR?oc=5",
+        "urlToImage": "",
+        "publishedAt": "Thu, 26 Jun 2025 09:00:41 GMT",
+        "source": {
+          "name": "NBC News"
+        },
+        "content": "Poll: More Americans oppose the U.S. strikes on Iran, as MAGA supporters line up with Trump - NBC News. <a href=\"https://news.google.com/rss/articles/CBMiyAFBVV95cUxNeE5rc0dKYzJLWXZKUGI2SnNVYmVfazQ3T1dmSFlnbFNUdHo4YU91ZGU2Ym0yMTNubkd6a283V2RwcThoZGppZEIyVFNMblo4c0xIVnNFWG12SktESDlKcmppTjdpX2JWMG43VGxQdVJMVGRLUXJONmEwLUtqckc2VVNfYk4zY1Jabjkxekp1aVhZdWdhTy1VR01SR2NhLTJ6ZzM1dnNObDdXUlFIbW1fQ3N2TWgxTTNxVkF2cUI4LUs3bVhXdWhES9IBVkFVX3lxTE5zYlFMU3Nsc3ItOEd6aFpNTk9XeUhRQk1NZE13VGl2a0dzblRfc3o4d3R2VkdpVEhBbXVBMUdaYVI0c0ZGRlZrLWJ0T3diZVR2UXRpODdR?oc=5\" target=\"_blank\">Poll: More Americans oppose the U.S. strikes on Iran, as MAGA supporters line up with Trump</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">NBC News</font>",
+        "bias_analysis": {
+          "stance": "support",
+          "stance_confidence": 0.8362404108047485,
+          "stance_method": "nli",
+          "stance_evidence": [
+            "NLI confidence: 0.836"
+          ],
+          "bias_match": 0.0,
+          "relevance_score": 0.4911561904761904,
+          "final_score": 0.1473468571428571,
+          "user_bias_preference": 0.0,
+          "user_belief": "maga It\u2019s ruining america",
+          "analysis_method": "universal_stance_detection"
+        }
+      },
+      {
+        "title": "Trump\u2019s move against Iran may draw more criticism from MAGA\u2019s anti-interventionists - AP News",
+        "description": "<a href=\"https://news.google.com/rss/articles/CBMiqAFBVV95cUxNaWMyeVBuWWt0cTNFMER5b0s0R1EtSm9XUlRXMmRYU3RYbm9mWUF3cDB5TFpvUHhrWkZKVUhWWTRObEJFVHNQUU9tNzRrLW5reElrbUdBajZZbEVJcHUzWWI3UmlEVlRfVzJRbElCaTBBUzA1U1VJNFNnX19KdnRhYl9zemIwRW1MbWZ3amJiZUR1WTFTTE93YXk0cHJuckg2X1U3ejA3T3M?oc=5\" target=\"_blank\">Trump\u2019s move against Iran may draw more criticism from MAGA\u2019s anti-interventionists</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">AP News</font>",
+        "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNaWMyeVBuWWt0cTNFMER5b0s0R1EtSm9XUlRXMmRYU3RYbm9mWUF3cDB5TFpvUHhrWkZKVUhWWTRObEJFVHNQUU9tNzRrLW5reElrbUdBajZZbEVJcHUzWWI3UmlEVlRfVzJRbElCaTBBUzA1U1VJNFNnX19KdnRhYl9zemIwRW1MbWZ3amJiZUR1WTFTTE93YXk0cHJuckg2X1U3ejA3T3M?oc=5",
+        "urlToImage": "",
+        "publishedAt": "Sun, 22 Jun 2025 02:42:00 GMT",
+        "source": {
+          "name": "AP News"
+        },
+        "content": "Trump\u2019s move against Iran may draw more criticism from MAGA\u2019s anti-interventionists - AP News. <a href=\"https://news.google.com/rss/articles/CBMiqAFBVV95cUxNaWMyeVBuWWt0cTNFMER5b0s0R1EtSm9XUlRXMmRYU3RYbm9mWUF3cDB5TFpvUHhrWkZKVUhWWTRObEJFVHNQUU9tNzRrLW5reElrbUdBajZZbEVJcHUzWWI3UmlEVlRfVzJRbElCaTBBUzA1U1VJNFNnX19KdnRhYl9zemIwRW1MbWZ3amJiZUR1WTFTTE93YXk0cHJuckg2X1U3ejA3T3M?oc=5\" target=\"_blank\">Trump\u2019s move against Iran may draw more criticism from MAGA\u2019s anti-interventionists</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">AP News</font>",
+        "bias_analysis": {
+          "stance": "support",
+          "stance_confidence": 0.9068399667739868,
+          "stance_method": "nli",
+          "stance_evidence": [
+            "NLI confidence: 0.907"
+          ],
+          "bias_match": 0.0,
+          "relevance_score": 0.4066228571428571,
+          "final_score": 0.12198685714285713,
+          "user_bias_preference": 0.0,
+          "user_belief": "maga It\u2019s ruining america",
+          "analysis_method": "universal_stance_detection"
+        }
+      },
+      {
+        "title": "MAGA largely falls in line on Trump\u2019s Iran strikes - Politico",
+        "description": "<a href=\"https://news.google.com/rss/articles/CBMioAFBVV95cUxNS2haSHlVdU84RDZXT01JU2ptREVNRVZYc3p1bWctVUJzc1FYVkxkVXNCd1Z1b18zdTg4SlpFUnpYOGlsdW5CVjJoOHI2VGxtelZxcElUOUlXc2JXUUF6OHl1VkQ0d0tJV0RITzRCNTRNUXVxTktrcG1uWTBqcW44NG42TUtMamlndTZvVzc5WllLSkp3eUlRNDgtazJuSWwy?oc=5\" target=\"_blank\">MAGA largely falls in line on Trump\u2019s Iran strikes</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Politico</font>",
+        "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNS2haSHlVdU84RDZXT01JU2ptREVNRVZYc3p1bWctVUJzc1FYVkxkVXNCd1Z1b18zdTg4SlpFUnpYOGlsdW5CVjJoOHI2VGxtelZxcElUOUlXc2JXUUF6OHl1VkQ0d0tJV0RITzRCNTRNUXVxTktrcG1uWTBqcW44NG42TUtMamlndTZvVzc5WllLSkp3eUlRNDgtazJuSWwy?oc=5",
+        "urlToImage": "",
+        "publishedAt": "Sun, 22 Jun 2025 02:25:43 GMT",
+        "source": {
+          "name": "Politico"
+        },
+        "content": "MAGA largely falls in line on Trump\u2019s Iran strikes - Politico. <a href=\"https://news.google.com/rss/articles/CBMioAFBVV95cUxNS2haSHlVdU84RDZXT01JU2ptREVNRVZYc3p1bWctVUJzc1FYVkxkVXNCd1Z1b18zdTg4SlpFUnpYOGlsdW5CVjJoOHI2VGxtelZxcElUOUlXc2JXUUF6OHl1VkQ0d0tJV0RITzRCNTRNUXVxTktrcG1uWTBqcW44NG42TUtMamlndTZvVzc5WllLSkp3eUlRNDgtazJuSWwy?oc=5\" target=\"_blank\">MAGA largely falls in line on Trump\u2019s Iran strikes</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Politico</font>",
+        "bias_analysis": {
+          "stance": "support",
+          "stance_confidence": 0.9758189916610718,
+          "stance_method": "nli",
+          "stance_evidence": [
+            "NLI confidence: 0.976"
+          ],
+          "bias_match": 0.0,
+          "relevance_score": 0.4059028571428571,
+          "final_score": 0.12177085714285713,
+          "user_bias_preference": 0.0,
+          "user_belief": "maga It\u2019s ruining america",
+          "analysis_method": "universal_stance_detection"
+        }
+      },
+      {
+        "title": "Into the MAGA-verse: What the algorithm feeds Gen Z - Axios",
+        "description": "<a href=\"https://news.google.com/rss/articles/CBMicEFVX3lxTE5DMkpsaHdxMHhEQ2pKRVFoSEZibV9vUE9tQjF4aXJLcEEwZldMX19idnNEUVpTb1ZISVlmVW5WT19fMHM2ZHMyMmV3Sm1RakZ6OXQ1X1haTF95dXRieURqY1dOMzJDVHJ6OTk0SFF6TDY?oc=5\" target=\"_blank\">Into the MAGA-verse: What the algorithm feeds Gen Z</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Axios</font>",
+        "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5DMkpsaHdxMHhEQ2pKRVFoSEZibV9vUE9tQjF4aXJLcEEwZldMX19idnNEUVpTb1ZISVlmVW5WT19fMHM2ZHMyMmV3Sm1RakZ6OXQ1X1haTF95dXRieURqY1dOMzJDVHJ6OTk0SFF6TDY?oc=5",
+        "urlToImage": "",
+        "publishedAt": "Sat, 21 Jun 2025 12:49:31 GMT",
+        "source": {
+          "name": "Axios"
+        },
+        "content": "Into the MAGA-verse: What the algorithm feeds Gen Z - Axios. <a href=\"https://news.google.com/rss/articles/CBMicEFVX3lxTE5DMkpsaHdxMHhEQ2pKRVFoSEZibV9vUE9tQjF4aXJLcEEwZldMX19idnNEUVpTb1ZISVlmVW5WT19fMHM2ZHMyMmV3Sm1RakZ6OXQ1X1haTF95dXRieURqY1dOMzJDVHJ6OTk0SFF6TDY?oc=5\" target=\"_blank\">Into the MAGA-verse: What the algorithm feeds Gen Z</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Axios</font>",
+        "bias_analysis": {
+          "stance": "support",
+          "stance_confidence": 0.929883599281311,
+          "stance_method": "nli",
+          "stance_evidence": [
+            "NLI confidence: 0.930"
+          ],
+          "bias_match": 0.0,
+          "relevance_score": 0.4059028571428571,
+          "final_score": 0.12177085714285713,
+          "user_bias_preference": 0.0,
+          "user_belief": "maga It\u2019s ruining america",
+          "analysis_method": "universal_stance_detection"
+        }
+      },
+      {
+        "title": "MAGA movement divided over Trump\u2019s move to bomb Iran - CNN",
+        "description": "<a href=\"https://news.google.com/rss/articles/CBMifEFVX3lxTE9iWjhGdFdKZ2RvSnlZSGRtbnZVZTd5OXJ3d0pPRTgwU0E5RVU1X0pBR3Jna202dDVYeThQOWVWTlpEMnFZOWZUZlFOQXdRN0M1bGtCRHp6ZW1rRDBLNGpDN0NFbm9TVDJEYV9DakNsU09LckxXaHBTQXg0Y07SAYIBQVVfeXFMUGhhVDFhcUNHNHNteWpLa2VjRy1mamdhLVZrRFRmVHk4WksxN3VlQ1BpU3dod1Z4TmQ1dUdBd3dXakN3SHpZXzNpRUxMTUJNS216bG1iemt6QWpOS18tVDB3NXpsaHZMQlgtbllUaExpd015NFR5X2tsU0JJbGZkZjg3UQ?oc=5\" target=\"_blank\">MAGA movement divided over Trump\u2019s move to bomb Iran</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">CNN</font>",
+        "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9iWjhGdFdKZ2RvSnlZSGRtbnZVZTd5OXJ3d0pPRTgwU0E5RVU1X0pBR3Jna202dDVYeThQOWVWTlpEMnFZOWZUZlFOQXdRN0M1bGtCRHp6ZW1rRDBLNGpDN0NFbm9TVDJEYV9DakNsU09LckxXaHBTQXg0Y07SAYIBQVVfeXFMUGhhVDFhcUNHNHNteWpLa2VjRy1mamdhLVZrRFRmVHk4WksxN3VlQ1BpU3dod1Z4TmQ1dUdBd3dXakN3SHpZXzNpRUxMTUJNS216bG1iemt6QWpOS18tVDB3NXpsaHZMQlgtbllUaExpd015NFR5X2tsU0JJbGZkZjg3UQ?oc=5",
+        "urlToImage": "",
+        "publishedAt": "Sun, 22 Jun 2025 17:05:00 GMT",
+        "source": {
+          "name": "CNN"
+        },
+        "content": "MAGA movement divided over Trump\u2019s move to bomb Iran - CNN. <a href=\"https://news.google.com/rss/articles/CBMifEFVX3lxTE9iWjhGdFdKZ2RvSnlZSGRtbnZVZTd5OXJ3d0pPRTgwU0E5RVU1X0pBR3Jna202dDVYeThQOWVWTlpEMnFZOWZUZlFOQXdRN0M1bGtCRHp6ZW1rRDBLNGpDN0NFbm9TVDJEYV9DakNsU09LckxXaHBTQXg0Y07SAYIBQVVfeXFMUGhhVDFhcUNHNHNteWpLa2VjRy1mamdhLVZrRFRmVHk4WksxN3VlQ1BpU3dod1Z4TmQ1dUdBd3dXakN3SHpZXzNpRUxMTUJNS216bG1iemt6QWpOS18tVDB3NXpsaHZMQlgtbllUaExpd015NFR5X2tsU0JJbGZkZjg3UQ?oc=5\" target=\"_blank\">MAGA movement divided over Trump\u2019s move to bomb Iran</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">CNN</font>",
+        "bias_analysis": {
+          "stance": "support",
+          "stance_confidence": 0.89909827709198,
+          "stance_method": "nli",
+          "stance_evidence": [
+            "NLI confidence: 0.899"
+          ],
+          "bias_match": 0.0,
+          "relevance_score": 0.4059028571428571,
+          "final_score": 0.12177085714285713,
+          "user_bias_preference": 0.0,
+          "user_belief": "maga It\u2019s ruining america",
+          "analysis_method": "universal_stance_detection"
+        }
+      },
+      {
+        "title": "The Colorado governor joins team MAGA - Colorado Newsline",
+        "description": "<a href=\"https://news.google.com/rss/articles/CBMie0FVX3lxTE9nSlByM3J3b3pFLTk5bmZBOFJpRlB1OFc3Xzc3bEM0N1J5b25DRUIwMEV6UmY3cXZILXpaaWUzOXZOZHRnTWdLTFM0LUNBd1hvQ1N1eU52WFh3WmJueE44SEU3RUFRTFBrS1NmU1lydWF4MjE4QWFVdkl4dw?oc=5\" target=\"_blank\">The Colorado governor joins team MAGA</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Colorado Newsline</font>",
+        "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9nSlByM3J3b3pFLTk5bmZBOFJpRlB1OFc3Xzc3bEM0N1J5b25DRUIwMEV6UmY3cXZILXpaaWUzOXZOZHRnTWdLTFM0LUNBd1hvQ1N1eU52WFh3WmJueE44SEU3RUFRTFBrS1NmU1lydWF4MjE4QWFVdkl4dw?oc=5",
+        "urlToImage": "",
+        "publishedAt": "Thu, 26 Jun 2025 14:25:08 GMT",
+        "source": {
+          "name": "Colorado Newsline"
+        },
+        "content": "The Colorado governor joins team MAGA - Colorado Newsline. <a href=\"https://news.google.com/rss/articles/CBMie0FVX3lxTE9nSlByM3J3b3pFLTk5bmZBOFJpRlB1OFc3Xzc3bEM0N1J5b25DRUIwMEV6UmY3cXZILXpaaWUzOXZOZHRnTWdLTFM0LUNBd1hvQ1N1eU52WFh3WmJueE44SEU3RUFRTFBrS1NmU1lydWF4MjE4QWFVdkl4dw?oc=5\" target=\"_blank\">The Colorado governor joins team MAGA</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Colorado Newsline</font>",
+        "bias_analysis": {
+          "stance": "support",
+          "stance_confidence": 0.967223584651947,
+          "stance_method": "nli",
+          "stance_evidence": [
+            "NLI confidence: 0.967"
+          ],
+          "bias_match": 0.0,
+          "relevance_score": 0.4054228571428571,
+          "final_score": 0.12162685714285712,
+          "user_bias_preference": 0.0,
+          "user_belief": "maga It\u2019s ruining america",
+          "analysis_method": "universal_stance_detection"
+        }
+      },
+      {
+        "title": "Runaway bear in runway \u2018stalemate\u2019 with Japanese airport officials",
+        "description": "&lt;p&gt;A dozen flights cancelled at Yamagata airport as attempts to chase furry trespasser away continue&lt;/p&gt;&lt;p&gt;Authorities at a Japanese airport are locked in a \u201cstalemate\u201d with a black bear which has been roaming the runway despite attempts to chase it off, forcing air traffic controllers to cancel a dozen flights.&lt;/p&gt;&lt;p&gt;The bear first appeared at northern Yamagata airport in the early hours of Thursday, and officials immediately shut operations down, causing delays.&lt;/p&gt; &lt;a href=\"https://www.theguardian.com/world/2025/jun/26/bear-on-runway-flights-cancelled-japan-yamagata-airport\"&gt;Continue reading...&lt;/a&gt;",
+        "url": "https://www.theguardian.com/world/2025/jun/26/bear-on-runway-flights-cancelled-japan-yamagata-airport",
+        "urlToImage": "",
+        "publishedAt": "Thu, 26 Jun 2025 13:53:07 GMT",
+        "source": {
+          "name": "The Guardian"
+        },
+        "content": "Runaway bear in runway \u2018stalemate\u2019 with Japanese airport officials. &lt;p&gt;A dozen flights cancelled at Yamagata airport as attempts to chase furry trespasser away continue&lt;/p&gt;&lt;p&gt;Authorities at a Japanese airport are locked in a \u201cstalemate\u201d with a black bear which has been roaming the runway despite attempts to chase it off, forcing air traffic controllers to cancel a dozen flights.&lt;/p&gt;&lt;p&gt;The bear first appeared at northern Yamagata airport in the early hours of Thursday, and officials immediately shut operations down, causing delays.&lt;/p&gt; &lt;a href=\"https://www.theguardian.com/world/2025/jun/26/bear-on-runway-flights-cancelled-japan-yamagata-airport\"&gt;Continue reading...&lt;/a&gt;",
+        "bias_analysis": {
+          "stance": "support",
+          "stance_confidence": 0.8920062780380249,
+          "stance_method": "nli",
+          "stance_evidence": [
+            "NLI confidence: 0.892"
+          ],
+          "bias_match": 0.0,
+          "relevance_score": 0.3871733333333333,
+          "final_score": 0.11615199999999999,
+          "user_bias_preference": 0.0,
+          "user_belief": "maga It\u2019s ruining america",
+          "analysis_method": "universal_stance_detection"
+        }
+      }
+    ],
+    "timestamp": "2025-06-28T04:19:29.771722"
+  }
+}

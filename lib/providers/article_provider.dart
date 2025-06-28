@@ -1,92 +1,227 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
-
 import '../models/article.dart';
 import '../services/api_service.dart';
 
-part 'article_provider.g.dart';
+// Universal Search Provider for ANY topic
+class ArticleProvider extends StateNotifier<AsyncValue<List<Article>>> {
+  final ApiService _apiService;
 
-// State class for article aggregation
+  ArticleProvider(this._apiService) : super(const AsyncValue.loading());
+
+  // Search articles using the universal search system
+  Future<void> searchArticles(String query, double bias) async {
+    try {
+      print('🔍 ARTICLE PROVIDER: ==========================================');
+      print('🔍 ARTICLE PROVIDER: Starting universal search');
+      print('🔍 ARTICLE PROVIDER: Query: "$query"');
+      print('🔍 ARTICLE PROVIDER: Bias: $bias (${_getBiasLabel(bias)})');
+      print('🔍 ARTICLE PROVIDER: ==========================================');
+
+      state = const AsyncValue.loading();
+
+      final articles = await _apiService.searchArticles(query, bias);
+
+      print('🔍 ARTICLE PROVIDER: ==========================================');
+      print('🔍 ARTICLE PROVIDER: SEARCH RESULTS:');
+      print('🔍 ARTICLE PROVIDER: Total articles returned: ${articles.length}');
+      
+      // Log each article with detailed analysis
+      for (int i = 0; i < articles.length; i++) {
+        final article = articles[i];
+        final biasAnalysis = article.biasAnalysis;
+        
+        print('🔍 ARTICLE PROVIDER: Article ${i + 1}:');
+        print('  - Title: ${article.title}');
+        print('  - Source: ${article.sourceName}');
+        print('  - Published: ${article.publishedAt}');
+        print('  - URL: ${article.url}');
+        
+        if (biasAnalysis != null) {
+          print('  - Stance: ${biasAnalysis.stance} (confidence: ${biasAnalysis.stanceConfidence})');
+          print('  - Stance Method: ${biasAnalysis.stanceMethod}');
+          print('  - Bias Match: ${biasAnalysis.biasMatch}');
+          print('  - Relevance Score: ${biasAnalysis.relevanceScore}');
+          print('  - Final Score: ${biasAnalysis.finalScore}');
+          print('  - User Belief: ${biasAnalysis.userBelief}');
+          print('  - Analysis Method: ${biasAnalysis.analysisMethod}');
+          
+          if (biasAnalysis.stanceEvidence.isNotEmpty) {
+            print('  - Stance Evidence: ${biasAnalysis.stanceEvidence.take(3).join(', ')}');
+          }
+        } else {
+          print('  - No bias analysis available');
+        }
+        print('');
+      }
+
+      // Calculate and log summary statistics
+      _logSearchSummary(articles, query, bias);
+
+      state = AsyncValue.data(articles);
+      
+    } catch (e, stackTrace) {
+      print('🔍 ARTICLE PROVIDER: Error searching articles: $e');
+      print('🔍 ARTICLE PROVIDER: Stack trace: $stackTrace');
+      state = AsyncValue.error(e, stackTrace);
+    }
+  }
+
+  void _logSearchSummary(List<Article> articles, String query, double bias) {
+    print('🔍 ARTICLE PROVIDER: ==========================================');
+    print('🔍 ARTICLE PROVIDER: SUMMARY STATISTICS:');
+    print('  - Query: "$query"');
+    print('  - Bias Setting: $bias (${_getBiasLabel(bias)})');
+    print('  - Total articles: ${articles.length}');
+    print('  - Articles with bias analysis: ${articles.where((a) => a.biasAnalysis != null).length}');
+    
+    // Calculate average bias match
+    final articlesWithBias = articles.where((a) => a.biasAnalysis != null).toList();
+    if (articlesWithBias.isNotEmpty) {
+      final avgBiasMatch = articlesWithBias
+          .map((a) => a.biasAnalysis!.biasMatch)
+          .reduce((a, b) => a + b) / articlesWithBias.length;
+      print('  - Average bias match: ${avgBiasMatch.toStringAsFixed(3)}');
+      
+      // Calculate average relevance score
+      final avgRelevance = articlesWithBias
+          .where((a) => a.biasAnalysis!.relevanceScore != null)
+          .map((a) => a.biasAnalysis!.relevanceScore!)
+          .reduce((a, b) => a + b) / articlesWithBias.where((a) => a.biasAnalysis!.relevanceScore != null).length;
+      print('  - Average relevance score: ${avgRelevance.toStringAsFixed(3)}');
+      
+      // Calculate average final score
+      final avgFinalScore = articlesWithBias
+          .where((a) => a.biasAnalysis!.finalScore != null)
+          .map((a) => a.biasAnalysis!.finalScore!)
+          .reduce((a, b) => a + b) / articlesWithBias.where((a) => a.biasAnalysis!.finalScore != null).length;
+      print('  - Average final score: ${avgFinalScore.toStringAsFixed(3)}');
+      
+      // Stance distribution
+      final stanceCounts = <String, int>{};
+      for (final article in articlesWithBias) {
+        final stance = article.biasAnalysis!.stance;
+        stanceCounts[stance] = (stanceCounts[stance] ?? 0) + 1;
+      }
+      print('  - Stance distribution: $stanceCounts');
+      
+      // Top sources
+      final sourceCounts = <String, int>{};
+      for (final article in articles) {
+        final source = article.sourceName;
+        sourceCounts[source] = (sourceCounts[source] ?? 0) + 1;
+      }
+      final topSources = sourceCounts.entries.toList()
+        ..sort((a, b) => b.value.compareTo(a.value));
+      print('  - Top 5 sources: ${topSources.take(5).map((e) => '${e.key}(${e.value})').join(', ')}');
+      
+      // Date range
+      if (articles.isNotEmpty) {
+        final dates = articles.map((a) => a.publishedAt).toList()..sort();
+        print('  - Date range: ${dates.first} to ${dates.last}');
+      }
+    }
+    print('🔍 ARTICLE PROVIDER: ==========================================');
+  }
+
+  String _getBiasLabel(double bias) {
+    if (bias >= 0.8) return 'Prove me right (strong)';
+    if (bias >= 0.6) return 'Prove me right (moderate)';
+    if (bias >= 0.4) return 'Balanced';
+    if (bias >= 0.2) return 'Prove me wrong (moderate)';
+    return 'Prove me wrong (strong)';
+  }
+
+  // Get articles by category (legacy method)
+  Future<void> getArticlesByCategory(List<String> categories, double bias) async {
+    try {
+      state = const AsyncValue.loading();
+      final articles = await _apiService.getArticlesByCategory(
+        categories: categories,
+        bias: bias,
+        limitPerCategory: 10,
+      );
+      state = AsyncValue.data(articles);
+    } catch (e, stackTrace) {
+      state = AsyncValue.error(e, stackTrace);
+    }
+  }
+
+  // Clear articles
+  void clearArticles() {
+    state = const AsyncValue.data([]);
+  }
+
+  // Get current articles
+  List<Article> get articles {
+    return state.when(
+      data: (articles) => articles,
+      loading: () => [],
+      error: (_, __) => [],
+    );
+  }
+
+  // Check if loading
+  bool get isLoading {
+    return state.isLoading;
+  }
+
+  // Check if has error
+  bool get hasError {
+    return state.hasError;
+  }
+
+  // Get error
+  Object? get error {
+    return state.error;
+  }
+}
+
+// Category Aggregation State
 class ArticleAggregationState {
-  final bool isLoading;
   final List<Article> articles;
+  final bool isLoading;
   final String? error;
   final int totalArticles;
   final List<String> categoriesCovered;
-  final double aggregationTime;
   final double currentBias;
 
   ArticleAggregationState({
-    this.isLoading = false,
     this.articles = const [],
+    this.isLoading = false,
     this.error,
     this.totalArticles = 0,
     this.categoriesCovered = const [],
-    this.aggregationTime = 0.0,
     this.currentBias = 0.5,
   });
 
   ArticleAggregationState copyWith({
-    bool? isLoading,
     List<Article>? articles,
+    bool? isLoading,
     String? error,
     int? totalArticles,
     List<String>? categoriesCovered,
-    double? aggregationTime,
     double? currentBias,
   }) {
     return ArticleAggregationState(
-      isLoading: isLoading ?? this.isLoading,
       articles: articles ?? this.articles,
+      isLoading: isLoading ?? this.isLoading,
       error: error,
       totalArticles: totalArticles ?? this.totalArticles,
       categoriesCovered: categoriesCovered ?? this.categoriesCovered,
-      aggregationTime: aggregationTime ?? this.aggregationTime,
       currentBias: currentBias ?? this.currentBias,
     );
   }
 }
 
-// Notifier for article aggregation
+// Category Aggregation Provider
 class ArticleAggregationNotifier extends StateNotifier<ArticleAggregationState> {
   final ApiService _apiService;
 
   ArticleAggregationNotifier(this._apiService) : super(ArticleAggregationState());
 
-  Future<void> aggregateArticlesByCategory({
-    required List<String> categories,
-    double bias = 0.5,
-    int limitPerCategory = 10,
-    String? authToken,
-  }) async {
-    state = state.copyWith(isLoading: true, error: null);
-
-    try {
-      final articles = await _apiService.getArticlesByCategory(
-        categories: categories,
-        bias: bias,
-        limitPerCategory: limitPerCategory,
-        authToken: authToken,
-      );
-
-      state = state.copyWith(
-        isLoading: false,
-        articles: articles,
-        totalArticles: articles.length,
-        categoriesCovered: categories,
-        currentBias: bias,
-      );
-    } catch (e) {
-      state = state.copyWith(
-        isLoading: false,
-        error: e.toString(),
-      );
-    }
-  }
-
   Future<void> aggregateArticlesByCategoryPublic({
     required List<String> categories,
-    double bias = 0.5,
+    required double bias,
     int limitPerCategory = 10,
   }) async {
     state = state.copyWith(isLoading: true, error: null);
@@ -132,15 +267,6 @@ class ArticleAggregationNotifier extends StateNotifier<ArticleAggregationState> 
     }
   }
 
-  Future<void> testBackendConnection() async {
-    try {
-      final result = await _apiService.testBackendConnection();
-      print('Backend test result: $result');
-    } catch (e) {
-      print('Backend test failed: $e');
-    }
-  }
-
   void clearArticles() {
     state = ArticleAggregationState();
   }
@@ -154,100 +280,11 @@ class ArticleAggregationNotifier extends StateNotifier<ArticleAggregationState> 
   }
 }
 
-// Provider
-final articleAggregationProvider = StateNotifierProvider<ArticleAggregationNotifier, ArticleAggregationState>((ref) {
-  return ArticleAggregationNotifier(ApiService());
-});
+// Provider exports
+final articleProvider = StateNotifierProvider<ArticleProvider, AsyncValue<List<Article>>>(
+  (ref) => ArticleProvider(ApiService()),
+);
 
-@riverpod
-class ArticleSearchNotifier extends _$ArticleSearchNotifier {
-  @override
-  Future<List<Article>?> build() async {
-    // Initial state - no search performed yet
-    return null;
-  }
-
-  Future<void> searchArticles(String query, double bias) async {
-    print('🔍 ARTICLE PROVIDER: Searching for "$query" with bias $bias');
-    print('🔍 ARTICLE PROVIDER: Raw query being sent to API: "$query"');
-    state = const AsyncValue.loading();
-    
-    try {
-      final apiService = ApiService();
-      final articles = await apiService.searchArticles(query, bias);
-      
-      print('🔍 ARTICLE PROVIDER: Got ${articles.length} articles from API');
-      print('🔍 ARTICLE PROVIDER: RAW API RESPONSE ANALYSIS:');
-      print('🔍 ARTICLE PROVIDER: ==========================================');
-      
-      // Log bias analysis for ALL articles
-      for (int i = 0; i < articles.length; i++) {
-        final article = articles[i];
-        print('🔍 ARTICLE PROVIDER: Article ${i + 1}: "${article.title}"');
-        print('  - Source: ${article.source.name}');
-        print('  - URL: ${article.url}');
-        print('  - Description: ${article.description}');
-        
-        if (article.biasAnalysis != null) {
-          print('  - Bias Analysis:');
-          print('    - Stance: ${article.biasAnalysis!.stance}');
-          print('    - Confidence: ${article.biasAnalysis!.stanceConfidence}');
-          print('    - Method: ${article.biasAnalysis!.stanceMethod}');
-          print('    - Evidence: ${article.biasAnalysis!.stanceEvidence}');
-          print('    - User Belief: ${article.biasAnalysis!.userBelief}');
-          print('    - Bias Match: ${article.biasAnalysis!.biasMatch}');
-          print('    - User Bias Preference: ${article.biasAnalysis!.userBiasPreference}');
-          print('    - Topic Sentiment Score: ${article.biasAnalysis!.topicSentimentScore}');
-          print('    - Topic Sentiment: ${article.biasAnalysis!.topicSentiment}');
-          print('    - Topic Mentions: ${article.biasAnalysis!.topicMentions}');
-        } else {
-          print('  - No bias analysis available');
-        }
-        
-        // Relevance check
-        final text = '${article.title} ${article.description}'.toLowerCase();
-        print('  - Relevance Check:');
-        print('    - Contains "Palestine": ${text.contains('palestine')}');
-        print('    - Contains "Israel": ${text.contains('israel')}');
-        print('    - Contains "occupation": ${text.contains('occupation')}');
-        print('    - Contains query keywords: ${_containsQueryKeywords(text, query)}');
-        print('  - Bias Match Score: ${(article.biasAnalysis?.biasMatch ?? 0.0) * 100}%');
-        print('  - Stance: ${article.biasAnalysis?.stance ?? 'none'}');
-        print('');
-      }
-      
-      print('🔍 ARTICLE PROVIDER: ==========================================');
-      print('🔍 ARTICLE PROVIDER: SUMMARY:');
-      print('  - Total articles: ${articles.length}');
-      print('  - Articles with bias analysis: ${articles.where((a) => a.biasAnalysis != null).length}');
-      print('  - Average bias match: ${articles.where((a) => a.biasAnalysis != null).map((a) => a.biasAnalysis!.biasMatch).fold(0.0, (sum, match) => sum + match) / articles.where((a) => a.biasAnalysis != null).length}');
-      print('  - Stance distribution:');
-      final stanceCounts = <String, int>{};
-      for (final article in articles) {
-        if (article.biasAnalysis != null) {
-          stanceCounts[article.biasAnalysis!.stance] = (stanceCounts[article.biasAnalysis!.stance] ?? 0) + 1;
-        }
-      }
-      stanceCounts.forEach((stance, count) {
-        print('    - $stance: $count articles');
-      });
-      
-      state = AsyncValue.data(articles);
-    } catch (e) {
-      print('🔍 ARTICLE PROVIDER: Error searching articles: $e');
-      state = AsyncValue.error(e, StackTrace.current);
-    }
-  }
-
-  bool _containsQueryKeywords(String text, String query) {
-    final keywords = query.toLowerCase().split(' ');
-    return keywords.any((keyword) => text.contains(keyword));
-  }
-
-  void clearSearch() {
-    state = const AsyncValue.data(null);
-  }
-}
-
-// Helper function for min
-int min(int a, int b) => a < b ? a : b; 
+final articleAggregationProvider = StateNotifierProvider<ArticleAggregationNotifier, ArticleAggregationState>(
+  (ref) => ArticleAggregationNotifier(ApiService()),
+); 
