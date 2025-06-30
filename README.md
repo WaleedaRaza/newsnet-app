@@ -1,5 +1,10 @@
 # NewsNet - AI-Powered News Analysis App
 
+(RETIRED)
+STARTED OFF WITH SENTIMENT ANALYSIS, IT YIELDED MORE POSITIVE OR NEGATIVE RATHER THAN VIEW UNDERSTANDING, S O A PIVOT WAS MADE TO STANCE DETECTION, IN TANDEM WITH LANGCHAIN AND RAG, LATER INTEGRATED WITH GOOGLE SEARCH API, IT BECAME CLEAR AT THAT POINT THAT THIS WAS BASICALY A GOOGLE SEARCH WRAPPER WITH MORE COSTS AND LIKE 20 APIS LOL. Stance detection algorithm yielded promising results for earnings calls, s othis transitioned to stockscouter :) (i know this is pretty brainrot)
+
+
+
 NewsNet is a comprehensive news analysis application that combines real-time news aggregation with AI-powered analysis and personalized content filtering. The app features a Flutter frontend and a FastAPI backend with advanced NLP capabilities.
 
 ---
