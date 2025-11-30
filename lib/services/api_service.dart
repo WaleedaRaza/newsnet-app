@@ -607,6 +607,142 @@ class ApiService {
     }
     return error.toString();
   }
+
+  // LangChain-powered search methods
+  Future<Map<String, dynamic>> langchainSearch({
+    required String query,
+    required double biasPreference,
+    int limit = 10,
+    bool includeAnalysis = true,
+  }) async {
+    try {
+      print('🧠 LangChain: Searching for "$query" with bias $biasPreference');
+      
+      final uri = Uri.parse('$_baseUrl$_apiVersion/langchain/search');
+      
+      final headers = <String, String>{
+        'Content-Type': 'application/json',
+      };
+      
+      if (_authToken != null) {
+        headers['Authorization'] = 'Bearer $_authToken';
+      }
+      
+      final body = json.encode({
+        'query': query,
+        'bias_preference': biasPreference,
+        'limit': limit,
+        'include_analysis': includeAnalysis,
+      });
+      
+      print('🧠 LangChain: Requesting URL: $uri');
+      print('🧠 LangChain: Request body: $body');
+      
+      final response = await http.post(
+        uri,
+        headers: headers,
+        body: body,
+      );
+      
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        print('🧠 LangChain: Got response with ${data['articles']?.length ?? 0} articles');
+        return data;
+      } else {
+        print('🧠 LangChain: HTTP Error ${response.statusCode}: ${response.body}');
+        throw Exception('LangChain search failed: ${response.statusCode}');
+      }
+    } catch (e) {
+      print('🧠 LangChain: Error in search: $e');
+      throw Exception('LangChain search failed: $e');
+    }
+  }
+
+  Future<Map<String, dynamic>> langchainAnalyzeArticles({
+    required List<Map<String, dynamic>> articles,
+  }) async {
+    try {
+      print('🧠 LangChain: Analyzing ${articles.length} articles');
+      
+      final uri = Uri.parse('$_baseUrl$_apiVersion/langchain/analyze');
+      
+      final headers = <String, String>{
+        'Content-Type': 'application/json',
+      };
+      
+      if (_authToken != null) {
+        headers['Authorization'] = 'Bearer $_authToken';
+      }
+      
+      final body = json.encode({
+        'articles': articles,
+      });
+      
+      final response = await http.post(
+        uri,
+        headers: headers,
+        body: body,
+      );
+      
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        print('🧠 LangChain: Analysis completed');
+        return data;
+      } else {
+        print('🧠 LangChain: HTTP Error ${response.statusCode}: ${response.body}');
+        throw Exception('LangChain analysis failed: ${response.statusCode}');
+      }
+    } catch (e) {
+      print('🧠 LangChain: Error in analysis: $e');
+      throw Exception('LangChain analysis failed: $e');
+    }
+  }
+
+  Future<Map<String, dynamic>> langchainHealthCheck() async {
+    try {
+      print('🧠 LangChain: Checking health...');
+      
+      final uri = Uri.parse('$_baseUrl$_apiVersion/langchain/health');
+      
+      final response = await http.get(uri);
+      
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        print('🧠 LangChain: Health check completed: ${data['status']}');
+        return data;
+      } else {
+        print('🧠 LangChain: Health check failed: ${response.statusCode}');
+        throw Exception('LangChain health check failed: ${response.statusCode}');
+      }
+    } catch (e) {
+      print('🧠 LangChain: Error in health check: $e');
+      throw Exception('LangChain health check failed: $e');
+    }
+  }
+
+  // Convert LangChain articles to Article objects
+  List<Article> convertLangChainArticles(List<dynamic> langchainArticles) {
+    return langchainArticles.map((articleData) {
+      // Convert LangChain article format to Article format
+      return Article(
+        id: articleData['url'] ?? '',
+        title: articleData['title'] ?? '',
+        description: articleData['description'] ?? '',
+        content: articleData['content'] ?? '',
+        url: articleData['url'] ?? '',
+        imageUrl: articleData['urlToImage'] ?? '',
+        source: articleData['source'] ?? '',
+        publishedAt: articleData['published_at'] ?? '',
+        category: 'langchain',
+        stance: articleData.get('stance', 'neutral'),
+        confidence: articleData.get('confidence', 0.0),
+        biasMatch: articleData.get('bias_match', 0.0),
+        relevanceScore: articleData.get('relevance_score', 0.0),
+        finalScore: articleData.get('final_score', 0.0),
+        apiSource: articleData.get('api_source', 'LangChain'),
+      );
+    }).toList();
+  }
 }
 
 // Provider

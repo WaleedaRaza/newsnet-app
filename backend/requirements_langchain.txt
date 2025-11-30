@@ -1,0 +1,40 @@
+# LangChain Core Dependencies
+langchain==0.1.0
+langchain-openai==0.0.5
+langchain-community==0.0.10
+
+# LLM and Embeddings
+openai==1.3.7
+tiktoken==0.5.2
+
+# Vector Databases
+faiss-cpu==1.7.4
+chromadb==0.4.22
+weaviate-client==3.25.3
+
+# Text Processing
+sentence-transformers==2.2.2
+transformers==4.36.2
+torch==2.1.2
+
+# News APIs and Scraping
+pygooglenews==0.1.2
+feedparser==6.0.10
+newspaper3k==0.2.8
+beautifulsoup4==4.12.2
+requests==2.31.0
+aiohttp==3.9.1
+
+# Data Processing
+pandas==2.1.4
+numpy==1.24.3
+scikit-learn==1.3.2
+
+# Database and Caching
+redis==5.0.1
+sqlalchemy==2.0.23
+
+# Utilities
+python-dotenv==1.0.0
+pydantic==2.5.0
+pydantic-settings==2.1.0 

@@ -73,7 +73,7 @@ class ArticleProvider extends StateNotifier<AsyncValue<List<Article>>> {
     print('  - Bias Setting: $bias (${_getBiasLabel(bias)})');
     print('  - Total articles: ${articles.length}');
     print('  - Articles with bias analysis: ${articles.where((a) => a.biasAnalysis != null).length}');
-    
+
     // Calculate average bias match
     final articlesWithBias = articles.where((a) => a.biasAnalysis != null).toList();
     if (articlesWithBias.isNotEmpty) {
@@ -173,6 +173,123 @@ class ArticleProvider extends StateNotifier<AsyncValue<List<Article>>> {
   // Get error
   Object? get error {
     return state.error;
+  }
+
+  // LangChain-powered search methods
+  Future<void> langchainSearch(String query, double biasPreference) async {
+    try {
+      print('🧠 LANGCHAIN PROVIDER: ==========================================');
+      print('🧠 LANGCHAIN PROVIDER: Starting LangChain search');
+      print('🧠 LANGCHAIN PROVIDER: Query: "$query"');
+      print('🧠 LANGCHAIN PROVIDER: Bias Preference: $biasPreference');
+      print('🧠 LANGCHAIN PROVIDER: ==========================================');
+
+      state = const AsyncValue.loading();
+
+      final result = await _apiService.langchainSearch(
+        query: query,
+        biasPreference: biasPreference,
+        limit: 20,
+        includeAnalysis: true,
+      );
+
+      // Convert LangChain articles to Article objects
+      final langchainArticles = result['articles'] as List<dynamic>;
+      final articles = _apiService.convertLangChainArticles(langchainArticles);
+
+      print('🧠 LANGCHAIN PROVIDER: ==========================================');
+      print('🧠 LANGCHAIN PROVIDER: LANGCHAIN SEARCH RESULTS:');
+      print('🧠 LANGCHAIN PROVIDER: Total articles returned: ${articles.length}');
+      
+      // Log each article with detailed analysis
+      for (int i = 0; i < articles.length; i++) {
+        final article = articles[i];
+        final biasAnalysis = article.biasAnalysis;
+        
+        print('🧠 LANGCHAIN PROVIDER: Article ${i + 1}:');
+        print('  - Title: ${article.title}');
+        print('  - Source: ${article.sourceName}');
+        print('  - Published: ${article.publishedAt}');
+        print('  - URL: ${article.url}');
+        print('  - API Source: ${article.apiSource}');
+        
+        if (biasAnalysis != null) {
+          print('  - Stance: ${biasAnalysis.stance} (confidence: ${biasAnalysis.stanceConfidence})');
+          print('  - Bias Match: ${biasAnalysis.biasMatch}');
+          print('  - Relevance Score: ${biasAnalysis.relevanceScore}');
+          print('  - Final Score: ${biasAnalysis.finalScore}');
+        } else {
+          print('  - No bias analysis available');
+        }
+        print('');
+      }
+
+      // Log analysis if available
+      if (result['analysis'] != null) {
+        print('🧠 LANGCHAIN PROVIDER: ANALYSIS:');
+        print('  - Narrative Synthesis: ${result['analysis']['narrative_synthesis']}');
+        print('  - Stance Distribution: ${result['analysis']['stance_distribution']}');
+        print('  - Bias Analysis: ${result['analysis']['bias_analysis']}');
+      }
+
+      // Log search metadata
+      if (result['search_metadata'] != null) {
+        print('🧠 LANGCHAIN PROVIDER: SEARCH METADATA:');
+        print('  - Sources Used: ${result['search_metadata']['sources_used']}');
+        print('  - Search Time: ${result['search_metadata']['search_time']}s');
+      }
+
+      state = AsyncValue.data(articles);
+      
+    } catch (e, stackTrace) {
+      print('🧠 LANGCHAIN PROVIDER: Error in LangChain search: $e');
+      print('🧠 LANGCHAIN PROVIDER: Stack trace: $stackTrace');
+      state = AsyncValue.error(e, stackTrace);
+    }
+  }
+
+  Future<Map<String, dynamic>> langchainAnalyzeArticles(List<Article> articles) async {
+    try {
+      print('🧠 LANGCHAIN PROVIDER: Analyzing ${articles.length} articles with LangChain');
+      
+      // Convert Article objects to Map format for API
+      final articleMaps = articles.map((article) => {
+        'title': article.title,
+        'content': article.content,
+        'description': article.description,
+        'url': article.url,
+        'source': article.sourceName,
+        'published_at': article.publishedAt,
+        'stance': article.stance,
+        'confidence': article.confidence,
+        'bias_match': article.biasMatch,
+        'relevance_score': article.relevanceScore,
+        'final_score': article.finalScore,
+      }).toList();
+
+      final analysis = await _apiService.langchainAnalyzeArticles(
+        articles: articleMaps,
+      );
+
+      print('🧠 LANGCHAIN PROVIDER: Analysis completed');
+      return analysis;
+      
+    } catch (e) {
+      print('🧠 LANGCHAIN PROVIDER: Error in LangChain analysis: $e');
+      throw e;
+    }
+  }
+
+  Future<Map<String, dynamic>> langchainHealthCheck() async {
+    try {
+      print('🧠 LANGCHAIN PROVIDER: Checking LangChain health...');
+      final health = await _apiService.langchainHealthCheck();
+      print('🧠 LANGCHAIN PROVIDER: Health check completed: ${health['status']}');
+      return health;
+    } catch (e) {
+      print('🧠 LANGCHAIN PROVIDER: Error in health check: $e');
+      throw e;
+    }
   }
 }
 

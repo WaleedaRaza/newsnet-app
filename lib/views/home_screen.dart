@@ -562,6 +562,15 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 },
               ),
               ListTile(
+                leading: const Icon(Icons.psychology),
+                title: const Text('🧠 LangChain Search'),
+                subtitle: const Text('AI-powered intelligent news search'),
+                onTap: () {
+                  Navigator.pop(context);
+                  context.push('/langchain-search');
+                },
+              ),
+              ListTile(
               leading: const Icon(Icons.settings),
                 title: const Text('Bias Settings'),
                 onTap: () {

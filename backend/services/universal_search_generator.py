@@ -65,83 +65,264 @@ UNIVERSAL_CONTEXT_PATTERNS = {
     "technological": ["technology", "innovation", "digital", "automation", "AI", "artificial intelligence", "machine learning", "automation", "robotics"]
 }
 
-class UniversalSearchGenerator:
-    def __init__(self):
-        self.stance_patterns = UNIVERSAL_STANCE_PATTERNS
-        self.context_patterns = UNIVERSAL_CONTEXT_PATTERNS
+class UniversalSearchTermGenerator:
+    """Generate intelligent, stance-aware search terms for any topic"""
     
-    def generate_search_terms(self, query: str, user_view: str, bias: float) -> List[str]:
-        """Generate targeted search terms for any topic"""
-        try:
-            print(f"🔍 UNIVERSAL GENERATOR: Generating terms for query: '{query}'")
-            print(f"🔍 UNIVERSAL GENERATOR: User view: '{user_view}'")
-            print(f"🔍 UNIVERSAL GENERATOR: Bias: {bias}")
-            
-            # Extract the main topic (first few words)
-            topic = self._extract_main_topic(query)
-            print(f"🔍 UNIVERSAL GENERATOR: Extracted topic: '{topic}'")
-            
-            # Generate focused search terms
-            search_terms = []
-            
-            # 1. Direct topic searches
-            search_terms.extend([
-                topic,
+    def __init__(self):
+        self.negative_keywords = {
+            'hate', 'terrible', 'awful', 'bad', 'wrong', 'dislike', 'evil', 'horrible',
+            'worst', 'disgusting', 'terrible', 'awful', 'dreadful', 'atrocious',
+            'ruining', 'destroying', 'damaging', 'harming', 'hurting', 'problematic',
+            'controversial', 'scandal', 'corruption', 'failure', 'disaster', 'crisis'
+        }
+        
+        self.positive_keywords = {
+            'love', 'great', 'amazing', 'good', 'right', 'like', 'excellent', 'wonderful',
+            'fantastic', 'brilliant', 'outstanding', 'perfect', 'best', 'superior',
+            'helping', 'improving', 'beneficial', 'positive', 'success', 'achievement',
+            'victory', 'triumph', 'breakthrough', 'innovation', 'progress'
+        }
+        
+        self.critical_terms = {
+            'criticism', 'criticize', 'critic', 'opposition', 'oppose', 'against',
+            'protest', 'protesters', 'demonstration', 'backlash', 'outrage',
+            'controversy', 'scandal', 'investigation', 'allegations', 'charges',
+            'lawsuit', 'legal', 'court', 'judge', 'prosecution', 'conviction',
+            'failure', 'collapse', 'bankruptcy', 'crisis', 'emergency', 'disaster',
+            'resignation', 'fired', 'terminated', 'suspended', 'banned', 'prohibited'
+        }
+        
+        self.supportive_terms = {
+            'support', 'supporter', 'endorse', 'endorsement', 'approval', 'approve',
+            'success', 'achievement', 'victory', 'win', 'triumph', 'breakthrough',
+            'innovation', 'progress', 'improvement', 'growth', 'expansion',
+            'election', 'reelection', 'campaign', 'rally', 'speech', 'announcement',
+            'launch', 'release', 'introduction', 'new', 'latest', 'updated'
+        }
+        
+        self.news_sources = {
+            'liberal': ['msnbc.com', 'cnn.com', 'nytimes.com', 'washingtonpost.com', 'huffpost.com', 'vox.com', 'theguardian.com'],
+            'conservative': ['foxnews.com', 'breitbart.com', 'nypost.com', 'washingtontimes.com', 'dailywire.com', 'newsmax.com'],
+            'neutral': ['reuters.com', 'ap.org', 'bbc.com', 'npr.org', 'pbs.org', 'abcnews.go.com', 'cbsnews.com', 'nbcnews.com']
+        }
+    
+    def generate_search_terms(self, query: str, bias: float) -> List[str]:
+        """
+        Generate intelligent, stance-aware search terms
+        
+        Args:
+            query: User query like "maga I hate maga"
+            bias: 0.0 = challenging views, 1.0 = supporting views
+        
+        Returns:
+            List of intelligent search terms
+        """
+        print(f"🔍 INTELLIGENT SEARCH: Generating stance-aware terms for '{query}' with bias {bias}")
+        
+        # Extract topic and user view
+        topic, user_view = self._extract_topic_and_view(query)
+        print(f"🔍 INTELLIGENT SEARCH: Topic: '{topic}', User view: '{user_view}'")
+        
+        # Determine user sentiment
+        user_sentiment = self._analyze_user_sentiment(user_view)
+        print(f"🔍 INTELLIGENT SEARCH: User sentiment: {user_sentiment}")
+        
+        # Generate stance-aware terms
+        if bias == 0.0:  # User wants challenging views
+            terms = self._generate_challenging_terms(topic, user_sentiment)
+        elif bias == 1.0:  # User wants supporting views
+            terms = self._generate_supporting_terms(topic, user_sentiment)
+        else:  # Mixed bias
+            terms = self._generate_mixed_terms(topic, user_sentiment, bias)
+        
+        print(f"🔍 INTELLIGENT SEARCH: Generated {len(terms)} stance-aware terms")
+        print(f"🔍 INTELLIGENT SEARCH: Sample terms: {terms[:5]}")
+        
+        return terms
+    
+    def _extract_topic_and_view(self, query: str) -> tuple[str, str]:
+        """Extract topic and user view from query"""
+        words = query.split()
+        if len(words) < 2:
+            return words[0] if words else "news", ""
+        
+        # Find the main topic (usually first significant word)
+        topic = words[0].lower()
+        user_view = " ".join(words[1:])
+        
+        return topic, user_view
+    
+    def _analyze_user_sentiment(self, user_view: str) -> str:
+        """Analyze user sentiment from their view"""
+        user_view_lower = user_view.lower()
+        
+        negative_count = sum(1 for word in self.negative_keywords if word in user_view_lower)
+        positive_count = sum(1 for word in self.positive_keywords if word in user_view_lower)
+        
+        if negative_count > positive_count:
+            return "negative"
+        elif positive_count > negative_count:
+            return "positive"
+        else:
+            return "neutral"
+    
+    def _generate_challenging_terms(self, topic: str, user_sentiment: str) -> List[str]:
+        """Generate terms that challenge the user's view"""
+        terms = []
+        
+        if user_sentiment == "negative":
+            # User hates the topic, so challenging views = articles that support the topic
+            terms.extend([
                 f'"{topic}"',
+                f'intitle:{topic}',
+                f'{topic} support',
+                f'{topic} supporters',
+                f'{topic} endorsement',
+                f'{topic} success',
+                f'{topic} achievement',
+                f'{topic} victory',
+                f'{topic} positive',
+                f'{topic} beneficial',
+                f'{topic} improvement',
+                f'{topic} growth',
+                f'{topic} progress',
+                f'{topic} breakthrough',
+                f'{topic} innovation'
+            ])
+        elif user_sentiment == "positive":
+            # User loves the topic, so challenging views = articles that oppose the topic
+            terms.extend([
+                f'"{topic}"',
+                f'intitle:{topic}',
+                f'{topic} criticism',
+                f'{topic} critics',
+                f'{topic} opposition',
+                f'{topic} protest',
+                f'{topic} controversy',
+                f'{topic} scandal',
+                f'{topic} failure',
+                f'{topic} crisis',
+                f'{topic} problems',
+                f'{topic} issues',
+                f'{topic} negative',
+                f'{topic} harmful',
+                f'{topic} dangerous'
+            ])
+        else:
+            # Neutral user, provide balanced challenging views
+            terms.extend([
+                f'"{topic}"',
+                f'intitle:{topic}',
+                f'{topic} debate',
+                f'{topic} discussion',
+                f'{topic} analysis',
+                f'{topic} review',
+                f'{topic} opinion',
+                f'{topic} perspective',
+                f'{topic} viewpoint',
+                f'{topic} argument',
+                f'{topic} controversy',
+                f'{topic} criticism',
+                f'{topic} support',
+                f'{topic} opposition'
+            ])
+        
+        return terms
+    
+    def _generate_supporting_terms(self, topic: str, user_sentiment: str) -> List[str]:
+        """Generate terms that support the user's view"""
+        terms = []
+        
+        if user_sentiment == "negative":
+            # User hates the topic, so supporting views = articles that also oppose the topic
+            terms.extend([
+                f'"{topic}"',
+                f'intitle:{topic}',
+                f'{topic} criticism',
+                f'{topic} critics',
+                f'{topic} opposition',
+                f'{topic} protest',
+                f'{topic} controversy',
+                f'{topic} scandal',
+                f'{topic} failure',
+                f'{topic} crisis',
+                f'{topic} problems',
+                f'{topic} issues',
+                f'{topic} negative',
+                f'{topic} harmful',
+                f'{topic} dangerous',
+                f'{topic} investigation',
+                f'{topic} allegations',
+                f'{topic} charges',
+                f'{topic} lawsuit',
+                f'{topic} legal'
+            ])
+        elif user_sentiment == "positive":
+            # User loves the topic, so supporting views = articles that also support the topic
+            terms.extend([
+                f'"{topic}"',
+                f'intitle:{topic}',
+                f'{topic} support',
+                f'{topic} supporters',
+                f'{topic} endorsement',
+                f'{topic} success',
+                f'{topic} achievement',
+                f'{topic} victory',
+                f'{topic} positive',
+                f'{topic} beneficial',
+                f'{topic} improvement',
+                f'{topic} growth',
+                f'{topic} progress',
+                f'{topic} breakthrough',
+                f'{topic} innovation',
+                f'{topic} launch',
+                f'{topic} announcement',
+                f'{topic} new',
+                f'{topic} latest',
+                f'{topic} updated'
+            ])
+        else:
+            # Neutral user, provide balanced supporting views
+            terms.extend([
+                f'"{topic}"',
+                f'intitle:{topic}',
                 f'{topic} news',
                 f'{topic} latest',
-                f'{topic} today'
-            ])
-            
-            # 2. Topic + stance combinations
-            if user_view:
-                search_terms.extend([
-                    f'{topic} {user_view}',
-                    f'"{topic}" "{user_view}"',
-                    f'{topic} {user_view} news',
-                    f'{topic} {user_view} latest'
-                ])
-            
-            # 3. Topic + context (if we can extract context)
-            context_words = self._extract_context_words(query)
-            if context_words:
-                for context in context_words[:3]:  # Limit to top 3 contexts
-                    search_terms.extend([
-                        f'{topic} {context}',
-                        f'"{topic}" "{context}"',
-                        f'{topic} {context} news'
-                    ])
-            
-            # 4. Recent news patterns
-            search_terms.extend([
-                f'{topic} 2025',
-                f'{topic} this week',
+                f'{topic} update',
                 f'{topic} recent',
-                f'{topic} breaking'
+                f'{topic} today',
+                f'{topic} current',
+                f'{topic} development',
+                f'{topic} story',
+                f'{topic} report',
+                f'{topic} coverage',
+                f'{topic} analysis',
+                f'{topic} review'
             ])
-            
-            # 5. Source-specific patterns (for major news sources)
-            major_sources = ['CNN', 'BBC', 'Reuters', 'NPR', 'Fox News', 'MSNBC']
-            for source in major_sources[:2]:  # Limit to top 2 sources
-                search_terms.extend([
-                    f'{topic} {source}',
-                    f'"{topic}" site:{source.lower().replace(" ", "")}.com'
-                ])
-            
-            # Remove duplicates and limit to reasonable number
-            unique_terms = list(dict.fromkeys(search_terms))  # Preserve order
-            final_terms = unique_terms[:15]  # Limit to top 15 terms
-            
-            print(f"🔍 UNIVERSAL GENERATOR: Generated {len(final_terms)} focused search terms")
-            print(f"🔍 UNIVERSAL GENERATOR: Sample terms: {final_terms[:5]}")
-            
-            return final_terms
-            
-        except Exception as e:
-            print(f"🔍 UNIVERSAL GENERATOR: Error generating terms: {e}")
-            # Fallback to simple topic search
-            topic = query.split()[0] if query else "news"
-            return [topic, f'"{topic}"', f'{topic} news']
+        
+        return terms
+    
+    def _generate_mixed_terms(self, topic: str, user_sentiment: str, bias: float) -> List[str]:
+        """Generate mixed terms based on bias level"""
+        challenging_terms = self._generate_challenging_terms(topic, user_sentiment)
+        supporting_terms = self._generate_supporting_terms(topic, user_sentiment)
+        
+        # Mix based on bias level
+        num_challenging = int(len(challenging_terms) * (1 - bias))
+        num_supporting = int(len(supporting_terms) * bias)
+        
+        terms = challenging_terms[:num_challenging] + supporting_terms[:num_supporting]
+        
+        # Add some neutral terms
+        neutral_terms = [
+            f'"{topic}"',
+            f'intitle:{topic}',
+            f'{topic} news',
+            f'{topic} latest',
+            f'{topic} update'
+        ]
+        
+        return terms + neutral_terms
     
     def _extract_main_topic(self, query: str) -> str:
         """Extract the main topic from the query"""
@@ -219,7 +400,7 @@ class UniversalSearchGenerator:
         query_lower = query.lower()
         contexts = []
         
-        for context_name, context_words in self.context_patterns.items():
+        for context_name, context_words in UNIVERSAL_CONTEXT_PATTERNS.items():
             if any(word in query_lower for word in context_words):
                 contexts.append(context_name)
         
@@ -262,12 +443,12 @@ class UniversalSearchGenerator:
         print(f"🔍 UNIVERSAL GENERATOR: Using stance category: {stance_category}")
         
         # Generate terms using universal patterns
-        for pattern in self.stance_patterns[stance_category]:
+        for pattern in UNIVERSAL_STANCE_PATTERNS[stance_category]:
             terms.append(f"{topic} {pattern}")
             terms.append(f'"{topic}" "{pattern}"')
         
         # Also add evidence terms for any stance
-        for pattern in self.stance_patterns["evidence"]:
+        for pattern in UNIVERSAL_STANCE_PATTERNS["evidence"]:
             terms.append(f"{topic} {pattern}")
         
         return terms
@@ -277,8 +458,8 @@ class UniversalSearchGenerator:
         terms = []
         
         for context in contexts:
-            if context in self.context_patterns:
-                for pattern in self.context_patterns[context]:
+            if context in UNIVERSAL_CONTEXT_PATTERNS:
+                for pattern in UNIVERSAL_CONTEXT_PATTERNS[context]:
                     terms.append(f"{topic} {pattern}")
         
         return terms

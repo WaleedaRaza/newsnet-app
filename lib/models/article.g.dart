@@ -16,6 +16,9 @@ Article _$ArticleFromJson(Map<String, dynamic> json) => Article(
       biasAnalysis: json['biasAnalysis'] == null
           ? null
           : BiasAnalysis.fromJson(json['biasAnalysis'] as Map<String, dynamic>),
+      stance: json['stance'] as String?,
+      stanceConfidence: (json['stanceConfidence'] as num?)?.toDouble(),
+      relevanceScore: (json['relevanceScore'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$ArticleToJson(Article instance) => <String, dynamic>{
@@ -26,6 +29,9 @@ Map<String, dynamic> _$ArticleToJson(Article instance) => <String, dynamic>{
       'publishedAt': instance.publishedAt,
       'source': instance.source,
       'biasAnalysis': instance.biasAnalysis,
+      'stance': instance.stance,
+      'stanceConfidence': instance.stanceConfidence,
+      'relevanceScore': instance.relevanceScore,
     };
 
 ArticleAggregationRequest _$ArticleAggregationRequestFromJson(

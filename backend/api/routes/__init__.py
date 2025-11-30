@@ -10,6 +10,7 @@ from . import stories
 # from . import fusion  # Temporarily disabled due to LangChain dependency issues
 from . import articles
 from . import intelligence
+from . import langchain_articles
 
 __all__ = [
     "auth",
@@ -17,5 +18,6 @@ __all__ = [
     "stories",
     # "fusion",  # Temporarily disabled
     "articles",
-    "intelligence"
+    "intelligence",
+    "langchain_articles"
 ] 

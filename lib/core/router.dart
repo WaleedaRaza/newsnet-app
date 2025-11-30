@@ -17,6 +17,7 @@ import '../screens/onboarding_views_screen.dart';
 import '../screens/category_selection_screen.dart';
 import '../screens/articles_screen.dart';
 import '../screens/stance_detection_screen.dart';
+import '../screens/langchain_search_screen.dart';
 import '../widgets/bias_slider.dart';
 import '../core/constants.dart';
 
@@ -116,6 +117,10 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/stance-detection',
         builder: (context, state) => const StanceDetectionScreen(),
+      ),
+      GoRoute(
+        path: '/langchain-search',
+        builder: (context, state) => const LangChainSearchScreen(),
       ),
     ],
   );

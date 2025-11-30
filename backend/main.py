@@ -4,7 +4,7 @@ from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from contextlib import asynccontextmanager
 import uvicorn
 
-from api.routes import auth, users, stories, articles, intelligence
+from api.routes import auth, users, stories, articles, intelligence, langchain_articles
 from db.session import engine
 from db.models import Base
 from config import settings
@@ -71,6 +71,7 @@ app.include_router(users.router, prefix="/v1/users", tags=["Users"])
 app.include_router(stories.router, prefix="/v1/stories", tags=["Stories"])
 app.include_router(articles.router, prefix="/v1/articles", tags=["Articles"])
 app.include_router(intelligence.router, tags=["Intelligence"])
+app.include_router(langchain_articles.router, prefix="/v1", tags=["LangChain"])
 
 @app.get("/")
 async def root():
